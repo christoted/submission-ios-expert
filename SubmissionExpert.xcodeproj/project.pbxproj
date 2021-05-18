@@ -13,6 +13,7 @@
 		5218908F2653D43B00783413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5218908D2653D43B00783413 /* Main.storyboard */; };
 		521890912653D43C00783413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 521890902653D43C00783413 /* Assets.xcassets */; };
 		521890942653D43C00783413 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521890922653D43C00783413 /* LaunchScreen.storyboard */; };
+		521890AB2653D99E00783413 /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890AA2653D99E00783413 /* ApiCall.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		521890902653D43C00783413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		521890932653D43C00783413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		521890952653D43C00783413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521890AA2653D99E00783413 /* ApiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,120 @@
 		521890862653D43B00783413 /* SubmissionExpert */ = {
 			isa = PBXGroup;
 			children = (
-				521890872653D43B00783413 /* AppDelegate.swift */,
-				521890892653D43B00783413 /* SceneDelegate.swift */,
-				5218908B2653D43B00783413 /* ViewController.swift */,
+				521890A72653D97500783413 /* Util */,
+				5218909E2653D86200783413 /* Supporting Files */,
+				5218909D2653D82E00783413 /* App */,
+				5218909C2653D81200783413 /* Core */,
+				5218909F2653D88E00783413 /* Module */,
 				5218908D2653D43B00783413 /* Main.storyboard */,
-				521890902653D43C00783413 /* Assets.xcassets */,
-				521890922653D43C00783413 /* LaunchScreen.storyboard */,
-				521890952653D43C00783413 /* Info.plist */,
+				5218908B2653D43B00783413 /* ViewController.swift */,
 			);
 			path = SubmissionExpert;
+			sourceTree = "<group>";
+		};
+		5218909C2653D81200783413 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				521890A12653D8A100783413 /* Data */,
+				521890A02653D89B00783413 /* Domain */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5218909D2653D82E00783413 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				521890872653D43B00783413 /* AppDelegate.swift */,
+				521890892653D43B00783413 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5218909E2653D86200783413 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				521890922653D43C00783413 /* LaunchScreen.storyboard */,
+				521890902653D43C00783413 /* Assets.xcassets */,
+				521890952653D43C00783413 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5218909F2653D88E00783413 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		521890A02653D89B00783413 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				521890A52653D8F400783413 /* UseCase */,
+				521890A42653D8ED00783413 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		521890A12653D8A100783413 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				521890A32653D8D500783413 /* Remote */,
+				521890A22653D8CA00783413 /* Locale */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		521890A22653D8CA00783413 /* Locale */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Locale;
+			sourceTree = "<group>";
+		};
+		521890A32653D8D500783413 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		521890A42653D8ED00783413 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		521890A52653D8F400783413 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		521890A72653D97500783413 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				521890A92653D98E00783413 /* Mapper */,
+				521890A82653D98800783413 /* Network */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		521890A82653D98800783413 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				521890AA2653D99E00783413 /* ApiCall.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		521890A92653D98E00783413 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +246,7 @@
 			files = (
 				5218908C2653D43B00783413 /* ViewController.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
+				521890AB2653D99E00783413 /* ApiCall.swift in Sources */,
 				5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
