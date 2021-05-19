@@ -8,5 +8,5 @@
 import Foundation
 
 struct API {
-    static let baseUrl = " "
+    static let baseUrl = ""
 }
