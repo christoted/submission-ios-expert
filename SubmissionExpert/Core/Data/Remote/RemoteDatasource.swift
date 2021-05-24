@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import Alamofire
 
-protocol RemoteDatasourceProtocol: class {
+protocol RemoteDatasourceProtocol: AnyObject {
     func getRandomMenu()->AnyPublisher<[RandomMenuResponse], Error>
 }
 
