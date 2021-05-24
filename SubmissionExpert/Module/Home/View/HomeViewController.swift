@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tvHome: UITableView!
+    
+    var homePresenter: HomePresenter?
+    
+    var testRandomMenu: [RandomMenuResponse]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +21,38 @@ class HomeViewController: UIViewController {
         tvHome.dataSource = self
         tvHome.delegate = self
         
+        homePresenter?.objectWillChange.makeConnectable()
+            .autoconnect()
+             .sink { [weak self] in
+                print("TEST", self?.homePresenter?.getCategories())
+                 DispatchQueue.main.async { [weak self] in
+                    print("TEST", self?.homePresenter?.getCategories())
+                 }
+             }
+        
+       
         registerTableView()
+        
+       // getDataRemote()
     }
     
     private func registerTableView(){
         tvHome.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "homecell")
+    }
+    
+    private func getDataRemote() {
+        if let url = URL(string: EndPoints.Gets.randomMenu.url) {
+            AF.request(url)
+                .validate()
+                .responseDecodable(of: Response.self) { (response) in
+                    switch response.result {
+                    case .success(let value):
+                       print("SUCESS \(value)")
+                    case .failure(let value):
+                        print("FAIL \(value)")
+                    }
+                }
+        }
     }
 }
 

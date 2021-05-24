@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5200DE642658BB2000F8C830 /* CategoryMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE632658BB2000F8C830 /* CategoryMapper.swift */; };
+		5200DE672658D5DC00F8C830 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE662658D5DC00F8C830 /* HomeInteractor.swift */; };
+		5200DE6B2658DDD500F8C830 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE6A2658DDD500F8C830 /* Injection.swift */; };
+		5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE6E2658E02C00F8C830 /* HomePresenter.swift */; };
 		521890882653D43B00783413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890872653D43B00783413 /* AppDelegate.swift */; };
 		5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890892653D43B00783413 /* SceneDelegate.swift */; };
 		5218908C2653D43B00783413 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218908B2653D43B00783413 /* HomeViewController.swift */; };
@@ -18,9 +22,24 @@
 		526353EC2655284C00B615D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 521890902653D43C00783413 /* Assets.xcassets */; };
 		526353F626552A3600B615D1 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526353F426552A3500B615D1 /* HomeTableViewCell.swift */; };
 		526353F726552A3600B615D1 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526353F526552A3500B615D1 /* HomeTableViewCell.xib */; };
+		528019862656869A0036BA40 /* RemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019852656869A0036BA40 /* RemoteDatasource.swift */; };
+		5280198B265687F00036BA40 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280198A265687F00036BA40 /* Response.swift */; };
+		5280198F265687FB0036BA40 /* RandomMenuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280198E265687FB0036BA40 /* RandomMenuResponse.swift */; };
+		528019932656B89D0036BA40 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 528019922656B89D0036BA40 /* Alamofire */; };
+		528019972656BB290036BA40 /* CustomError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019962656BB290036BA40 /* CustomError+Ext.swift */; };
+		5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019992656BD560036BA40 /* FoodieRepository.swift */; };
+		52A71ACE26581CDF00C6E2B6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACD26581CDF00C6E2B6 /* Realm */; };
+		52A71AD026581CDF00C6E2B6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACF26581CDF00C6E2B6 /* RealmSwift */; };
+		52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */; };
+		52A71AD72658201500C6E2B6 /* MenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD62658201500C6E2B6 /* MenuEntity.swift */; };
+		52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD92658255D00C6E2B6 /* MenuModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5200DE632658BB2000F8C830 /* CategoryMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMapper.swift; sourceTree = "<group>"; };
+		5200DE662658D5DC00F8C830 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		5200DE6A2658DDD500F8C830 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
+		5200DE6E2658E02C00F8C830 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		521890842653D43B00783413 /* SubmissionExpert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubmissionExpert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521890872653D43B00783413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		521890892653D43B00783413 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +53,14 @@
 		526353D7265526D900B615D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		526353F426552A3500B615D1 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		526353F526552A3500B615D1 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		528019852656869A0036BA40 /* RemoteDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDatasource.swift; sourceTree = "<group>"; };
+		5280198A265687F00036BA40 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		5280198E265687FB0036BA40 /* RandomMenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMenuResponse.swift; sourceTree = "<group>"; };
+		528019962656BB290036BA40 /* CustomError+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomError+Ext.swift"; sourceTree = "<group>"; };
+		528019992656BD560036BA40 /* FoodieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieRepository.swift; sourceTree = "<group>"; };
+		52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDatasource.swift; sourceTree = "<group>"; };
+		52A71AD62658201500C6E2B6 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
+		52A71AD92658255D00C6E2B6 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,12 +68,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A71AD026581CDF00C6E2B6 /* RealmSwift in Frameworks */,
+				52A71ACE26581CDF00C6E2B6 /* Realm in Frameworks */,
+				528019932656B89D0036BA40 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5200DE692658DDC500F8C830 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				5200DE6A2658DDD500F8C830 /* Injection.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		520B134B2655241C0049DEB9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +145,7 @@
 		521890862653D43B00783413 /* SubmissionExpert */ = {
 			isa = PBXGroup;
 			children = (
+				5200DE692658DDC500F8C830 /* DI */,
 				521890A72653D97500783413 /* Util */,
 				5218909E2653D86200783413 /* Supporting Files */,
 				5218909D2653D82E00783413 /* App */,
@@ -172,6 +211,7 @@
 			children = (
 				521890A32653D8D500783413 /* Remote */,
 				521890A22653D8CA00783413 /* Locale */,
+				528019992656BD560036BA40 /* FoodieRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -179,6 +219,8 @@
 		521890A22653D8CA00783413 /* Locale */ = {
 			isa = PBXGroup;
 			children = (
+				52A71AD226581FE400C6E2B6 /* Entity */,
+				52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */,
 			);
 			path = Locale;
 			sourceTree = "<group>";
@@ -186,6 +228,8 @@
 		521890A32653D8D500783413 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				52801983265686850036BA40 /* Response */,
+				528019852656869A0036BA40 /* RemoteDatasource.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -193,6 +237,7 @@
 		521890A42653D8ED00783413 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				52A71AD92658255D00C6E2B6 /* MenuModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,6 +245,7 @@
 		521890A52653D8F400783413 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				5200DE662658D5DC00F8C830 /* HomeInteractor.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -207,6 +253,7 @@
 		521890A72653D97500783413 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				528019952656BB190036BA40 /* Extensions */,
 				521890A92653D98E00783413 /* Mapper */,
 				521890A82653D98800783413 /* Network */,
 			);
@@ -224,6 +271,7 @@
 		521890A92653D98E00783413 /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
+				5200DE632658BB2000F8C830 /* CategoryMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -239,6 +287,7 @@
 		526353CB265525D900B615D1 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				5200DE6E2658E02C00F8C830 /* HomePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -282,6 +331,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		52801983265686850036BA40 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				52801989265687BD0036BA40 /* Random Menu */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		52801989265687BD0036BA40 /* Random Menu */ = {
+			isa = PBXGroup;
+			children = (
+				5280198A265687F00036BA40 /* Response.swift */,
+				5280198E265687FB0036BA40 /* RandomMenuResponse.swift */,
+			);
+			path = "Random Menu";
+			sourceTree = "<group>";
+		};
+		528019952656BB190036BA40 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				528019962656BB290036BA40 /* CustomError+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52A71AD226581FE400C6E2B6 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				52A71AD62658201500C6E2B6 /* MenuEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -298,6 +380,11 @@
 			dependencies = (
 			);
 			name = SubmissionExpert;
+			packageProductDependencies = (
+				528019922656B89D0036BA40 /* Alamofire */,
+				52A71ACD26581CDF00C6E2B6 /* Realm */,
+				52A71ACF26581CDF00C6E2B6 /* RealmSwift */,
+			);
 			productName = SubmissionExpert;
 			productReference = 521890842653D43B00783413 /* SubmissionExpert.app */;
 			productType = "com.apple.product-type.application";
@@ -325,6 +412,10 @@
 				Base,
 			);
 			mainGroup = 5218907B2653D43B00783413;
+			packageReferences = (
+				528019912656B89D0036BA40 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				52A71ACC26581CDF00C6E2B6 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 521890852653D43B00783413 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -353,13 +444,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5280198F265687FB0036BA40 /* RandomMenuResponse.swift in Sources */,
+				528019862656869A0036BA40 /* RemoteDatasource.swift in Sources */,
+				5200DE642658BB2000F8C830 /* CategoryMapper.swift in Sources */,
+				52A71AD72658201500C6E2B6 /* MenuEntity.swift in Sources */,
 				526353D8265526D900B615D1 /* ProfileViewController.swift in Sources */,
+				52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */,
 				5218908C2653D43B00783413 /* HomeViewController.swift in Sources */,
+				528019972656BB290036BA40 /* CustomError+Ext.swift in Sources */,
 				526353F626552A3600B615D1 /* HomeTableViewCell.swift in Sources */,
+				5280198B265687F00036BA40 /* Response.swift in Sources */,
+				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
 				521890AB2653D99E00783413 /* ApiCall.swift in Sources */,
 				526353D02655264300B615D1 /* FavouriteViewController.swift in Sources */,
+				5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */,
 				5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */,
+				5200DE6B2658DDD500F8C830 /* Injection.swift in Sources */,
+				5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */,
+				5200DE672658D5DC00F8C830 /* HomeInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +664,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		528019912656B89D0036BA40 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+		52A71ACC26581CDF00C6E2B6 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		528019922656B89D0036BA40 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 528019912656B89D0036BA40 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		52A71ACD26581CDF00C6E2B6 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52A71ACC26581CDF00C6E2B6 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		52A71ACF26581CDF00C6E2B6 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52A71ACC26581CDF00C6E2B6 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5218907C2653D43B00783413 /* Project object */;
 }
