@@ -7,75 +7,70 @@
 
 import UIKit
 import Alamofire
+import Combine
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tvHome: UITableView!
     
-    var homePresenter: HomePresenter?
-    
-    var testRandomMenu: [RandomMenuResponse]?
-    
+    private var randomMenu: [RandomMenuResponse] = []
+    private var errorMessage: String = ""
+    private var loadingState: Bool = false
+    private var cancellables: Set<AnyCancellable> = []
+
+    var presenter: HomePresenter?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tvHome.dataSource = self
         tvHome.delegate = self
-        
-        homePresenter?.objectWillChange.makeConnectable()
-            .autoconnect()
-             .sink { [weak self] in
-                print("TEST", self?.homePresenter?.getCategories())
-                 DispatchQueue.main.async { [weak self] in
-                    print("TEST", self?.homePresenter?.getCategories())
-                 }
-             }
-        
-       
+
         registerTableView()
-        
-       // getDataRemote()
+
+        getCategories()
     }
-    
-    private func registerTableView(){
+
+    private func registerTableView() {
         tvHome.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "homecell")
     }
-    
-    private func getDataRemote() {
-        if let url = URL(string: EndPoints.Gets.randomMenu.url) {
-            AF.request(url)
-                .validate()
-                .responseDecodable(of: Response.self) { (response) in
-                    switch response.result {
-                    case .success(let value):
-                       print("SUCESS \(value)")
-                    case .failure(let value):
-                        print("FAIL \(value)")
-                    }
-                }
-        }
+
+    private func getCategories() {
+        loadingState = true
+        presenter?.getCategories().receive(on: RunLoop.main).sink { completion in
+            switch completion {
+            case .finished:
+                self.loadingState = false
+            case .failure(_):
+                self.errorMessage = String(describing: completion)
+            }
+        } receiveValue: { (result) in
+            self.randomMenu = result
+            self.tvHome.reloadData()
+        }.store(in: &cancellables)
     }
+
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return randomMenu.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tvHome.dequeueReusableCell(withIdentifier: "homecell") as! HomeTableViewCell
-        
+
+        let menu = randomMenu[indexPath.row]
         cell.ivHome.image = UIImage(named: "teddy")
-        cell.lblFoodId.text = "3001"
-        cell.lblFoodName.text = "Pasta With Tuna"
-        
-        
+        cell.lblFoodId.text = "\(menu.id ?? 0)"
+        cell.lblFoodName.text = menu.title
+
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-    
+
 }
 

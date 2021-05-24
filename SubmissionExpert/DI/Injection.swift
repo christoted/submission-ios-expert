@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class Injection {
-    private func provideRepository() -> FoodieRepositoryProtocol {
+    func provideRepository() -> FoodieRepositoryProtocol {
         
         let realm: Realm? = try? Realm()
         
@@ -20,7 +20,7 @@ class Injection {
         return FoodieRepository(remoteDataSource: remoteDataSource, localeDataSource: localDataSource)
     }
     
-    private func provideHomeUseCase()-> HomeUseCase {
+    func provideHomeUseCase()-> HomeUseCase {
         
         let repository = provideRepository()
     
