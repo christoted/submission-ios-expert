@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JGA-Z6-hEL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JGA-Z6-hEL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,7 @@
         <!--Favourite-->
         <scene sceneID="neu-24-JdE">
             <objects>
-                <viewController id="DBn-z9-BJD" customClass="FavouriteViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavouriteViewController" id="DBn-z9-BJD" customClass="FavouriteViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QAU-sh-aKk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
             </objects>
             <point key="canvasLocation" x="895.6521739130435" y="-576.5625"/>
         </scene>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
@@ -65,19 +65,59 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="juL-NH-aKM"/>
+                    <navigationItem key="navigationItem" id="9X8-rB-QFj"/>
                     <connections>
+                        <outlet property="navigationItemHome" destination="eJM-x7-5LJ" id="opT-gt-gGE"/>
                         <outlet property="tvHome" destination="wId-Rs-avy" id="1sU-u8-yeO"/>
+                        <segue destination="09U-bM-6fh" kind="show" identifier="toDetail" id="DEy-xg-f2b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895.6521739130435" y="157.36607142857142"/>
+            <point key="canvasLocation" x="1805.7971014492755" y="157.36607142857142"/>
+        </scene>
+        <!--Pasta with Tuna-->
+        <scene sceneID="gwb-78-m3c">
+            <objects>
+                <viewController id="09U-bM-6fh" customClass="DetailRecipeViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JAX-Hs-Vtr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PPl-E8-FoP">
+                                <rect key="frame" x="26" y="109" width="362" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Ingredient"/>
+                                    <segment title="Summary"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchAction:" destination="09U-bM-6fh" eventType="valueChanged" id="3su-l7-V2l"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="otD-6W-EjS">
+                                <rect key="frame" x="0.0" y="155" width="414" height="658"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fhW-bB-ttV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pasta with Tuna" largeTitleDisplayMode="always" id="rV3-Hm-Pc4"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="PPl-E8-FoP" id="UL9-pA-Uwt"/>
+                        <outlet property="viewContainer" destination="otD-6W-EjS" id="1cp-Gg-43h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ST-2T-W2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2842.0289855072465" y="156.69642857142856"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="dqM-Lr-6Rq">
             <objects>
-                <viewController id="8Vv-nK-2fP" customClass="ProfileViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="8Vv-nK-2fP" customClass="ProfileViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xZf-jS-dZj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="1805.7971014492755" y="916.74107142857133"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="L7s-6R-vjI">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="JGA-Z6-hEL" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JGA-Z6-hEL" customClass="TabBarViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8k3-gf-VhB">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -104,7 +144,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Nm6-bt-flw"/>
+                        <segue destination="BUe-61-IFj" kind="relationship" relationship="viewControllers" id="Nm6-bt-flw"/>
                         <segue destination="DBn-z9-BJD" kind="relationship" relationship="viewControllers" id="r8E-GN-UAS"/>
                         <segue destination="6um-PS-j5A" kind="relationship" relationship="viewControllers" id="Rtw-jg-HHk"/>
                     </connections>
@@ -116,7 +156,7 @@
         <!--Profile-->
         <scene sceneID="SXm-NI-oJh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6um-PS-j5A" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="6um-PS-j5A" customClass="ProfileNavigationViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="Bco-zD-TRr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="SOD-87-PGS">
@@ -131,6 +171,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3i6-a2-6YJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="895.6521739130435" y="916.74107142857133"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="vBY-qb-vDb">
+            <objects>
+                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="BUe-61-IFj" customClass="HomeNavigationViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="juL-NH-aKM"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SQW-52-Ob6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="H2o-cs-pkk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z18-m1-a5e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="895.6521739130435" y="157.36607142857142"/>
         </scene>
     </scenes>
     <resources>

@@ -11,6 +11,8 @@ import Combine
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tvHome: UITableView!
+
+    @IBOutlet weak var navigationItemHome: UINavigationItem!
     
     private var randomMenu: [RandomMenuResponse] = []
     private var errorMessage: String = ""
@@ -24,7 +26,9 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         tvHome.dataSource = self
         tvHome.delegate = self
-
+        
+        navigationItemHome.title = "HEELo"
+    
         registerTableView()
 
         getCategories()
@@ -70,6 +74,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetail", sender: indexPath)
     }
 
 }
