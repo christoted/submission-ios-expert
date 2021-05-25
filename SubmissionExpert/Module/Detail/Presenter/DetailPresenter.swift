@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import Combine
+
+class DetailPresenter: ObservableObject {
+    private let useCase: HomeUseCase
+    
+    init(useCase: HomeUseCase) {
+        self.useCase = useCase
+    }
+    
+    func getDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
+        return useCase.getRecipeDetail(recipeId: recipeId)
+    }
+}

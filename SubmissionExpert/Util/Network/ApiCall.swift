@@ -20,7 +20,7 @@ enum EndPoints {
     enum Gets: EndPoint {
         
         case search
-        case recipeInformation
+        case recipeInformation(recipeId: Int)
         case randomMenu
         
         
@@ -28,8 +28,9 @@ enum EndPoints {
             switch self {
             
             case EndPoints.Gets.search: return ""
+                            
                 
-            case EndPoints.Gets.recipeInformation: return "\(API.baseUrl)"
+            case EndPoints.Gets.recipeInformation(let recipeId): return "\(API.baseUrl)recipes/\(recipeId)/information?includeNutrition=false&apiKey=\(API.APIKEY)"
                 
             case EndPoints.Gets.randomMenu: return "\(API.baseUrl)recipes/complexSearch?query=pizza&maxFat=25&number=10&apiKey=\(API.APIKEY)"
            

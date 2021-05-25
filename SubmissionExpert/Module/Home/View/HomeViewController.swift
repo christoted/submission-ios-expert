@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
         tvHome.dataSource = self
         tvHome.delegate = self
         
-        navigationItemHome.title = "HEELo"
+        navigationItemHome.title = "Foodiecipe"
     
         registerTableView()
 

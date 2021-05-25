@@ -10,6 +10,9 @@ import Combine
 
 protocol FoodieRepositoryProtocol {
     func getRandomMenu() -> AnyPublisher<[RandomMenuResponse], Error>
+    
+    func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error>
+    
 }
 
 
@@ -31,6 +34,10 @@ final class FoodieRepository: NSObject {
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
+    func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
+        return self.remote.getDetailMenu(recipeId: recipeId)
+    }
+    
     func getRandomMenu() -> AnyPublisher<[RandomMenuResponse], Error> {
         return self.remote.getRandomMenu()
     }

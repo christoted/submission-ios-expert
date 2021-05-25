@@ -42,6 +42,10 @@
 		52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */; };
 		52A71AD72658201500C6E2B6 /* MenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD62658201500C6E2B6 /* MenuEntity.swift */; };
 		52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD92658255D00C6E2B6 /* MenuModel.swift */; };
+		52FA7FAD265CF1D7007F8836 /* DetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA7FAC265CF1D7007F8836 /* DetailResponse.swift */; };
+		52FA7FB0265CF3B7007F8836 /* IngridientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA7FAF265CF3B7007F8836 /* IngridientResponse.swift */; };
+		52FA7FB6265D0D0F007F8836 /* IngridientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA7FB4265D0D0F007F8836 /* IngridientTableViewCell.swift */; };
+		52FA7FB7265D0D0F007F8836 /* IngridientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FA7FB5265D0D0F007F8836 /* IngridientTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +83,10 @@
 		52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDatasource.swift; sourceTree = "<group>"; };
 		52A71AD62658201500C6E2B6 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
 		52A71AD92658255D00C6E2B6 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		52FA7FAC265CF1D7007F8836 /* DetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResponse.swift; sourceTree = "<group>"; };
+		52FA7FAF265CF3B7007F8836 /* IngridientResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientResponse.swift; sourceTree = "<group>"; };
+		52FA7FB4265D0D0F007F8836 /* IngridientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientTableViewCell.swift; sourceTree = "<group>"; };
+		52FA7FB5265D0D0F007F8836 /* IngridientTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngridientTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,9 +332,9 @@
 		52561BC8265BC207002148E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				52561BE9265BCAC2002148E3 /* DetailRecipeViewController.swift */,
 				52561BD4265BC987002148E3 /* Summary */,
 				52561BD3265BC981002148E3 /* Ingredient */,
-				52561BE9265BCAC2002148E3 /* DetailRecipeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,6 +342,7 @@
 		52561BD3265BC981002148E3 /* Ingredient */ = {
 			isa = PBXGroup;
 			children = (
+				52FA7FB3265D0CF5007F8836 /* Custom View */,
 				52561BDF265BCA47002148E3 /* IngridientViewController.swift */,
 				52561BE0265BCA47002148E3 /* IngridientViewController.xib */,
 			);
@@ -409,18 +418,19 @@
 		52801983265686850036BA40 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				52801989265687BD0036BA40 /* Random Menu */,
+				52FA7FAA265CF090007F8836 /* Detail Recipe */,
+				52801989265687BD0036BA40 /* Random Recipe */,
 			);
 			path = Response;
 			sourceTree = "<group>";
 		};
-		52801989265687BD0036BA40 /* Random Menu */ = {
+		52801989265687BD0036BA40 /* Random Recipe */ = {
 			isa = PBXGroup;
 			children = (
 				5280198A265687F00036BA40 /* Response.swift */,
 				5280198E265687FB0036BA40 /* RandomMenuResponse.swift */,
 			);
-			path = "Random Menu";
+			path = "Random Recipe";
 			sourceTree = "<group>";
 		};
 		528019952656BB190036BA40 /* Extensions */ = {
@@ -437,6 +447,24 @@
 				52A71AD62658201500C6E2B6 /* MenuEntity.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		52FA7FAA265CF090007F8836 /* Detail Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				52FA7FAC265CF1D7007F8836 /* DetailResponse.swift */,
+				52FA7FAF265CF3B7007F8836 /* IngridientResponse.swift */,
+			);
+			path = "Detail Recipe";
+			sourceTree = "<group>";
+		};
+		52FA7FB3265D0CF5007F8836 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				52FA7FB4265D0D0F007F8836 /* IngridientTableViewCell.swift */,
+				52FA7FB5265D0D0F007F8836 /* IngridientTableViewCell.xib */,
+			);
+			path = "Custom View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				526353EC2655284C00B615D1 /* Assets.xcassets in Resources */,
+				52FA7FB7265D0D0F007F8836 /* IngridientTableViewCell.xib in Resources */,
 				52561BE2265BCA47002148E3 /* IngridientViewController.xib in Resources */,
 				526353EA2655284900B615D1 /* LaunchScreen.storyboard in Resources */,
 				52561BE7265BCA54002148E3 /* SummaryViewController.xib in Resources */,
@@ -537,12 +566,15 @@
 				52561BE1265BCA47002148E3 /* IngridientViewController.swift in Sources */,
 				52561BE6265BCA54002148E3 /* SummaryViewController.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
+				52FA7FB6265D0D0F007F8836 /* IngridientTableViewCell.swift in Sources */,
 				52561BEA265BCAC2002148E3 /* DetailRecipeViewController.swift in Sources */,
 				521890AB2653D99E00783413 /* ApiCall.swift in Sources */,
 				526353D02655264300B615D1 /* FavouriteViewController.swift in Sources */,
 				52561BCE265BC228002148E3 /* DetailPresenter.swift in Sources */,
+				52FA7FAD265CF1D7007F8836 /* DetailResponse.swift in Sources */,
 				5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */,
 				5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */,
+				52FA7FB0265CF3B7007F8836 /* IngridientResponse.swift in Sources */,
 				5200DE6B2658DDD500F8C830 /* Injection.swift in Sources */,
 				52561BC4265BBC61002148E3 /* ProfileNavigationViewController.swift in Sources */,
 				5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */,

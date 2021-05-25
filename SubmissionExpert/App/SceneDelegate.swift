@@ -28,7 +28,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        homeNC.viewControllers = [homeVC]
+        guard let detailVC = storyboard.instantiateViewController(identifier: "DetailRecipeViewController") as? DetailRecipeViewController else {
+            print("ViewController not found")
+            return
+        }
+     
         
         guard let favouriteVC = storyboard.instantiateViewController(identifier: "FavouriteViewController") as? FavouriteViewController else {
             print("ViewController not found")
@@ -52,16 +56,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let usecase = Injection().provideHomeUseCase()
         let presenter = HomePresenter(useCase: usecase)
+        let detailPresenter = DetailPresenter(useCase: usecase)
         
         let viewController = HomeViewController()
         viewController.presenter = presenter
-        
         homeVC.presenter = presenter
+        
+        //Detail
+        let detailViewController = DetailRecipeViewController()
+        detailViewController.presenter = detailPresenter
+        detailVC.presenter = detailPresenter
+        
+        
+        homeNC.viewControllers = [homeVC]
         tabBarController.viewControllers = [homeNC, favouriteVC, personalNC]
         
-        //        let rootNC = UINavigationController(rootViewController: rootVC)
-        //        self.window?.rootViewController = rootNC
-        //        self.window?.makeKeyAndVisible()
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

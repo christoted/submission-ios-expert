@@ -79,7 +79,7 @@
         <!--Pasta with Tuna-->
         <scene sceneID="gwb-78-m3c">
             <objects>
-                <viewController id="09U-bM-6fh" customClass="DetailRecipeViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailRecipeViewController" id="09U-bM-6fh" customClass="DetailRecipeViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JAX-Hs-Vtr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
