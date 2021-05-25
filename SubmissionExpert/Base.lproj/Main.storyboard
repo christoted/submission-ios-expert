@@ -106,6 +106,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pasta with Tuna" largeTitleDisplayMode="always" id="rV3-Hm-Pc4"/>
                     <connections>
+                        <outlet property="navigationItemDetail" destination="rV3-Hm-Pc4" id="vS2-m6-fcS"/>
                         <outlet property="segmentedControl" destination="PPl-E8-FoP" id="UL9-pA-Uwt"/>
                         <outlet property="viewContainer" destination="otD-6W-EjS" id="1cp-Gg-43h"/>
                     </connections>
