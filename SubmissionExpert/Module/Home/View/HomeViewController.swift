@@ -52,6 +52,8 @@ class HomeViewController: UIViewController {
             self.tvHome.reloadData()
         }.store(in: &cancellables)
     }
+    
+    
 
 }
 
@@ -74,6 +76,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if ( segue.identifier == "toDetail") {
+            let dest = segue.destination as! DetailRecipeViewController
+            let row = (sender as! NSIndexPath).row
+            dest.recipeId = randomMenu[row].id ?? 654812
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

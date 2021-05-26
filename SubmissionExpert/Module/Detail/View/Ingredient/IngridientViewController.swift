@@ -31,7 +31,7 @@ class IngridientViewController: UIViewController {
         tablleView.delegate = self
         tablleView.dataSource = self
         
-        getRecipeDetail(recipeId: 654812)
+      //  getRecipeDetail(recipeId: 654812)
        
     }
     
