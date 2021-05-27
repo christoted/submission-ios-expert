@@ -13,6 +13,9 @@ protocol FoodieRepositoryProtocol {
     
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error>
     
+    
+    
+    func getRandomMenuOffline() -> AnyPublisher<[MenuModel], Error>
 }
 
 
@@ -34,6 +37,36 @@ final class FoodieRepository: NSObject {
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
+    func getRandomMenuOffline() -> AnyPublisher<[MenuModel], Error> {
+        return self.locale.getRandomMenu()
+            .flatMap { (result) -> AnyPublisher<[MenuModel], Error> in
+                if result.isEmpty {
+                    return self.remote.getRandomMenu()
+                        .map{ (menuEntity) in
+                            CategoryMapper.mapCategoryResponseToEntity(input: menuEntity)
+                        }
+                        .flatMap{ (menuEnti) in
+                            self.locale.insertRandomMenu(from: menuEnti)
+                        }
+                        .filter{ (menuEnti) in
+                            menuEnti
+                        }
+                        .flatMap { _ in self.locale.getRandomMenu()
+                            .map{ (menuEnti) in
+                                CategoryMapper.mapCategoryEntityToDomains(input: menuEnti)
+                            }
+                        }
+                        .eraseToAnyPublisher()
+                } else {
+                    return self.locale.getRandomMenu()
+                        .map{ (menuEtity) in
+                            CategoryMapper.mapCategoryEntityToDomains(input: menuEtity)
+                        }
+                        .eraseToAnyPublisher()
+                }
+            }.eraseToAnyPublisher()
+    }
+    
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
         return self.remote.getDetailMenu(recipeId: recipeId)
     }

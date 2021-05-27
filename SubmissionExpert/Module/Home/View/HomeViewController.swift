@@ -15,9 +15,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var navigationItemHome: UINavigationItem!
     
     private var randomMenu: [RandomMenuResponse] = []
+    private var randomMenuOffline: [MenuModel] = []
+    
     private var errorMessage: String = ""
     private var loadingState: Bool = false
     private var cancellables: Set<AnyCancellable> = []
+    
 
     var presenter: HomePresenter?
 
@@ -32,6 +35,8 @@ class HomeViewController: UIViewController {
         registerTableView()
 
         getCategories()
+        
+        getRandomMenuOffline()
     }
 
     private func registerTableView() {
@@ -53,6 +58,31 @@ class HomeViewController: UIViewController {
         }.store(in: &cancellables)
     }
     
+    private func getRandomMenuOffline() {
+        loadingState = true
+        presenter?.getRandomMenuOffline().receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
+            switch completion {
+            case .finished:
+                self.loadingState = false
+                print("Funusg",self.randomMenuOffline.count)
+                
+            case .failure(let error):
+                self.errorMessage = String(describing: error)
+                print("Faik",self.randomMenuOffline.count)
+            }
+        }, receiveValue: { (result) in
+            self.randomMenuOffline = result
+            
+            DispatchQueue.main.async {
+                print("Ukuran",self.randomMenuOffline.count)
+            }
+            
+        
+            
+            self.tvHome.reloadData()
+        })
+    }
+    
     
 
 }
@@ -60,16 +90,16 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return randomMenu.count
+        return randomMenuOffline.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tvHome.dequeueReusableCell(withIdentifier: "homecell") as! HomeTableViewCell
 
-        let menu = randomMenu[indexPath.row]
+        let menu = randomMenuOffline[indexPath.row]
         cell.ivHome.image = UIImage(named: "teddy")
         cell.lblFoodId.text = "\(menu.id ?? 0)"
-        cell.lblFoodName.text = menu.title
+        cell.lblFoodName.text = menu.nutrition[0].title
 
         return cell
     }

@@ -13,6 +13,7 @@ class MenuEntity: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var image: String = ""
     @objc dynamic var imageType: String = ""
+    @objc dynamic var isBookmarked: Bool = false 
     
     var nutrition: [NutrientsEntity] = []
    

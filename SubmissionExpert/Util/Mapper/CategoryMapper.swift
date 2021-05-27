@@ -58,6 +58,8 @@ class CategoryMapper {
         
     }
     
+ 
+    
     
     static func mapCategoryEntityToDomains(input menuEntities: [MenuEntity])-> [MenuModel]{
         menuEntities.map { menuEntities  in

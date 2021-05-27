@@ -12,7 +12,7 @@ import RealmSwift
 protocol LocalDatasourceProtocol {
     func getRandomMenu()->AnyPublisher<[MenuEntity], Error>
     
-    func insertRandomMenu(from menuEntity: [MenuEntity], from nutrientEntities: [NutrientsEntity])-> AnyPublisher<Bool, Error>
+    func insertRandomMenu(from menuEntity: [MenuEntity])-> AnyPublisher<Bool, Error>
 }
 
 class LocalDatasource: NSObject {
@@ -45,7 +45,7 @@ extension LocalDatasource: LocalDatasourceProtocol {
         }.eraseToAnyPublisher()
     }
     
-    func insertRandomMenu(from menuEntities: [MenuEntity], from nutrientEntities: [NutrientsEntity]) -> AnyPublisher<Bool, Error> {
+    func insertRandomMenu(from menuEntities: [MenuEntity]) -> AnyPublisher<Bool, Error> {
         return Future<Bool, Error> { completion in
             
             
@@ -53,7 +53,7 @@ extension LocalDatasource: LocalDatasourceProtocol {
                 do {
                     try realmDB.write{
                         for menuEntity in menuEntities{
-                            menuEntity.nutrition = nutrientEntities
+                          //  menuEntity.nutrition = nutrientEntities
                             
                             //Add
                             realmDB.add(menuEntity, update: .all)
