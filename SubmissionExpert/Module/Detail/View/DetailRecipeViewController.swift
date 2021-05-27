@@ -52,7 +52,7 @@ class DetailRecipeViewController: UIViewController {
         tableViewDetail.delegate = self
         tableViewDetail.dataSource = self
         
-        summaryView = SummaryViewController().view
+        summaryView = SummaryViewController(recipeID: recipeId!).view
         
         viewContainer.addSubview(summaryView)
         viewContainer.bringSubviewToFront(summaryView)

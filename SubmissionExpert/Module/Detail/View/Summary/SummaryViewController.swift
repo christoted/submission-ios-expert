@@ -23,14 +23,14 @@ class SummaryViewController: UIViewController {
     
     private var imageURL: String?
     
-//    init(recipeID: Int) {
-//          self.recipeId = recipeID
-//          super.init(nibName: nil, bundle: nil)
-//      }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    init(recipeID: Int) {
+          self.recipeId = recipeID
+          super.init(nibName: nil, bundle: nil)
+      }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class SummaryViewController: UIViewController {
         
         setup()
         setupImage()
-        getRecipeDetail(recipeId: 654812)
+        getRecipeDetail(recipeId: recipeId!)
         
         
 
