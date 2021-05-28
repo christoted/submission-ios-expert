@@ -14,7 +14,6 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var navigationItemHome: UINavigationItem!
     
-    private var randomMenu: [RandomMenuResponse] = []
     private var randomMenuOffline: [MenuModel] = []
     
     private var errorMessage: String = ""
@@ -35,8 +34,7 @@ class HomeViewController: UIViewController {
         registerTableView()
 
         getCategories()
-        
-        getRandomMenuOffline()
+
     }
 
     private func registerTableView() {
@@ -53,38 +51,10 @@ class HomeViewController: UIViewController {
                 self.errorMessage = String(describing: completion)
             }
         } receiveValue: { (result) in
-            self.randomMenu = result
+            self.randomMenuOffline = result
             self.tvHome.reloadData()
         }.store(in: &cancellables)
     }
-    
-    private func getRandomMenuOffline() {
-        loadingState = true
-        presenter?.getRandomMenuOffline().receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
-            switch completion {
-            case .finished:
-                self.loadingState = false
-                print("Funusg",self.randomMenuOffline.count)
-                
-            case .failure(let error):
-                self.errorMessage = String(describing: error)
-                print("Faik",self.randomMenuOffline.count)
-            }
-        }, receiveValue: { (result) in
-            self.randomMenuOffline = result
-            
-            DispatchQueue.main.async {
-                print("Ukuran",self.randomMenuOffline.count)
-            }
-            
-        
-            
-            self.tvHome.reloadData()
-        })
-    }
-    
-    
-
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -99,7 +69,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let menu = randomMenuOffline[indexPath.row]
         cell.ivHome.image = UIImage(named: "teddy")
         cell.lblFoodId.text = "\(menu.id ?? 0)"
-        cell.lblFoodName.text = menu.nutrition[0].title
+        cell.lblFoodName.text = menu.title
 
         return cell
     }
@@ -112,7 +82,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if ( segue.identifier == "toDetail") {
             let dest = segue.destination as! DetailRecipeViewController
             let row = (sender as! NSIndexPath).row
-            dest.recipeId = randomMenu[row].id ?? 654812
+            dest.recipeId = randomMenuOffline[row].id ?? 654812
         }
     }
     
