@@ -10,18 +10,13 @@ import Combine
 
 
 protocol HomeUseCase {
-    func getRandomMenu() -> AnyPublisher<[RandomMenuResponse], Error >
+    func getRandomMenu() -> AnyPublisher<[MenuModel], Error >
     
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error>
-    
-    func getRandomMenuOffline() -> AnyPublisher<[MenuModel], Error>
 }
 
 
 class HomeInteractor : HomeUseCase {
-    func getRandomMenuOffline() -> AnyPublisher<[MenuModel], Error> {
-        return repository.getRandomMenuOffline()
-    }
     
   
     private let repository: FoodieRepositoryProtocol
@@ -30,10 +25,10 @@ class HomeInteractor : HomeUseCase {
         self.repository = repositoryProtocol
     }
   
-    func getRandomMenu() -> AnyPublisher<[RandomMenuResponse], Error> {
+    func getRandomMenu() -> AnyPublisher<[MenuModel], Error> {
         return repository.getRandomMenu()
     }
-    
+
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
         repository.getRecipeDetail(recipeId: recipeId)
     }
