@@ -14,6 +14,8 @@ struct MenuModel {
     let imageType: String?
     let nutrition: [NutrientModel]
     
+   
+    
 }
 
 
@@ -22,5 +24,8 @@ struct NutrientModel  {
     let amount: Double?
     let unit: String?
     
-    
 }
+
+
+
+

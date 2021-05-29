@@ -12,6 +12,8 @@ protocol FoodieRepositoryProtocol {
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error>
 
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error>
+    
+    func getRecipeDetailOffline(recipeId: Int)->AnyPublisher<MenuDetailModel, Error>
 }
 
 
@@ -33,6 +35,44 @@ final class FoodieRepository: NSObject {
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
+    func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuDetailModel, Error> {
+        
+        return self.locale.getDetailMenu(recipeId: recipeId).flatMap { (result) -> AnyPublisher<MenuDetailModel, Error> in
+            if result.title.isEmpty {
+                print("TEST")
+                return self.remote.getDetailMenu(recipeId: recipeId)
+                    .map{
+                        CategoryMapper.mapCategoryDetailResponseToEntity(input: $0)
+                    }
+                    .flatMap {
+                        self.locale.insertDetailMenu(from: $0)
+                    }
+                    .filter{
+                        $0
+                    }
+                    .flatMap { _ in self.locale.getDetailMenu(recipeId: recipeId)
+                        .map{
+                            CategoryMapper.mapCategoryDetailEntityToDomains(input: $0)
+                        }
+                        
+                    }.eraseToAnyPublisher()
+                
+                
+            } else {
+                print("TEST BAWAH")
+                return self.locale.getDetailMenu(recipeId: recipeId)
+                    .map{
+                        CategoryMapper.mapCategoryDetailEntityToDomains(input: $0)
+                    }.eraseToAnyPublisher()
+                    
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+ 
+    
+   
+    
 
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
         return self.remote.getDetailMenu(recipeId: recipeId)

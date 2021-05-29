@@ -28,6 +28,9 @@ class DetailRecipeViewController: UIViewController {
     
     private var ingridientResponse : [IngridientResponse] = []
     
+    private var detailModel: MenuDetailModel?
+    private var ingridientModel: [IngridientModel] = []
+    
     @IBOutlet weak var viewContainer: UIView!
     
     let ingdridient = ["Salad", "Banana"]
@@ -38,7 +41,7 @@ class DetailRecipeViewController: UIViewController {
     
     lazy var rowToDisplay = ingdridient
     
-    lazy var rowToDisplay2 = ingridientResponse
+    lazy var rowToDisplay2 = ingridientModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +61,9 @@ class DetailRecipeViewController: UIViewController {
         viewContainer.bringSubviewToFront(summaryView)
 
        
-        getRecipeDetail(recipeId: recipeId ?? 654812)
+       // getRecipeDetail(recipeId: recipeId ?? 654812)
+        
+        getRecipeDetailOffline(recipeId: recipeId ?? 654812)
         
     }
     
@@ -96,6 +101,25 @@ class DetailRecipeViewController: UIViewController {
         }).store(in: &cancellables)
     }
     
+    
+    private func getRecipeDetailOffline(recipeId: Int) {
+        loadingState = true
+        presenter?.getDetailOffline(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
+            switch completion {
+            case .finished :
+                self.loadingState = false
+                
+            case .failure(_):
+                self.errorMessage = String(describing: completion)
+            }
+        }, receiveValue: { (result) in
+            self.detailModel = result
+            self.navigationItemDetail.title = result.title
+            self.ingridientModel = result.extendedIngredients!
+            self.tableViewDetail.reloadData()
+        }).store(in: &cancellables)
+    }
+    
     @IBAction func segmentedClicked(_ sender: UISegmentedControl) {
         print(sender.selectedSegmentIndex)
         
@@ -106,14 +130,14 @@ class DetailRecipeViewController: UIViewController {
             viewContainer.bringSubviewToFront(summaryView)
             break
         case 1:
-            rowToDisplay2 = ingridientResponse
+            rowToDisplay2 = ingridientModel
             viewContainer.willRemoveSubview(summaryView)
             viewContainer.addSubview(tableViewDetail)
             viewContainer.bringSubviewToFront(tableViewDetail)
             break
             
         default:
-            rowToDisplay2 = ingridientResponse
+            rowToDisplay2 = ingridientModel
             viewContainer.addSubview(tableViewDetail)
             viewContainer.bringSubviewToFront(tableViewDetail)
             break

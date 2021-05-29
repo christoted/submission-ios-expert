@@ -16,11 +16,11 @@ class MenuEntity: Object {
     @objc dynamic var isBookmarked: Bool = false 
     
     var nutrition: [NutrientsEntity] = []
-   
+    
     override static func primaryKey() -> String? {
         return "id"
     }
-    
+
 }
 
 
@@ -28,7 +28,6 @@ class NutrientsEntity: Object  {
     @objc dynamic var title: String = ""
     @objc dynamic var amount: Double = 0.0
     @objc dynamic var unit: String = ""
-    
     
 }
 

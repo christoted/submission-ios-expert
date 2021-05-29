@@ -13,12 +13,16 @@ protocol HomeUseCase {
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error >
     
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error>
+    
+    func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuDetailModel, Error>
 }
 
 
 class HomeInteractor : HomeUseCase {
+  
     
   
+    
     private let repository: FoodieRepositoryProtocol
     
     init(repositoryProtocol: FoodieRepositoryProtocol) {
@@ -31,6 +35,11 @@ class HomeInteractor : HomeUseCase {
 
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
         repository.getRecipeDetail(recipeId: recipeId)
+    }
+    
+    
+    func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuDetailModel, Error> {
+        return repository.getRecipeDetailOffline(recipeId: recipeId)
     }
     
     

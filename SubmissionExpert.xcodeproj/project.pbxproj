@@ -15,6 +15,8 @@
 		5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890892653D43B00783413 /* SceneDelegate.swift */; };
 		5218908C2653D43B00783413 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218908B2653D43B00783413 /* HomeViewController.swift */; };
 		521890AB2653D99E00783413 /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890AA2653D99E00783413 /* ApiCall.swift */; };
+		523F00802660FBF300221A20 /* MenuDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F007F2660FBF300221A20 /* MenuDetailEntity.swift */; };
+		523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F008226610B2200221A20 /* MenuDetailModel.swift */; };
 		52561BA0265BAFF6002148E3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561B9F265BAFF6002148E3 /* TabBarViewController.swift */; };
 		52561BC4265BBC61002148E3 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561BC3265BBC61002148E3 /* ProfileNavigationViewController.swift */; };
 		52561BCE265BC228002148E3 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561BCD265BC228002148E3 /* DetailPresenter.swift */; };
@@ -62,6 +64,8 @@
 		521890932653D43C00783413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		521890952653D43C00783413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		521890AA2653D99E00783413 /* ApiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
+		523F007F2660FBF300221A20 /* MenuDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailEntity.swift; sourceTree = "<group>"; };
+		523F008226610B2200221A20 /* MenuDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailModel.swift; sourceTree = "<group>"; };
 		52561B9F265BAFF6002148E3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		52561BC3265BBC61002148E3 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
 		52561BCD265BC228002148E3 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				52A71AD92658255D00C6E2B6 /* MenuModel.swift */,
+				523F008226610B2200221A20 /* MenuDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				52A71AD62658201500C6E2B6 /* MenuEntity.swift */,
+				523F007F2660FBF300221A20 /* MenuDetailEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -562,8 +568,10 @@
 				52561BD1265BC734002148E3 /* HomeNavigationViewController.swift in Sources */,
 				526353F626552A3600B615D1 /* HomeTableViewCell.swift in Sources */,
 				5280198B265687F00036BA40 /* Response.swift in Sources */,
+				523F00802660FBF300221A20 /* MenuDetailEntity.swift in Sources */,
 				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
 				52561BE1265BCA47002148E3 /* IngridientViewController.swift in Sources */,
+				523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */,
 				52561BE6265BCA54002148E3 /* SummaryViewController.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
 				52FA7FB6265D0D0F007F8836 /* IngridientTableViewCell.swift in Sources */,

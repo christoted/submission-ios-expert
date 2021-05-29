@@ -18,4 +18,8 @@ class DetailPresenter: ObservableObject {
     func getDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
         return useCase.getRecipeDetail(recipeId: recipeId)
     }
+    
+    func getDetailOffline(recipeId: Int)-> AnyPublisher<MenuDetailModel, Error> {
+        return useCase.getRecipeDetailOffline(recipeId: recipeId)
+    }
 }

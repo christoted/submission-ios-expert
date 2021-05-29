@@ -17,6 +17,8 @@ class SummaryViewController: UIViewController {
     
     private var detailResponse: DetailResponse?
     
+    private var detailModel: MenuDetailModel?
+    
     var recipeId: Int?
     @IBOutlet weak var imageDetail: UIImageView!
     @IBOutlet weak var labelSummary: UITextView!
@@ -38,8 +40,8 @@ class SummaryViewController: UIViewController {
         
         setup()
         setupImage()
-        getRecipeDetail(recipeId: recipeId!)
-        
+      //  getRecipeDetail(recipeId: recipeId!)
+        getRecipeDetailOffline(recipeId: recipeId!)
         
 
         // Do any additional setup after loading the view.
@@ -93,14 +95,38 @@ class SummaryViewController: UIViewController {
             }
             
           
-            
-            
-            
-          
         }).store(in: &cancellables)
     }
 
-
+    private func getRecipeDetailOffline(recipeId: Int) {
+        loadingState = true
+        presenter?.getDetailOffline(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
+            switch completion {
+            case .finished:
+                self.loadingState = false
+                
+            case .failure(_):
+                self.errorMessage = String(describing: completion)
+            }
+        }, receiveValue: { (result) in
+            self.detailModel = result
+            self.labelSummary.text = result.summary
+            self.imageURL = result.image
+            
+            guard let imageUrl = self.imageURL else {
+                return
+            }
+            
+            DispatchQueue.global(qos: .userInteractive).async {
+                let url = URL(string: imageUrl)
+                let imageData = try? Data(contentsOf: url!)
+                
+                DispatchQueue.main.async {
+                    self.imageDetail.image = UIImage(data: imageData!)
+                }
+            }
+        })
+    }
  
 
 }

@@ -13,6 +13,12 @@ protocol LocalDatasourceProtocol {
     func getRandomMenu()->AnyPublisher<[MenuEntity], Error>
     
     func insertRandomMenu(from menuEntity: [MenuEntity])-> AnyPublisher<Bool, Error>
+    
+    //For Detail
+    func getDetailMenu(recipeId: Int)->AnyPublisher<MenuDetailEntity, Error>
+    
+    //Insert
+    func insertDetailMenu(from menuEntity: MenuDetailEntity) -> AnyPublisher<Bool, Error>
 }
 
 class LocalDatasource: NSObject {
@@ -28,6 +34,47 @@ class LocalDatasource: NSObject {
 }
 
 extension LocalDatasource: LocalDatasourceProtocol {
+  
+    func getDetailMenu(recipeId: Int) -> AnyPublisher<MenuDetailEntity, Error> {
+        return Future<MenuDetailEntity, Error> { completion in
+            if let realmDB = self.realm {
+                let menus: Results<MenuDetailEntity> = {
+                    realmDB.objects(MenuDetailEntity.self)
+                        .sorted(byKeyPath: "title", ascending: true)
+                }()
+                
+                guard let menu = menus.first else {
+                    return
+                }
+                
+                completion(.success(menu))
+                
+            } else {
+                completion(.failure(DatabaseError.invalidInstance))
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
+    func insertDetailMenu(from menuDetailEntities: MenuDetailEntity) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            if let realmDB = self.realm {
+                do {
+                    try realmDB.write {
+                    
+                            realmDB.add(menuDetailEntities)
+                        
+                    }
+                    
+                    completion(.success(true))
+                } catch {
+                    completion(.failure(DatabaseError.requestFailed))
+                }
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
     
     func getRandomMenu() -> AnyPublisher<[MenuEntity], Error> {
         return Future<[MenuEntity], Error> { completion in
@@ -86,4 +133,6 @@ extension Results {
         
         return array
     }
+    
+   
 }
