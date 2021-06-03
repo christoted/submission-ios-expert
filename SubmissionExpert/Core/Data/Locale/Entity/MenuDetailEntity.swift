@@ -22,10 +22,4 @@ class MenuDetailEntity: Object {
     }
 }
 
-class IngridientEntity: Object {
-    @objc dynamic var id: Int = 0
-    @objc dynamic var asile: String = ""
-    @objc dynamic var name: String = ""
-    @objc dynamic var original: String = ""
-    @objc dynamic var unit: String = ""
-}
+

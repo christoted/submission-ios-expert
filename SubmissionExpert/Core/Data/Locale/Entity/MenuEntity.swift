@@ -20,7 +20,12 @@ class MenuEntity: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
-
+    
+    //Addition
+    @objc dynamic var summary: String = ""
+    
+    var extendedIngredients: [IngridientEntity] = []
+    
 }
 
 
@@ -29,5 +34,13 @@ class NutrientsEntity: Object  {
     @objc dynamic var amount: Double = 0.0
     @objc dynamic var unit: String = ""
     
+}
+
+class IngridientEntity: Object {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var asile: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var original: String = ""
+    @objc dynamic var unit: String = ""
 }
 

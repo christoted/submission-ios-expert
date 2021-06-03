@@ -12,7 +12,7 @@ import Alamofire
 protocol RemoteDatasourceProtocol: AnyObject {
     func getRandomMenu()->AnyPublisher<[RandomMenuResponse], Error>
     
-    func getDetailMenu(recipeId: Int)->AnyPublisher<DetailResponse, Error>
+    func getDetailMenu(recipeId: Int)->AnyPublisher<MenuDetailResponse, Error>
 }
 
 final class RemoteDatasource: NSObject{
@@ -23,12 +23,12 @@ final class RemoteDatasource: NSObject{
 
 extension RemoteDatasource: RemoteDatasourceProtocol {
     
-    func getDetailMenu(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
-        return Future<DetailResponse, Error> { completion in
+    func getDetailMenu(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error> {
+        return Future<MenuDetailResponse, Error> { completion in
             if let url = URL(string: EndPoints.Gets.recipeInformation(recipeId: recipeId).url) {
                 AF.request(url)
                     .validate()
-                    .responseDecodable(of: DetailResponse.self) { (response) in
+                    .responseDecodable(of: MenuDetailResponse.self) { (response) in
                         switch response.result {
                         case .success(let value):
                             completion(.success(value))

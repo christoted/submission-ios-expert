@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5200DE642658BB2000F8C830 /* CategoryMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE632658BB2000F8C830 /* CategoryMapper.swift */; };
+		5200DE642658BB2000F8C830 /* MenuMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE632658BB2000F8C830 /* MenuMapper.swift */; };
 		5200DE672658D5DC00F8C830 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE662658D5DC00F8C830 /* HomeInteractor.swift */; };
 		5200DE6B2658DDD500F8C830 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE6A2658DDD500F8C830 /* Injection.swift */; };
 		5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE6E2658E02C00F8C830 /* HomePresenter.swift */; };
@@ -44,14 +44,15 @@
 		52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */; };
 		52A71AD72658201500C6E2B6 /* MenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD62658201500C6E2B6 /* MenuEntity.swift */; };
 		52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD92658255D00C6E2B6 /* MenuModel.swift */; };
-		52FA7FAD265CF1D7007F8836 /* DetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA7FAC265CF1D7007F8836 /* DetailResponse.swift */; };
+		52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEA0E826675E9A0062770C /* MenuDetailRes.swift */; };
+		52EEA0EE266793E70062770C /* MenuDetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEA0ED266793E70062770C /* MenuDetailMapper.swift */; };
 		52FA7FB0265CF3B7007F8836 /* IngridientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA7FAF265CF3B7007F8836 /* IngridientResponse.swift */; };
 		52FA7FB6265D0D0F007F8836 /* IngridientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA7FB4265D0D0F007F8836 /* IngridientTableViewCell.swift */; };
 		52FA7FB7265D0D0F007F8836 /* IngridientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FA7FB5265D0D0F007F8836 /* IngridientTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5200DE632658BB2000F8C830 /* CategoryMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMapper.swift; sourceTree = "<group>"; };
+		5200DE632658BB2000F8C830 /* MenuMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMapper.swift; sourceTree = "<group>"; };
 		5200DE662658D5DC00F8C830 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		5200DE6A2658DDD500F8C830 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		5200DE6E2658E02C00F8C830 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -87,7 +88,8 @@
 		52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDatasource.swift; sourceTree = "<group>"; };
 		52A71AD62658201500C6E2B6 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
 		52A71AD92658255D00C6E2B6 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
-		52FA7FAC265CF1D7007F8836 /* DetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResponse.swift; sourceTree = "<group>"; };
+		52EEA0E826675E9A0062770C /* MenuDetailRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailRes.swift; sourceTree = "<group>"; };
+		52EEA0ED266793E70062770C /* MenuDetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailMapper.swift; sourceTree = "<group>"; };
 		52FA7FAF265CF3B7007F8836 /* IngridientResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientResponse.swift; sourceTree = "<group>"; };
 		52FA7FB4265D0D0F007F8836 /* IngridientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientTableViewCell.swift; sourceTree = "<group>"; };
 		52FA7FB5265D0D0F007F8836 /* IngridientTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngridientTableViewCell.xib; sourceTree = "<group>"; };
@@ -304,7 +306,8 @@
 		521890A92653D98E00783413 /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
-				5200DE632658BB2000F8C830 /* CategoryMapper.swift */,
+				5200DE632658BB2000F8C830 /* MenuMapper.swift */,
+				52EEA0ED266793E70062770C /* MenuDetailMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -458,8 +461,8 @@
 		52FA7FAA265CF090007F8836 /* Detail Recipe */ = {
 			isa = PBXGroup;
 			children = (
-				52FA7FAC265CF1D7007F8836 /* DetailResponse.swift */,
 				52FA7FAF265CF3B7007F8836 /* IngridientResponse.swift */,
+				52EEA0E826675E9A0062770C /* MenuDetailRes.swift */,
 			);
 			path = "Detail Recipe";
 			sourceTree = "<group>";
@@ -558,7 +561,7 @@
 			files = (
 				5280198F265687FB0036BA40 /* RandomMenuResponse.swift in Sources */,
 				528019862656869A0036BA40 /* RemoteDatasource.swift in Sources */,
-				5200DE642658BB2000F8C830 /* CategoryMapper.swift in Sources */,
+				5200DE642658BB2000F8C830 /* MenuMapper.swift in Sources */,
 				52A71AD72658201500C6E2B6 /* MenuEntity.swift in Sources */,
 				526353D8265526D900B615D1 /* ProfileViewController.swift in Sources */,
 				52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */,
@@ -579,13 +582,14 @@
 				521890AB2653D99E00783413 /* ApiCall.swift in Sources */,
 				526353D02655264300B615D1 /* FavouriteViewController.swift in Sources */,
 				52561BCE265BC228002148E3 /* DetailPresenter.swift in Sources */,
-				52FA7FAD265CF1D7007F8836 /* DetailResponse.swift in Sources */,
+				52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */,
 				5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */,
 				5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */,
 				52FA7FB0265CF3B7007F8836 /* IngridientResponse.swift in Sources */,
 				5200DE6B2658DDD500F8C830 /* Injection.swift in Sources */,
 				52561BC4265BBC61002148E3 /* ProfileNavigationViewController.swift in Sources */,
 				5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */,
+				52EEA0EE266793E70062770C /* MenuDetailMapper.swift in Sources */,
 				5200DE672658D5DC00F8C830 /* HomeInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

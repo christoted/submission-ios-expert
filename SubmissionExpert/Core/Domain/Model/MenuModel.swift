@@ -14,10 +14,11 @@ struct MenuModel {
     let imageType: String?
     let nutrition: [NutrientModel]
     
-   
+    //Addition
+    let summary: String?
+    let extendedIngridients: [IngridientModel]?
     
 }
-
 
 struct NutrientModel  {
     let title: String?
@@ -26,6 +27,14 @@ struct NutrientModel  {
     
 }
 
+
+struct IngridientModel {
+    let id: Int?
+    let asile: String?
+    let name: String?
+    let original: String?
+    let unit: String?
+}
 
 
 

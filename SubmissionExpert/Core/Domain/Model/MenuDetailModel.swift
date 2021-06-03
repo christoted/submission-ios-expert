@@ -17,11 +17,3 @@ struct MenuDetailModel {
     let extendedIngredients: [IngridientModel]?
 }
 
-
-struct IngridientModel {
-    let id: Int?
-    let asile: String?
-    let name: String?
-    let original: String?
-    let unit: String?
-}

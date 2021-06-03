@@ -15,11 +15,11 @@ class DetailPresenter: ObservableObject {
         self.useCase = useCase
     }
     
-    func getDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
+    func getDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error> {
         return useCase.getRecipeDetail(recipeId: recipeId)
     }
     
-    func getDetailOffline(recipeId: Int)-> AnyPublisher<MenuDetailModel, Error> {
+    func getDetailOffline(recipeId: Int)-> AnyPublisher<MenuModel, Error> {
         return useCase.getRecipeDetailOffline(recipeId: recipeId)
     }
 }

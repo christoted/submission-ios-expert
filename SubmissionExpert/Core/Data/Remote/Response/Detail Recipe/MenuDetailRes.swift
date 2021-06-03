@@ -1,19 +1,20 @@
 //
-//  DetailResponse.swift
+//  MenuDetailRes.swift
 //  SubmissionExpert
 //
-//  Created by Christopher Teddy  on 25/05/21.
+//  Created by Christopher Teddy  on 02/06/21.
 //
 
 import Foundation
 
-class DetailResponse: Codable {
+struct MenuDetailResponse: Codable {
     
     let extendedIngredients: [IngridientResponse]?
     
     let id: Int?
     let title: String?
     let image: String?
+    let imageType: String?
     let summary: String?
     let dishTypes: [String]?
     
@@ -22,6 +23,7 @@ class DetailResponse: Codable {
         case id = "id"
         case title = "title"
         case image = "image"
+        case imageType = "imageType"
         case summary = "summary"
         case dishTypes = "dishTypes"
     }

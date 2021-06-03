@@ -15,9 +15,9 @@ class SummaryViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     var presenter: DetailPresenter?
     
-    private var detailResponse: DetailResponse?
+    private var detailResponse: MenuDetailResponse?
     
-    private var detailModel: MenuDetailModel?
+    private var detailModel: MenuModel?
     
     var recipeId: Int?
     @IBOutlet weak var imageDetail: UIImageView!
@@ -110,7 +110,7 @@ class SummaryViewController: UIViewController {
             }
         }, receiveValue: { (result) in
             self.detailModel = result
-            self.labelSummary.text = result.summary
+            self.labelSummary.text = result.summary ?? "TEST"
             self.imageURL = result.image
             
             guard let imageUrl = self.imageURL else {

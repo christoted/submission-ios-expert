@@ -24,11 +24,11 @@ class DetailRecipeViewController: UIViewController {
     private var loadingState: Bool = false
     private var cancellables: Set<AnyCancellable> = []
   
-    private var detailResponse: DetailResponse?
+    private var detailResponse: MenuDetailResponse?
     
     private var ingridientResponse : [IngridientResponse] = []
     
-    private var detailModel: MenuDetailModel?
+    private var detailModel: MenuModel?
     private var ingridientModel: [IngridientModel] = []
     
     @IBOutlet weak var viewContainer: UIView!
@@ -61,10 +61,11 @@ class DetailRecipeViewController: UIViewController {
         viewContainer.bringSubviewToFront(summaryView)
 
        
-       // getRecipeDetail(recipeId: recipeId ?? 654812)
-        
-        getRecipeDetailOffline(recipeId: recipeId ?? 654812)
-        
+        //getRecipeDetail(recipeId: recipeId ?? 654812)
+      
+        getRecipeDetailOffline(recipeId: recipeId!)
+       
+       
     }
     
     private func setup() {
@@ -114,8 +115,8 @@ class DetailRecipeViewController: UIViewController {
             }
         }, receiveValue: { (result) in
             self.detailModel = result
-            self.navigationItemDetail.title = result.title
-            self.ingridientModel = result.extendedIngredients!
+            self.navigationItemDetail.title = result.summary
+            self.ingridientModel = result.extendedIngridients!
             self.tableViewDetail.reloadData()
         }).store(in: &cancellables)
     }

@@ -11,9 +11,9 @@ import Combine
 protocol FoodieRepositoryProtocol {
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error>
 
-    func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error>
+    func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
     
-    func getRecipeDetailOffline(recipeId: Int)->AnyPublisher<MenuDetailModel, Error>
+    func getRecipeDetailOffline(recipeId: Int)->AnyPublisher<MenuModel, Error>
 }
 
 
@@ -35,46 +35,40 @@ final class FoodieRepository: NSObject {
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
-    func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuDetailModel, Error> {
-        
-        return self.locale.getDetailMenu(recipeId: recipeId).flatMap { (result) -> AnyPublisher<MenuDetailModel, Error> in
-            if result.title.isEmpty {
-                print("TEST")
+    func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuModel, Error> {
+        return self.locale.getDetailMenu(recipeId: recipeId).flatMap { (result) -> AnyPublisher<MenuModel, Error> in
+            
+            if ( result.extendedIngredients.isEmpty) {
                 return self.remote.getDetailMenu(recipeId: recipeId)
-                    .map{
-                        CategoryMapper.mapCategoryDetailResponseToEntity(input: $0)
+                    // Mapping
+                    .map {
+                        MenuDetailMapper.mapCategoryDetailResponseToEntity(by: recipeId, input: $0)
+                    }
+                    .catch { _ in self.locale.getDetailMenu(recipeId: recipeId)
                     }
                     .flatMap {
-                        self.locale.insertDetailMenu(from: $0)
+                        self.locale.updateMenu(recipeId: recipeId, from: $0)
                     }
-                    .filter{
+                    .filter {
                         $0
                     }
-                    .flatMap { _ in self.locale.getDetailMenu(recipeId: recipeId)
-                        .map{
-                            CategoryMapper.mapCategoryDetailEntityToDomains(input: $0)
+                    .flatMap{ _ in self.locale.getDetailMenu(recipeId: recipeId)
+                        .map {
+                            MenuDetailMapper.mapCategoryDetailEntityToDomains(input: $0)
                         }
                         
                     }.eraseToAnyPublisher()
-                
-                
-            } else {
-                print("TEST BAWAH")
-                return self.locale.getDetailMenu(recipeId: recipeId)
-                    .map{
-                        CategoryMapper.mapCategoryDetailEntityToDomains(input: $0)
-                    }.eraseToAnyPublisher()
-                    
+                    //Terus update dah
+            }else {
+                return self.locale.getDetailMenu(recipeId: recipeId).map {
+                    MenuDetailMapper.mapCategoryDetailEntityToDomains(input: $0)
+                }.eraseToAnyPublisher()
             }
+            
         }.eraseToAnyPublisher()
     }
-    
- 
-    
-   
-    
 
-    func getRecipeDetail(recipeId: Int) -> AnyPublisher<DetailResponse, Error> {
+    func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error> {
         return self.remote.getDetailMenu(recipeId: recipeId)
     }
 
@@ -85,7 +79,7 @@ extension FoodieRepository: FoodieRepositoryProtocol {
                 if result.isEmpty {
                     return self.remote.getRandomMenu()
                         .map{
-                            CategoryMapper.mapCategoryResponseToEntity(input: $0)
+                            MenuMapper.mapCategoryResponseToEntity(input: $0)
                         }
                         .flatMap{
                             self.locale.insertRandomMenu(from: $0)
@@ -95,13 +89,13 @@ extension FoodieRepository: FoodieRepositoryProtocol {
                         }
                         .flatMap { _ in self.locale.getRandomMenu()
                             .map{
-                                CategoryMapper.mapCategoryEntityToDomains(input: $0)
+                                MenuMapper.mapCategoryEntityToDomains(input: $0)
                             }
                         }.eraseToAnyPublisher()
                 } else {
                     return self.locale.getRandomMenu()
                         .map{
-                            CategoryMapper.mapCategoryEntityToDomains(input: $0)
+                            MenuMapper.mapCategoryEntityToDomains(input: $0)
                         }
                         .eraseToAnyPublisher()
                 }
