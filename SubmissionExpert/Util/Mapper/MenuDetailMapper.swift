@@ -24,6 +24,7 @@ class MenuDetailMapper {
             
             menuEntity.id = menuDetailResponse.id!
             menuEntity.image = menuDetailResponse.image!
+            menuEntity.imageType = menuDetailResponse.imageType!
             menuEntity.summary = menuDetailResponse.summary!
             menuEntity.title = menuDetailResponse.title!
           //  menuEntity.dishTypes = menuDetailResponse.dishTypes!
@@ -32,7 +33,7 @@ class MenuDetailMapper {
                 let ingEntity = IngridientEntity()
                 ingEntity.id = response.id ?? 10
                 ingEntity.asile = response.asile ?? ""
-                ingEntity.name = response.name! ?? ""
+                ingEntity.name = response.name ?? ""
                 ingEntity.original = response.original ?? ""
                 ingEntity.unit = response.unit ?? ""
                 

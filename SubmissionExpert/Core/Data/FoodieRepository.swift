@@ -35,6 +35,7 @@ final class FoodieRepository: NSObject {
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
+    
     func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuModel, Error> {
         return self.locale.getDetailMenu(recipeId: recipeId).flatMap { (result) -> AnyPublisher<MenuModel, Error> in
             
@@ -43,8 +44,6 @@ extension FoodieRepository: FoodieRepositoryProtocol {
                     // Mapping
                     .map {
                         MenuDetailMapper.mapCategoryDetailResponseToEntity(by: recipeId, input: $0)
-                    }
-                    .catch { _ in self.locale.getDetailMenu(recipeId: recipeId)
                     }
                     .flatMap {
                         self.locale.updateMenu(recipeId: recipeId, from: $0)

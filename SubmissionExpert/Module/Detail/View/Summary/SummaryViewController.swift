@@ -42,8 +42,7 @@ class SummaryViewController: UIViewController {
         setupImage()
       //  getRecipeDetail(recipeId: recipeId!)
         getRecipeDetailOffline(recipeId: recipeId!)
-        
-
+    
         // Do any additional setup after loading the view.
     }
     
@@ -100,17 +99,18 @@ class SummaryViewController: UIViewController {
 
     private func getRecipeDetailOffline(recipeId: Int) {
         loadingState = true
-        presenter?.getDetailOffline(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
+        presenter?.getDetail(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
             switch completion {
             case .finished:
                 self.loadingState = false
+                
                 
             case .failure(_):
                 self.errorMessage = String(describing: completion)
             }
         }, receiveValue: { (result) in
-            self.detailModel = result
-            self.labelSummary.text = result.summary ?? "TEST"
+            self.detailResponse = result
+            self.labelSummary.text = result.summary
             self.imageURL = result.image
             
             guard let imageUrl = self.imageURL else {
@@ -125,7 +125,9 @@ class SummaryViewController: UIViewController {
                     self.imageDetail.image = UIImage(data: imageData!)
                 }
             }
-        })
+            
+          
+        }).store(in: &cancellables)
     }
  
 

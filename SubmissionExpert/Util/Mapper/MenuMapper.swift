@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class MenuMapper {
     
     static func mapCategoryResponseToDomains(input randomMenuResponse: [RandomMenuResponse]) -> [MenuModel] {
@@ -32,11 +33,17 @@ class MenuMapper {
                 return menuEntity
             }
             
+           
+            
+            
             
             menuEntity.id = menuId
             menuEntity.title = menuTitle
             menuEntity.image = menuImage
             menuEntity.imageType = menuImageType
+            
+           
+            
             menuEntity.nutrition = menuResponse.nutrition.nutrients.map{ result in
                 let nutrientEntity = NutrientsEntity()
                 

@@ -109,13 +109,18 @@ class DetailRecipeViewController: UIViewController {
             switch completion {
             case .finished :
                 self.loadingState = false
+                print("LESAI")
                 
             case .failure(_):
                 self.errorMessage = String(describing: completion)
+                print("FAIL")
             }
         }, receiveValue: { (result) in
+            
+            print("RESULT ",result)
+            
             self.detailModel = result
-            self.navigationItemDetail.title = result.summary
+            self.navigationItemDetail.title = result.title
             self.ingridientModel = result.extendedIngridients!
             self.tableViewDetail.reloadData()
         }).store(in: &cancellables)

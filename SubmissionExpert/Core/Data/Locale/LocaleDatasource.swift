@@ -59,13 +59,13 @@ extension LocalDatasource: LocalDatasourceProtocol {
     func updateMenu(recipeId: Int, from menuEntity: MenuEntity) -> AnyPublisher<Bool, Error> {
         return Future<Bool, Error> { completion in
             
-            if let realmDB = self.realm, let menuEntity = {
-                realmDB.objects(MenuEntity.self).filter("id = \(recipeId)")
+            if let realmDB = self.realm, let menuEntitySave = {
+                realmDB.objects(MenuEntity.self).filter("id == \(recipeId)")
             }().first {
                 do {
                     try realmDB.write{
-                        menuEntity.setValue(menuEntity.summary, forKey: "summary")
-//                        menuEntity.setValue(menuEntity.extendedIngredients, forKey: "extendedIngredients")
+                        menuEntitySave.setValue(menuEntity.summary, forKey: "summary")
+//                        menuEntity.setValue(menuEntity.nutrition, forKey: "nutrition")
                     }
                     
                     completion(.success(true))
@@ -103,7 +103,7 @@ extension LocalDatasource: LocalDatasourceProtocol {
             if let realmDB = self.realm {
                 let menu: Results<MenuEntity> = {
                     realmDB.objects(MenuEntity.self)
-                        .filter("id = \(recipeId)")
+                        .filter("id == \(recipeId)")
                 }()
                 
                 guard let menuSafe = menu.first else {

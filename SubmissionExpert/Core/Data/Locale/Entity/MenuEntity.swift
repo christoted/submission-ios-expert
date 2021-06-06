@@ -17,6 +17,8 @@ class MenuEntity: Object {
     
     var nutrition: [NutrientsEntity] = []
     
+    //var nutrition = List<NutrientsEntity>()
+    
     override static func primaryKey() -> String? {
         return "id"
     }
