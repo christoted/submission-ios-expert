@@ -14,6 +14,7 @@ class DetailRecipeViewController: UIViewController {
     @IBOutlet weak var navigationItemDetail: UINavigationItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableViewDetail: UITableView!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     var ingridientView: UIView!
     var summaryView: UIView!
@@ -62,6 +63,8 @@ class DetailRecipeViewController: UIViewController {
 
        
         //getRecipeDetail(recipeId: recipeId ?? 654812)
+        
+        indicatorView.startAnimating()
       
         getRecipeDetailOffline(recipeId: recipeId!)
        
@@ -123,6 +126,10 @@ class DetailRecipeViewController: UIViewController {
             self.navigationItemDetail.title = result.title
             self.ingridientModel = result.extendedIngridients!
             self.tableViewDetail.reloadData()
+            
+            self.indicatorView.stopAnimating()
+            self.indicatorView.hidesWhenStopped = true
+            
         }).store(in: &cancellables)
     }
     

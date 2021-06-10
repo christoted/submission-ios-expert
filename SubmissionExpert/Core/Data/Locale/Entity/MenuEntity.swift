@@ -26,7 +26,9 @@ class MenuEntity: Object {
     //Addition
     @objc dynamic var summary: String = ""
     
-    var extendedIngredients: [IngridientEntity] = []
+ //   var extendedIngredients: [IngridientEntity] = []
+    
+    var extendedIngredients = List<IngridientEntity>()
     
 }
 

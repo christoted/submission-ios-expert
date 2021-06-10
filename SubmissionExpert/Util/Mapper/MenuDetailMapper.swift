@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class MenuDetailMapper {
     
@@ -19,6 +20,8 @@ class MenuDetailMapper {
     }
     
     static func mapCategoryDetailResponseToEntity(by recipeId: Int,input menuDetailResponse: MenuDetailResponse) -> MenuEntity {
+        
+            
      
             let menuEntity = MenuEntity()
             
@@ -29,7 +32,14 @@ class MenuDetailMapper {
             menuEntity.title = menuDetailResponse.title!
           //  menuEntity.dishTypes = menuDetailResponse.dishTypes!
             
-            menuEntity.extendedIngredients =   menuDetailResponse.extendedIngredients!.map { (response)  in
+            let ingredientEntities = List<IngridientEntity>()
+        
+            var ingredients = [
+                menuDetailResponse.extendedIngredients
+            ].compactMap { $0 }
+        
+        
+            menuDetailResponse.extendedIngredients!.map { (response)  in
                 let ingEntity = IngridientEntity()
                 ingEntity.id = response.id ?? 10
                 ingEntity.asile = response.asile ?? ""
@@ -37,8 +47,14 @@ class MenuDetailMapper {
                 ingEntity.original = response.original ?? ""
                 ingEntity.unit = response.unit ?? ""
                 
-                return ingEntity
+                ingredientEntities.append(ingEntity)
+                
+                menuEntity.extendedIngredients = ingredientEntities
             }
+        
+                menuEntity.extendedIngredients = ingredientEntities
+            
+        
                 
             
             return menuEntity

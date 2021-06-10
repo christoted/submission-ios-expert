@@ -65,6 +65,7 @@ extension LocalDatasource: LocalDatasourceProtocol {
                 do {
                     try realmDB.write{
                         menuEntitySave.setValue(menuEntity.summary, forKey: "summary")
+                        menuEntitySave.setValue(menuEntity.extendedIngredients, forKey: "extendedIngredients")
 //                        menuEntity.setValue(menuEntity.nutrition, forKey: "nutrition")
                     }
                     

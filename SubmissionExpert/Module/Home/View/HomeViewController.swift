@@ -67,9 +67,27 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tvHome.dequeueReusableCell(withIdentifier: "homecell") as! HomeTableViewCell
 
         let menu = randomMenuOffline[indexPath.row]
-        cell.ivHome.image = UIImage(named: "teddy")
+        
+        let urlPath: String = menu.image!
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            
+            let url = URL(string: urlPath)
+            
+            let imageData = try? Data(contentsOf: url!)
+            
+            DispatchQueue.main.async {
+                cell.ivHome.image = UIImage(data: imageData!)
+            }
+            
+        }
+        
+        
+        
         cell.lblFoodId.text = "\(menu.id ?? 0)"
         cell.lblFoodName.text = menu.title
+        
+        
 
         return cell
     }
