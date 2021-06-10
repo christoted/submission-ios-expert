@@ -15,7 +15,7 @@ class MenuMapper {
         randomMenuResponse.map { menuResponse  in
             return MenuModel(id: menuResponse.id, title: menuResponse.title , image: menuResponse.image , imageType: menuResponse.imageType, nutrition: menuResponse.nutrition.nutrients.map { result in
                 return NutrientModel(title: result.title, amount: result.amount, unit: result.unit)
-            }, summary: "", extendedIngridients: [])
+            }, summary: "", extendedIngridients: [], isBookmarked: false)
         }
         
     }
@@ -73,7 +73,7 @@ class MenuMapper {
         menuEntities.map { menuEntities  in
             return MenuModel(id: menuEntities.id, title: menuEntities.title, image: menuEntities.image, imageType: menuEntities.imageType, nutrition: menuEntities.nutrition.map { result in
                 return NutrientModel(title: result.title, amount: result.amount, unit: result.unit)
-            }, summary: "", extendedIngridients: [])
+            }, summary: "", extendedIngridients: [], isBookmarked: menuEntities.isBookmarked)
         }
     }
   

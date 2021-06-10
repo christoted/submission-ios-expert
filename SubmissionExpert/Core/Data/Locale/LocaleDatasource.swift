@@ -24,7 +24,7 @@ protocol LocalDatasourceProtocol {
     func addIngridient(from ingridientEntity: ([IngridientEntity]))-> AnyPublisher<Bool, Error>
     
     //Nanti
-    func updateFavorite(by idMeal: String) -> AnyPublisher<MenuEntity, Error>
+    func updateFavorite(by idMeal: Int, isBookmarked: Bool) -> AnyPublisher<Bool, Error>
     
     func getFavoriteMeals() -> AnyPublisher<[MenuEntity], Error>
 }
@@ -46,11 +46,37 @@ extension LocalDatasource: LocalDatasourceProtocol {
     func getFavoriteMeals() -> AnyPublisher<[MenuEntity], Error> {
         return Future<[MenuEntity], Error> { completion in
             
+            if let realMDBSave = self.realm {
+                let menuBookmarked: Results<MenuEntity> = {
+                    realMDBSave.objects(MenuEntity.self).filter("isBookmarked == true").sorted(byKeyPath: "title", ascending: true)
+                }()
+                
+                completion(.success(menuBookmarked.toArray(ofType: MenuEntity.self)))
+            } else {
+                completion(.failure(DatabaseError.invalidInstance))
+            }
+            
         }.eraseToAnyPublisher()
     }
     
-    func updateFavorite(by idMeal: String)-> AnyPublisher<MenuEntity, Error> {
-        return Future<MenuEntity, Error> { completion in
+    func updateFavorite(by idMeal: Int, isBookmarked: Bool)-> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            
+            if let realmDB = self.realm, let menuEntitySave = {
+                realmDB.objects(MenuEntity.self).filter("id == \(idMeal)")
+            }().first {
+                do {
+                    try realmDB.write {
+                        menuEntitySave.setValue(isBookmarked, forKey: "isBookmarked")
+                    }
+                    
+                    completion(.success(true))
+                } catch {
+                    completion(.failure(DatabaseError.requestFailed))
+                }
+            } else {
+                completion(.failure(DatabaseError.invalidInstance))
+            }
             
             
         }.eraseToAnyPublisher()

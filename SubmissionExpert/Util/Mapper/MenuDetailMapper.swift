@@ -16,7 +16,7 @@ class MenuDetailMapper {
                          summary: "", extendedIngridients: detailMenuResponse.extendedIngredients!.map {
                             (response) in
                             return IngridientModel(id: response.id, asile: response.asile, name: response.name, original: response.original, unit: response.unit)
-                         })
+                         }, isBookmarked: false)
     }
     
     static func mapCategoryDetailResponseToEntity(by recipeId: Int,input menuDetailResponse: MenuDetailResponse) -> MenuEntity {
@@ -68,7 +68,7 @@ class MenuDetailMapper {
             
         }, summary: detailEntities.summary, extendedIngridients: detailEntities.extendedIngredients.map{ (entity) in
             return IngridientModel(id: entity.id, asile: entity.asile, name: entity.name, original: entity.original, unit: entity.unit)
-        })
+        }, isBookmarked: detailEntities.isBookmarked)
     }
     
  
