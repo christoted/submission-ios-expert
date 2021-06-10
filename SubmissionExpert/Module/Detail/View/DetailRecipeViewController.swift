@@ -41,6 +41,8 @@ class DetailRecipeViewController: UIViewController {
     
     var isBookmarked: Bool = false
     
+    var recipeIdNew: Int?
+    
     
     lazy var rowToDisplay = ingdridient
     
@@ -51,20 +53,22 @@ class DetailRecipeViewController: UIViewController {
         
         setup()
         
-        registerTableViewCell()
     
-        navigationItemDetail.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "suit.heart"), style: .plain, target: self, action: #selector(save))
         
+        registerTableViewCell()
+
+        navigationItemDetail.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "suit.heart"), style: .plain, target: self, action: #selector(save))
+
         tableViewDetail.delegate = self
         tableViewDetail.dataSource = self
-        
+
         summaryView = SummaryViewController(recipeID: recipeId!).view
-        
+
         viewContainer.addSubview(summaryView)
         viewContainer.bringSubviewToFront(summaryView)
-        
+
         indicatorView.startAnimating()
-      
+
         getRecipeDetailOffline(recipeId: recipeId!)
        
        

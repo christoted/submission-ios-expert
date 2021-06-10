@@ -101,6 +101,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let dest = segue.destination as! DetailRecipeViewController
             let row = (sender as! NSIndexPath).row
             dest.recipeId = randomMenuOffline[row].id ?? 654812
+          //  dest.recipeIdNew = randomMenuOffline[row].id ?? 654812
         }
     }
     
