@@ -12,7 +12,21 @@ import RealmSwift
 protocol LocalDatasourceProtocol {
     func getRandomMenu()->AnyPublisher<[MenuEntity], Error>
     
-    func insertRandomMenu(from menuEntity: [MenuEntity], from nutrientEntities: [NutrientsEntity])-> AnyPublisher<Bool, Error>
+    func insertRandomMenu(from menuEntity: [MenuEntity])-> AnyPublisher<Bool, Error>
+    
+    //For Detail
+    func getDetailMenu(recipeId: Int)->AnyPublisher<MenuEntity, Error>
+    
+    //Update Menu
+    func updateMenu(recipeId: Int,from menuEntity: MenuEntity) -> AnyPublisher<Bool, Error>
+    
+    //Add Ingri
+    func addIngridient(from ingridientEntity: ([IngridientEntity]))-> AnyPublisher<Bool, Error>
+    
+    //Nanti
+    func updateFavorite(by idMeal: String) -> AnyPublisher<MenuEntity, Error>
+    
+    func getFavoriteMeals() -> AnyPublisher<[MenuEntity], Error>
 }
 
 class LocalDatasource: NSObject {
@@ -28,6 +42,105 @@ class LocalDatasource: NSObject {
 }
 
 extension LocalDatasource: LocalDatasourceProtocol {
+   
+    func getFavoriteMeals() -> AnyPublisher<[MenuEntity], Error> {
+        return Future<[MenuEntity], Error> { completion in
+            
+        }.eraseToAnyPublisher()
+    }
+    
+    func updateFavorite(by idMeal: String)-> AnyPublisher<MenuEntity, Error> {
+        return Future<MenuEntity, Error> { completion in
+            
+            
+        }.eraseToAnyPublisher()
+    }
+    
+    func updateMenu(recipeId: Int, from menuEntity: MenuEntity) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            
+            if let realmDB = self.realm, let menuEntitySave = {
+                realmDB.objects(MenuEntity.self).filter("id == \(recipeId)")
+            }().first {
+                do {
+                    try realmDB.write{
+                        menuEntitySave.setValue(menuEntity.summary, forKey: "summary")
+                        menuEntitySave.setValue(menuEntity.extendedIngredients, forKey: "extendedIngredients")
+//                        menuEntity.setValue(menuEntity.nutrition, forKey: "nutrition")
+                    }
+                    
+                    completion(.success(true))
+                } catch {
+                    completion(.failure(DatabaseError.requestFailed))
+                }
+            } else {
+                completion(.failure(DatabaseError.invalidInstance))
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
+
+    func addIngridient(from ingridientEntity: ([IngridientEntity])) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            if let realmDB = self.realm {
+                do {
+                    try realmDB.write {
+                        realmDB.add(ingridientEntity)
+                    }
+                    
+                    completion(.success(true))
+                } catch {
+                    completion(.failure(DatabaseError.requestFailed))
+                }
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
+    
+    func getDetailMenu(recipeId: Int) -> AnyPublisher<MenuEntity, Error> {
+        return Future<MenuEntity, Error> { completion in
+            if let realmDB = self.realm {
+                let menu: Results<MenuEntity> = {
+                    realmDB.objects(MenuEntity.self)
+                        .filter("id == \(recipeId)")
+                }()
+                
+                guard let menuSafe = menu.first else {
+                    return
+                }
+                
+                completion(.success(menuSafe))
+            } else {
+                completion(.failure(DatabaseError.invalidInstance))
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
+   
+    
+    // Maybe dihapus
+    func insertDetailMenu(from menuDetailEntities: MenuDetailEntity) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            if let realmDB = self.realm {
+                do {
+                    try realmDB.write {
+                    
+                            realmDB.add(menuDetailEntities)
+            
+                    }
+                    
+                    completion(.success(true))
+                } catch {
+                    completion(.failure(DatabaseError.requestFailed))
+                }
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
     
     func getRandomMenu() -> AnyPublisher<[MenuEntity], Error> {
         return Future<[MenuEntity], Error> { completion in
@@ -45,7 +158,7 @@ extension LocalDatasource: LocalDatasourceProtocol {
         }.eraseToAnyPublisher()
     }
     
-    func insertRandomMenu(from menuEntities: [MenuEntity], from nutrientEntities: [NutrientsEntity]) -> AnyPublisher<Bool, Error> {
+    func insertRandomMenu(from menuEntities: [MenuEntity]) -> AnyPublisher<Bool, Error> {
         return Future<Bool, Error> { completion in
             
             
@@ -53,7 +166,7 @@ extension LocalDatasource: LocalDatasourceProtocol {
                 do {
                     try realmDB.write{
                         for menuEntity in menuEntities{
-                            menuEntity.nutrition = nutrientEntities
+                          //  menuEntity.nutrition = nutrientEntities
                             
                             //Add
                             realmDB.add(menuEntity, update: .all)
@@ -86,4 +199,6 @@ extension Results {
         
         return array
     }
+    
+   
 }

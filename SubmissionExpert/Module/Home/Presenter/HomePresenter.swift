@@ -16,7 +16,7 @@ class HomePresenter: ObservableObject {
         self.useCase = useCase
     }
 
-    func getCategories() -> AnyPublisher<[RandomMenuResponse], Error > {
+    func getCategories() -> AnyPublisher<[MenuModel], Error > {
         return useCase.getRandomMenu()
     }
 }

@@ -7,17 +7,19 @@
 
 import Foundation
 
-class CategoryMapper {
+
+class MenuMapper {
     
     static func mapCategoryResponseToDomains(input randomMenuResponse: [RandomMenuResponse]) -> [MenuModel] {
         
         randomMenuResponse.map { menuResponse  in
             return MenuModel(id: menuResponse.id, title: menuResponse.title , image: menuResponse.image , imageType: menuResponse.imageType, nutrition: menuResponse.nutrition.nutrients.map { result in
                 return NutrientModel(title: result.title, amount: result.amount, unit: result.unit)
-            })
+            }, summary: "", extendedIngridients: [])
         }
         
     }
+
     
     static func mapCategoryResponseToEntity(input menuResponse: [RandomMenuResponse])-> [MenuEntity] {
         
@@ -31,11 +33,17 @@ class CategoryMapper {
                 return menuEntity
             }
             
+           
+            
+            
             
             menuEntity.id = menuId
             menuEntity.title = menuTitle
             menuEntity.image = menuImage
             menuEntity.imageType = menuImageType
+            
+           
+            
             menuEntity.nutrition = menuResponse.nutrition.nutrients.map{ result in
                 let nutrientEntity = NutrientsEntity()
                 
@@ -58,14 +66,18 @@ class CategoryMapper {
         
     }
     
+ 
     
+ 
     static func mapCategoryEntityToDomains(input menuEntities: [MenuEntity])-> [MenuModel]{
         menuEntities.map { menuEntities  in
             return MenuModel(id: menuEntities.id, title: menuEntities.title, image: menuEntities.image, imageType: menuEntities.imageType, nutrition: menuEntities.nutrition.map { result in
                 return NutrientModel(title: result.title, amount: result.amount, unit: result.unit)
-            })
+            }, summary: "", extendedIngridients: [])
         }
     }
+  
     
+ 
     
 }
