@@ -14,6 +14,11 @@ protocol FoodieRepositoryProtocol {
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
     
     func getRecipeDetailOffline(recipeId: Int)->AnyPublisher<MenuModel, Error>
+    
+    func updateToBookmarkMenu(recipeId: Int, isBookmarked: Bool)->AnyPublisher<Bool, Error>
+    
+    func getBookmarkedMenu()->AnyPublisher<[MenuModel], Error>
+    
 }
 
 
@@ -35,6 +40,15 @@ final class FoodieRepository: NSObject {
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
+    func updateToBookmarkMenu(recipeId: Int, isBookmarked: Bool) -> AnyPublisher<Bool, Error> {
+        return self.locale.updateFavorite(by: recipeId, isBookmarked: isBookmarked)
+    }
+    
+    func getBookmarkedMenu() -> AnyPublisher<[MenuModel], Error> {
+        return self.locale.getFavoriteMeals().map {
+            MenuMapper.mapCategoryEntityToDomains(input: $0)
+        }.eraseToAnyPublisher()
+    }
     
     func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuModel, Error> {
         return self.locale.getDetailMenu(recipeId: recipeId).flatMap { (result) -> AnyPublisher<MenuModel, Error> in
@@ -100,4 +114,5 @@ extension FoodieRepository: FoodieRepositoryProtocol {
                 }
             }.eraseToAnyPublisher()
       }
+ 
 }

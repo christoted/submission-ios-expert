@@ -15,10 +15,25 @@ protocol HomeUseCase {
     func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
     
     func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuModel, Error>
+    
+    func updateFavourite(recipeId: Int, isBookmakred: Bool) -> AnyPublisher<Bool, Error>
+    
+    func getFavouriteMenu()->AnyPublisher<[MenuModel], Error>
+    
+    
 }
 
 
 class HomeInteractor : HomeUseCase {
+ 
+    func getFavouriteMenu() -> AnyPublisher<[MenuModel], Error> {
+        return repository.getBookmarkedMenu()
+    }
+    
+    func updateFavourite(recipeId: Int, isBookmakred: Bool)-> AnyPublisher<Bool, Error> {
+        return repository.updateToBookmarkMenu(recipeId: recipeId, isBookmarked: isBookmakred)
+    }
+    
   
     private let repository: FoodieRepositoryProtocol
     

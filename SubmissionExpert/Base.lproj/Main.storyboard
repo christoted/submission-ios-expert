@@ -35,6 +35,7 @@
                     <tabBarItem key="tabBarItem" title="Favourite" image="suit.heart.fill" catalog="system" id="7Jq-jg-ngO"/>
                     <connections>
                         <outlet property="tvFav" destination="TB9-zb-Auh" id="8AZ-bW-sTt"/>
+                        <segue destination="09U-bM-6fh" kind="show" identifier="seguefavtodetail" id="Ee3-eG-EmH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1t5-VY-05W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -81,7 +82,7 @@
             <objects>
                 <viewController storyboardIdentifier="DetailRecipeViewController" id="09U-bM-6fh" customClass="DetailRecipeViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JAX-Hs-Vtr">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L5M-3s-wLz">
@@ -207,6 +208,9 @@
             <point key="canvasLocation" x="895.6521739130435" y="157.36607142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ee3-eG-EmH"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>

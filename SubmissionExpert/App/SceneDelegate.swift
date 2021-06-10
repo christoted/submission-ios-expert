@@ -57,6 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let usecase = Injection().provideHomeUseCase()
         let presenter = HomePresenter(useCase: usecase)
         let detailPresenter = DetailPresenter(useCase: usecase)
+        let favouritePresenter = FavouritePresenter(useCase: usecase)
         
         let viewController = HomeViewController()
         viewController.presenter = presenter
@@ -66,6 +67,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let detailViewController = DetailRecipeViewController()
         detailViewController.presenter = detailPresenter
         detailVC.presenter = detailPresenter
+        
+        //Favourite
+        let favouriteViewController = FavouriteViewController()
+        favouriteViewController.presenter = favouritePresenter
+        favouriteVC.presenter = favouritePresenter
         
         
         homeNC.viewControllers = [homeVC]

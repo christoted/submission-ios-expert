@@ -44,6 +44,7 @@
 		52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */; };
 		52A71AD72658201500C6E2B6 /* MenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD62658201500C6E2B6 /* MenuEntity.swift */; };
 		52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD92658255D00C6E2B6 /* MenuModel.swift */; };
+		52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */; };
 		52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEA0E826675E9A0062770C /* MenuDetailRes.swift */; };
 		52EEA0EE266793E70062770C /* MenuDetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEA0ED266793E70062770C /* MenuDetailMapper.swift */; };
 		52FA7FB0265CF3B7007F8836 /* IngridientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA7FAF265CF3B7007F8836 /* IngridientResponse.swift */; };
@@ -88,6 +89,7 @@
 		52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDatasource.swift; sourceTree = "<group>"; };
 		52A71AD62658201500C6E2B6 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
 		52A71AD92658255D00C6E2B6 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePresenter.swift; sourceTree = "<group>"; };
 		52EEA0E826675E9A0062770C /* MenuDetailRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailRes.swift; sourceTree = "<group>"; };
 		52EEA0ED266793E70062770C /* MenuDetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailMapper.swift; sourceTree = "<group>"; };
 		52FA7FAF265CF3B7007F8836 /* IngridientResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientResponse.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		526353CE2655261100B615D1 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				52561BEA265BCAC2002148E3 /* DetailRecipeViewController.swift in Sources */,
 				521890AB2653D99E00783413 /* ApiCall.swift in Sources */,
 				526353D02655264300B615D1 /* FavouriteViewController.swift in Sources */,
+				52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */,
 				52561BCE265BC228002148E3 /* DetailPresenter.swift in Sources */,
 				52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */,
 				5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */,

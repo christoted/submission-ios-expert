@@ -39,6 +39,8 @@ class DetailRecipeViewController: UIViewController {
     
     var recipeId: Int?
     
+    var isBookmarked: Bool = false
+    
     
     lazy var rowToDisplay = ingdridient
     
@@ -60,9 +62,6 @@ class DetailRecipeViewController: UIViewController {
         
         viewContainer.addSubview(summaryView)
         viewContainer.bringSubviewToFront(summaryView)
-
-       
-        //getRecipeDetail(recipeId: recipeId ?? 654812)
         
         indicatorView.startAnimating()
       
@@ -80,7 +79,30 @@ class DetailRecipeViewController: UIViewController {
     
     
     @objc func save(){
+        isBookmarked = !isBookmarked
+        
+        print("ATAS", isBookmarked)
+        
       
+        
+        guard let recipeIdSave = recipeId else {return }
+        
+        self.presenter?.updateToBookmarkedMenu(recipeId: recipeIdSave, isBookmarked: isBookmarked)
+        
+        isBookmarkedState(isBookmarked: isBookmarked)
+        
+//        navigationItemDetail.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "suit.heart.fill"), style: .plain, target: self, action: #selector(save))
+        
+        
+      
+    }
+    
+    private func isBookmarkedState(isBookmarked: Bool){
+        if (isBookmarked) {
+            navigationItemDetail.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "suit.heart.fill"), style: .plain, target: self, action: #selector(save))
+        } else {
+            navigationItemDetail.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "suit.heart"), style: .plain, target: self, action: #selector(save))
+        }
     }
     
     private func registerTableViewCell(){
@@ -101,6 +123,8 @@ class DetailRecipeViewController: UIViewController {
             self.detailResponse = result
             self.navigationItemDetail.title = result.title
             self.ingridientResponse = result.extendedIngredients!
+            
+            
             self.tableViewDetail.reloadData()
         }).store(in: &cancellables)
     }
@@ -126,6 +150,11 @@ class DetailRecipeViewController: UIViewController {
             self.navigationItemDetail.title = result.title
             self.ingridientModel = result.extendedIngridients!
             self.tableViewDetail.reloadData()
+            
+            
+            let bookmarkedState = result.isBookmarked
+            print(bookmarkedState)
+            self.isBookmarkedState(isBookmarked: bookmarkedState!)
             
             self.indicatorView.stopAnimating()
             self.indicatorView.hidesWhenStopped = true

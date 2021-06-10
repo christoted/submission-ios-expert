@@ -18,6 +18,8 @@ struct MenuModel {
     let summary: String?
     let extendedIngridients: [IngridientModel]?
     
+    let isBookmarked: Bool?
+    
 }
 
 struct NutrientModel  {
