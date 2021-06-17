@@ -8,7 +8,9 @@
 import UIKit
 import Combine
 
-class FavouriteViewController: UIViewController {
+class FavouriteViewController: UIViewController, FavouriteRouterDelegate {
+   
+    
 
     @IBOutlet weak var tvFav: UITableView!
     
@@ -27,7 +29,17 @@ class FavouriteViewController: UIViewController {
         tvFav.delegate = self 
         registerTableView()
         
+        makeFavouriteView()
+        
         getFavouriteMenu()
+    }
+    
+    func makeFavouriteView() {
+        let usecase = Injection().provideHomeUseCase()
+        let presenter = FavouritePresenter(useCase: usecase)
+        
+        self.presenter = presenter
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

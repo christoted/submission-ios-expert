@@ -58,27 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let tabBarController  = storyboard.instantiateViewController(withIdentifier: "tabbar") as! TabBarViewController
-        // Make the Tab Bar Controller the root view controller
-        
-        
-        let usecase = Injection().provideHomeUseCase()
-        let presenter = HomePresenter(useCase: usecase)
-        let detailPresenter = DetailPresenter(useCase: usecase)
-        let favouritePresenter = FavouritePresenter(useCase: usecase)
-        
-        let viewController = HomeViewController()
-        viewController.presenter = presenter
-        homeVC.presenter = presenter
-        
-        //Detail
-        let detailViewController = DetailRecipeViewController()
-        detailViewController.presenter = detailPresenter
-        detailVC.presenter = detailPresenter
-        
-        //Favourite
-        let favouriteViewController = FavouriteViewController()
-        favouriteViewController.presenter = favouritePresenter
-        favouriteVC.presenter = favouritePresenter
+
         
         favouriteNC.viewControllers = [favouriteVC]
         homeNC.viewControllers = [homeVC]

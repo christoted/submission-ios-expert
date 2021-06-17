@@ -8,7 +8,9 @@
 import UIKit
 import Combine
 
-class DetailRecipeViewController: UIViewController {
+class DetailRecipeViewController: UIViewController, DetailRouterDelegate {
+   
+    
 
     
     @IBOutlet weak var navigationItemDetail: UINavigationItem!
@@ -51,10 +53,9 @@ class DetailRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        makeDetailView()
+        
         setup()
-        
-    
-        
         registerTableViewCell()
 
         navigationItemDetail.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "suit.heart"), style: .plain, target: self, action: #selector(save))
@@ -70,8 +71,13 @@ class DetailRecipeViewController: UIViewController {
         indicatorView.startAnimating()
 
         getRecipeDetailOffline(recipeId: recipeId!)
-       
-       
+    }
+    
+    func makeDetailView() {
+        let usecase = Injection().provideHomeUseCase()
+        let presenter = DetailPresenter(useCase: usecase)
+        
+        self.presenter = presenter
     }
     
     private func setup() {

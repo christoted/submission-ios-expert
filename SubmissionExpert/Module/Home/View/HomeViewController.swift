@@ -9,7 +9,9 @@ import UIKit
 import Alamofire
 import Combine
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, HomeRouterDelegate {
+ 
+    
     @IBOutlet weak var tvHome: UITableView!
 
     @IBOutlet weak var navigationItemHome: UINavigationItem!
@@ -20,8 +22,9 @@ class HomeViewController: UIViewController {
     private var loadingState: Bool = false
     private var cancellables: Set<AnyCancellable> = []
     
-
     var presenter: HomePresenter?
+    
+    var homeRouter = HomeRouter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +32,22 @@ class HomeViewController: UIViewController {
         tvHome.dataSource = self
         tvHome.delegate = self
         
+        makeHomeView()
+
         navigationItemHome.title = "Foodiecipe"
     
         registerTableView()
 
         getCategories()
 
+    }
+    
+    
+    func makeHomeView() {
+        let usecase = Injection().provideHomeUseCase()
+        let presenter = HomePresenter(useCase: usecase)
+        
+        self.presenter = presenter
     }
 
     private func registerTableView() {
@@ -54,6 +67,13 @@ class HomeViewController: UIViewController {
             self.randomMenuOffline = result
             self.tvHome.reloadData()
         }.store(in: &cancellables)
+    }
+    
+    private func setupRouter() {
+        let usecase = Injection().provideHomeUseCase()
+        let presenter = HomePresenter(useCase: usecase)
+        
+        self.presenter = presenter
     }
 }
 
