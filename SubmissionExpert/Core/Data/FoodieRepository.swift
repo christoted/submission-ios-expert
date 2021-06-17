@@ -15,7 +15,7 @@ protocol FoodieRepositoryProtocol {
     
     func getRecipeDetailOffline(recipeId: Int)->AnyPublisher<MenuModel, Error>
     
-    func updateToBookmarkMenu(recipeId: Int, isBookmarked: Bool)->AnyPublisher<Bool, Error>
+    func updateToBookmarkMenu(recipeId: Int, isBookmarked: Bool)
     
     func getBookmarkedMenu()->AnyPublisher<[MenuModel], Error>
     
@@ -40,8 +40,8 @@ final class FoodieRepository: NSObject {
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
-    func updateToBookmarkMenu(recipeId: Int, isBookmarked: Bool) -> AnyPublisher<Bool, Error> {
-        return self.locale.updateFavorite(by: recipeId, isBookmarked: isBookmarked)
+    func updateToBookmarkMenu(recipeId: Int, isBookmarked: Bool) {
+        self.locale.updateFavorite(by: recipeId, isBookmarked: isBookmarked)
     }
     
     func getBookmarkedMenu() -> AnyPublisher<[MenuModel], Error> {

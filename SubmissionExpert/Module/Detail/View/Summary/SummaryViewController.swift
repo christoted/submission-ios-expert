@@ -8,7 +8,8 @@
 import UIKit
 import Combine
 
-class SummaryViewController: UIViewController {
+class SummaryViewController: UIViewController, DetailRouterDelegate {
+  
     
     private var errorMessage: String = ""
     private var loadingState: Bool = false
@@ -37,7 +38,7 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        makeDetailView()
         setup()
         setupImage()
       //  getRecipeDetail(recipeId: recipeId!)
@@ -45,6 +46,14 @@ class SummaryViewController: UIViewController {
     
         // Do any additional setup after loading the view.
     }
+    
+    func makeDetailView() {
+        let usecase = Injection().provideHomeUseCase()
+        let presenter = DetailPresenter(useCase: usecase)
+        
+        self.presenter = presenter
+    }
+    
     
     private func setupImage(){
         imageDetail.layer.borderWidth = 1.0

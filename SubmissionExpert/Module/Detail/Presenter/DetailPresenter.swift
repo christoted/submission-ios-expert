@@ -23,8 +23,8 @@ class DetailPresenter: ObservableObject {
         return useCase.getRecipeDetailOffline(recipeId: recipeId)
     }
     
-    func updateToBookmarkedMenu(recipeId: Int, isBookmarked: Bool) -> AnyPublisher<Bool, Error> {
-        return useCase.updateFavourite(recipeId: recipeId , isBookmakred: isBookmarked)
+    func updateToBookmarkedMenu(recipeId: Int, isBookmarked: Bool) {
+        useCase.updateFavourite(recipeId: recipeId , isBookmakred: isBookmarked)
     }
     
     func getBookmarkedMenu() -> AnyPublisher<[MenuModel], Error> {

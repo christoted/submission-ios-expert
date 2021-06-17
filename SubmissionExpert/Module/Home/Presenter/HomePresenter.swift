@@ -11,6 +11,7 @@ import Combine
 class HomePresenter: ObservableObject {
   
     private let useCase: HomeUseCase
+    private let homeRouter = HomeRouter()
     
     init(useCase: HomeUseCase) {
         self.useCase = useCase
