@@ -93,18 +93,11 @@ class DetailRecipeViewController: UIViewController, DetailRouterDelegate {
         
         print("ATAS", isBookmarked)
         
-      
-        
         guard let recipeIdSave = recipeId else {return }
         
         self.presenter?.updateToBookmarkedMenu(recipeId: recipeIdSave, isBookmarked: isBookmarked)
         
         isBookmarkedState(isBookmarked: isBookmarked)
-        
-//        navigationItemDetail.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "suit.heart.fill"), style: .plain, target: self, action: #selector(save))
-        
-        
-      
     }
     
     private func isBookmarkedState(isBookmarked: Bool){

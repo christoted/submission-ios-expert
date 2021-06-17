@@ -24,7 +24,7 @@ protocol LocalDatasourceProtocol {
     func addIngridient(from ingridientEntity: ([IngridientEntity]))-> AnyPublisher<Bool, Error>
     
     //Nanti
-    func updateFavorite(by idMeal: Int, isBookmarked: Bool) -> AnyPublisher<Bool, Error>
+    func updateFavorite(by idMeal: Int, isBookmarked: Bool)
     
     func getFavoriteMeals() -> AnyPublisher<[MenuEntity], Error>
 }
@@ -59,9 +59,8 @@ extension LocalDatasource: LocalDatasourceProtocol {
         }.eraseToAnyPublisher()
     }
     
-    func updateFavorite(by idMeal: Int, isBookmarked: Bool)-> AnyPublisher<Bool, Error> {
-        return Future<Bool, Error> { completion in
-            
+    func updateFavorite(by idMeal: Int, isBookmarked: Bool) {
+       
             if let realmDB = self.realm, let menuEntitySave = {
                 realmDB.objects(MenuEntity.self).filter("id == \(idMeal)")
             }().first {
@@ -70,16 +69,13 @@ extension LocalDatasource: LocalDatasourceProtocol {
                         menuEntitySave.setValue(isBookmarked, forKey: "isBookmarked")
                     }
                     
-                    completion(.success(true))
                 } catch {
-                    completion(.failure(DatabaseError.requestFailed))
+                   
                 }
             } else {
-                completion(.failure(DatabaseError.invalidInstance))
+              
             }
             
-            
-        }.eraseToAnyPublisher()
     }
     
     func updateMenu(recipeId: Int, from menuEntity: MenuEntity) -> AnyPublisher<Bool, Error> {

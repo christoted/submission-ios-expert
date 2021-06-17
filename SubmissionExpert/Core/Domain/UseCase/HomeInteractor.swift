@@ -16,7 +16,7 @@ protocol HomeUseCase {
     
     func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuModel, Error>
     
-    func updateFavourite(recipeId: Int, isBookmakred: Bool) -> AnyPublisher<Bool, Error>
+    func updateFavourite(recipeId: Int, isBookmakred: Bool)
     
     func getFavouriteMenu()->AnyPublisher<[MenuModel], Error>
     
@@ -30,8 +30,8 @@ class HomeInteractor : HomeUseCase {
         return repository.getBookmarkedMenu()
     }
     
-    func updateFavourite(recipeId: Int, isBookmakred: Bool)-> AnyPublisher<Bool, Error> {
-        return repository.updateToBookmarkMenu(recipeId: recipeId, isBookmarked: isBookmakred)
+    func updateFavourite(recipeId: Int, isBookmakred: Bool) {
+        repository.updateToBookmarkMenu(recipeId: recipeId, isBookmarked: isBookmakred)
     }
     
   
