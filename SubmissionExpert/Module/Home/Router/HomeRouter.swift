@@ -16,17 +16,18 @@ protocol HomeRouterDelegate  {
 class HomeRouter: HomeRouterDelegate {
     
     func createHomeModule() -> UIViewController {
-        let viewController = HomeViewController()
-//        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeVC = storyboard.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
         
         let homeUseCase = Injection().provideHomeUseCase()
         let presenter = HomePresenter(useCase: homeUseCase)
         
-        viewController.presenter = presenter
-        viewController.presenter?.homeRouter = HomeRouter()
-        viewController.presenter?.homeView = viewController
+        homeVC.presenter = presenter
+        homeVC.presenter?.homeRouter = HomeRouter()
+        homeVC.presenter?.homeView = homeVC
         
-        return viewController
+        return homeVC
     }
     
     

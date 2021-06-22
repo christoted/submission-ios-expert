@@ -18,23 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let homeVC = storyboard.instantiateViewController(identifier: "HomeViewController") as? HomeViewController else {
-            print("ViewController not found")
-            return
-        }
         
         guard let homeNC = storyboard.instantiateViewController(identifier: "HomeNavigationController") as? HomeNavigationViewController else {
-            print("ViewController not found")
-            return
-        }
-        
-        guard let detailVC = storyboard.instantiateViewController(identifier: "DetailRecipeViewController") as? DetailRecipeViewController else {
-            print("ViewController not found")
-            return
-        }
-     
-        
-        guard let favouriteVC = storyboard.instantiateViewController(identifier: "FavouriteViewController") as? FavouriteViewController else {
             print("ViewController not found")
             return
         }
@@ -62,13 +47,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //Edit
         let homeRouter = HomeRouter()
         let homeVC2 = homeRouter.createHomeModule()
-
         
-        favouriteNC.viewControllers = [favouriteVC]
-        homeNC.viewControllers = [homeVC]
+        let favRouter = FavoriteRouter()
+        let favVC2 = favRouter.createFavouriteModule()
+        
+        favouriteNC.viewControllers = [favVC2]
+        homeNC.viewControllers = [homeVC2]
+        personalNC.viewControllers = [personalVC]
 
         tabBarController.viewControllers = [homeNC, favouriteNC, personalNC]
-        
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
