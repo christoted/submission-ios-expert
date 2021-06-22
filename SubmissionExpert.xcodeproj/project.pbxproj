@@ -33,6 +33,9 @@
 		526353EC2655284C00B615D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 521890902653D43C00783413 /* Assets.xcassets */; };
 		526353F626552A3600B615D1 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526353F426552A3500B615D1 /* HomeTableViewCell.swift */; };
 		526353F726552A3600B615D1 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526353F526552A3500B615D1 /* HomeTableViewCell.xib */; };
+		5268FA712681D067006B7B03 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5268FA702681D067006B7B03 /* TabBarRouter.swift */; };
+		5268FA732681DBFF006B7B03 /* TabBarModularBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5268FA722681DBFF006B7B03 /* TabBarModularBuilder.swift */; };
+		5268FA762681E0E2006B7B03 /* HomeModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5268FA752681E0E2006B7B03 /* HomeModuleBuilder.swift */; };
 		528019862656869A0036BA40 /* RemoteDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019852656869A0036BA40 /* RemoteDatasource.swift */; };
 		5280198B265687F00036BA40 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280198A265687F00036BA40 /* Response.swift */; };
 		5280198F265687FB0036BA40 /* RandomMenuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280198E265687FB0036BA40 /* RandomMenuResponse.swift */; };
@@ -85,6 +88,9 @@
 		526353D7265526D900B615D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		526353F426552A3500B615D1 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		526353F526552A3500B615D1 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		5268FA702681D067006B7B03 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
+		5268FA722681DBFF006B7B03 /* TabBarModularBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModularBuilder.swift; sourceTree = "<group>"; };
+		5268FA752681E0E2006B7B03 /* HomeModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModuleBuilder.swift; sourceTree = "<group>"; };
 		528019852656869A0036BA40 /* RemoteDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDatasource.swift; sourceTree = "<group>"; };
 		5280198A265687F00036BA40 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		5280198E265687FB0036BA40 /* RandomMenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMenuResponse.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 		520B134B2655241C0049DEB9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5268FA742681E0CF006B7B03 /* Module Builder */,
 				52A9C20C267B5CE0003C6872 /* Router */,
 				526353CB265525D900B615D1 /* Presenter */,
 				526353CA265525D300B615D1 /* View */,
@@ -328,6 +335,8 @@
 			isa = PBXGroup;
 			children = (
 				52561B9F265BAFF6002148E3 /* TabBarViewController.swift */,
+				5268FA702681D067006B7B03 /* TabBarRouter.swift */,
+				5268FA722681DBFF006B7B03 /* TabBarModularBuilder.swift */,
 			);
 			path = "Tab Bar";
 			sourceTree = "<group>";
@@ -436,6 +445,14 @@
 				52561BC3265BBC61002148E3 /* ProfileNavigationViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5268FA742681E0CF006B7B03 /* Module Builder */ = {
+			isa = PBXGroup;
+			children = (
+				5268FA752681E0E2006B7B03 /* HomeModuleBuilder.swift */,
+			);
+			path = "Module Builder";
 			sourceTree = "<group>";
 		};
 		52801983265686850036BA40 /* Response */ = {
@@ -598,6 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5268FA762681E0E2006B7B03 /* HomeModuleBuilder.swift in Sources */,
 				5280198F265687FB0036BA40 /* RandomMenuResponse.swift in Sources */,
 				528019862656869A0036BA40 /* RemoteDatasource.swift in Sources */,
 				5200DE642658BB2000F8C830 /* MenuMapper.swift in Sources */,
@@ -612,6 +630,7 @@
 				52A9C20E267B5CED003C6872 /* HomeRouter.swift in Sources */,
 				52561BD1265BC734002148E3 /* HomeNavigationViewController.swift in Sources */,
 				526353F626552A3600B615D1 /* HomeTableViewCell.swift in Sources */,
+				5268FA712681D067006B7B03 /* TabBarRouter.swift in Sources */,
 				5280198B265687F00036BA40 /* Response.swift in Sources */,
 				523F00802660FBF300221A20 /* MenuDetailEntity.swift in Sources */,
 				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
@@ -619,6 +638,7 @@
 				52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */,
 				523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */,
 				52561BE6265BCA54002148E3 /* SummaryViewController.swift in Sources */,
+				5268FA732681DBFF006B7B03 /* TabBarModularBuilder.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
 				52FA7FB6265D0D0F007F8836 /* IngridientTableViewCell.swift in Sources */,
 				52561BEA265BCAC2002148E3 /* DetailRecipeViewController.swift in Sources */,

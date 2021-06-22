@@ -65,7 +65,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.viewControllers = [homeNC, favouriteNC, personalNC]
         
         
-        window?.rootViewController = tabBarController
+        
+        
+        //Edit
+        
+        
+        
+        
+        let submodules = (home: HomeViewController() ,favorite: FavouriteViewController() , profile: ProfileViewController())
+        let tabBarController2 = TabBarModularBuilder.build(usingSubmodules: submodules)
+        
+        
+        window?.rootViewController = tabBarController2
         window?.makeKeyAndVisible()
         
     }

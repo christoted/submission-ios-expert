@@ -15,6 +15,12 @@ protocol HomeRouterDelegate  {
 
 
 class HomeRouter {
-    
 
+    func provideHomePresenterUseCase() {
+        let homeUseCase = Injection().provideHomeUseCase()
+        let presenter = HomePresenter.init(useCase: homeUseCase)
+        let contol = HomeViewController()
+        contol.presenter = presenter
+        
+    }
 }
