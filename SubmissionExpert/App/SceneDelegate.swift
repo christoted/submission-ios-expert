@@ -58,10 +58,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let tabBarController  = storyboard.instantiateViewController(withIdentifier: "tabbar") as! TabBarViewController
+        
+        //Edit
+        let homeRouter = HomeRouter()
+        let homeVC2 = homeRouter.createHomeModule()
 
         
         favouriteNC.viewControllers = [favouriteVC]
         homeNC.viewControllers = [homeVC]
+
         tabBarController.viewControllers = [homeNC, favouriteNC, personalNC]
         
         

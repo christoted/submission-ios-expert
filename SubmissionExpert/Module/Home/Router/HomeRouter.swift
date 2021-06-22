@@ -10,11 +10,24 @@ import UIKit
 
 //Implement with Protocol Delegate
 protocol HomeRouterDelegate  {
-    func makeHomeView()
+    func createHomeModule()->UIViewController
 }
 
-
-class HomeRouter {
+class HomeRouter: HomeRouterDelegate {
     
-
+    func createHomeModule() -> UIViewController {
+        let viewController = HomeViewController()
+//        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        let homeUseCase = Injection().provideHomeUseCase()
+        let presenter = HomePresenter(useCase: homeUseCase)
+        
+        viewController.presenter = presenter
+        viewController.presenter?.homeRouter = HomeRouter()
+        viewController.presenter?.homeView = viewController
+        
+        return viewController
+    }
+    
+    
 }

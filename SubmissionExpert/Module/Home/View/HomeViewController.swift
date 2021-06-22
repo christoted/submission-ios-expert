@@ -9,9 +9,8 @@ import UIKit
 import Alamofire
 import Combine
 
-class HomeViewController: UIViewController, HomeRouterDelegate {
- 
-    
+class HomeViewController: UIViewController {
+
     @IBOutlet weak var tvHome: UITableView!
 
     @IBOutlet weak var navigationItemHome: UINavigationItem!
@@ -23,30 +22,27 @@ class HomeViewController: UIViewController, HomeRouterDelegate {
     private var cancellables: Set<AnyCancellable> = []
     
     var presenter: HomePresenter?
-    
-    var homeRouter = HomeRouter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
         tvHome.dataSource = self
         tvHome.delegate = self
         
-        makeHomeView()
-
         navigationItemHome.title = "Foodiecipe"
     
         registerTableView()
 
         getCategories()
-
+        
     }
     
     
     func makeHomeView() {
         let usecase = Injection().provideHomeUseCase()
         let presenter = HomePresenter(useCase: usecase)
-        
+
         self.presenter = presenter
     }
 

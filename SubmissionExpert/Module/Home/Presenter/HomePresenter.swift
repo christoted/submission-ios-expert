@@ -7,17 +7,22 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class HomePresenter: ObservableObject {
   
     private let useCase: HomeUseCase
-    private let homeRouter = HomeRouter()
+    var homeRouter:HomeRouter?
+    var homeView: UIViewController?
     
     init(useCase: HomeUseCase) {
         self.useCase = useCase
+        
     }
-
     func getCategories() -> AnyPublisher<[MenuModel], Error > {
         return useCase.getRandomMenu()
     }
+    
+
+    
 }
