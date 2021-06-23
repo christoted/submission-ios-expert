@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class SummaryViewController: UIViewController, DetailRouterDelegate {
+class SummaryViewController: UIViewController {
   
     
     private var errorMessage: String = ""
@@ -26,10 +26,11 @@ class SummaryViewController: UIViewController, DetailRouterDelegate {
     
     private var imageURL: String?
     
-    init(recipeID: Int) {
-          self.recipeId = recipeID
-          super.init(nibName: nil, bundle: nil)
-      }
+    init(recipeID: Int, presenter: DetailPresenter) {
+        self.recipeId = recipeID
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -38,21 +39,13 @@ class SummaryViewController: UIViewController, DetailRouterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        makeDetailView()
         setup()
         setupImage()
       //  getRecipeDetail(recipeId: recipeId!)
         getRecipeDetailOffline(recipeId: recipeId!)
     
-        // Do any additional setup after loading the view.
     }
     
-    func makeDetailView() {
-        let usecase = Injection().provideHomeUseCase()
-        let presenter = DetailPresenter(useCase: usecase)
-        
-        self.presenter = presenter
-    }
     
     
     private func setupImage(){
@@ -72,7 +65,7 @@ class SummaryViewController: UIViewController, DetailRouterDelegate {
 
     }
     
-    
+    /*
     private func getRecipeDetail(recipeId: Int){
         loadingState = true
         presenter?.getDetail(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
@@ -105,20 +98,27 @@ class SummaryViewController: UIViewController, DetailRouterDelegate {
           
         }).store(in: &cancellables)
     }
+ */
 
+ 
+    
     private func getRecipeDetailOffline(recipeId: Int) {
         loadingState = true
-        presenter?.getDetail(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
+        presenter?.getDetailOffline(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
             switch completion {
-            case .finished:
+            case .finished :
                 self.loadingState = false
-                
+                print("LESAI")
                 
             case .failure(_):
                 self.errorMessage = String(describing: completion)
+                print("FAIL")
             }
         }, receiveValue: { (result) in
-            self.detailResponse = result
+            
+            print("RESULT ",result)
+            
+            self.detailModel = result
             self.labelSummary.text = result.summary
             self.imageURL = result.image
             
@@ -135,9 +135,7 @@ class SummaryViewController: UIViewController, DetailRouterDelegate {
                 }
             }
             
-          
         }).store(in: &cancellables)
-    }
  
-
+    }
 }

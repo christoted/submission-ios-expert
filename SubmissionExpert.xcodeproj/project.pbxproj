@@ -21,8 +21,6 @@
 		52561BC4265BBC61002148E3 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561BC3265BBC61002148E3 /* ProfileNavigationViewController.swift */; };
 		52561BCE265BC228002148E3 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561BCD265BC228002148E3 /* DetailPresenter.swift */; };
 		52561BD1265BC734002148E3 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561BD0265BC734002148E3 /* HomeNavigationViewController.swift */; };
-		52561BE1265BCA47002148E3 /* IngridientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561BDF265BCA47002148E3 /* IngridientViewController.swift */; };
-		52561BE2265BCA47002148E3 /* IngridientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52561BE0265BCA47002148E3 /* IngridientViewController.xib */; };
 		52561BE6265BCA54002148E3 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561BE4265BCA54002148E3 /* SummaryViewController.swift */; };
 		52561BE7265BCA54002148E3 /* SummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52561BE5265BCA54002148E3 /* SummaryViewController.xib */; };
 		52561BEA265BCAC2002148E3 /* DetailRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561BE9265BCAC2002148E3 /* DetailRecipeViewController.swift */; };
@@ -76,8 +74,6 @@
 		52561BC3265BBC61002148E3 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
 		52561BCD265BC228002148E3 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		52561BD0265BC734002148E3 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
-		52561BDF265BCA47002148E3 /* IngridientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientViewController.swift; sourceTree = "<group>"; };
-		52561BE0265BCA47002148E3 /* IngridientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngridientViewController.xib; sourceTree = "<group>"; };
 		52561BE4265BCA54002148E3 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		52561BE5265BCA54002148E3 /* SummaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryViewController.xib; sourceTree = "<group>"; };
 		52561BE9265BCAC2002148E3 /* DetailRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeViewController.swift; sourceTree = "<group>"; };
@@ -364,8 +360,6 @@
 			isa = PBXGroup;
 			children = (
 				52FA7FB3265D0CF5007F8836 /* Custom View */,
-				52561BDF265BCA47002148E3 /* IngridientViewController.swift */,
-				52561BE0265BCA47002148E3 /* IngridientViewController.xib */,
 			);
 			path = Ingredient;
 			sourceTree = "<group>";
@@ -583,7 +577,6 @@
 			files = (
 				526353EC2655284C00B615D1 /* Assets.xcassets in Resources */,
 				52FA7FB7265D0D0F007F8836 /* IngridientTableViewCell.xib in Resources */,
-				52561BE2265BCA47002148E3 /* IngridientViewController.xib in Resources */,
 				526353EA2655284900B615D1 /* LaunchScreen.storyboard in Resources */,
 				52561BE7265BCA54002148E3 /* SummaryViewController.xib in Resources */,
 				526353F726552A3600B615D1 /* HomeTableViewCell.xib in Resources */,
@@ -615,7 +608,6 @@
 				5280198B265687F00036BA40 /* Response.swift in Sources */,
 				523F00802660FBF300221A20 /* MenuDetailEntity.swift in Sources */,
 				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
-				52561BE1265BCA47002148E3 /* IngridientViewController.swift in Sources */,
 				52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */,
 				523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */,
 				52561BE6265BCA54002148E3 /* SummaryViewController.swift in Sources */,

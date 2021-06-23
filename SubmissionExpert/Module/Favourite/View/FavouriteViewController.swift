@@ -8,10 +8,8 @@
 import UIKit
 import Combine
 
-class FavouriteViewController: UIViewController, FavouriteRouterDelegate {
+class FavouriteViewController: UIViewController {
    
-    
-
     @IBOutlet weak var tvFav: UITableView!
     
     var presenter: FavouritePresenter?
@@ -29,18 +27,10 @@ class FavouriteViewController: UIViewController, FavouriteRouterDelegate {
         tvFav.delegate = self 
         registerTableView()
         
-        makeFavouriteView()
         
         getFavouriteMenu()
     }
     
-    func makeFavouriteView() {
-        let usecase = Injection().provideHomeUseCase()
-        let presenter = FavouritePresenter(useCase: usecase)
-        
-        self.presenter = presenter
-
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         getFavouriteMenu()
@@ -91,6 +81,7 @@ class FavouriteViewController: UIViewController, FavouriteRouterDelegate {
             let dest = segue.destination as! DetailRecipeViewController
             let row = (sender as! NSIndexPath).row
             dest.recipeId = favouriteMenu[row].id ?? 654812
+            dest.presenter = presenter?.favRouter?.navigateToDetailModule()
         }
     }
     
