@@ -10,8 +10,6 @@ import Combine
 
 class FavouriteViewController: UIViewController {
    
-    
-
     @IBOutlet weak var tvFav: UITableView!
     
     var presenter: FavouritePresenter?
