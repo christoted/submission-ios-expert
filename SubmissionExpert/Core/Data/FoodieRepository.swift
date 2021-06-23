@@ -11,7 +11,7 @@ import Combine
 protocol FoodieRepositoryProtocol {
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error>
 
-    func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
+   // func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
     
     func getRecipeDetailOffline(recipeId: Int)->AnyPublisher<MenuModel, Error>
     
@@ -81,9 +81,9 @@ extension FoodieRepository: FoodieRepositoryProtocol {
         }.eraseToAnyPublisher()
     }
 
-    func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error> {
-        return self.remote.getDetailMenu(recipeId: recipeId)
-    }
+//    func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error> {
+//        return self.remote.getDetailMenu(recipeId: recipeId)
+//    }
 
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error> {
 

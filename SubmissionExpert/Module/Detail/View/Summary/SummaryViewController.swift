@@ -65,7 +65,7 @@ class SummaryViewController: UIViewController {
 
     }
     
-    
+    /*
     private func getRecipeDetail(recipeId: Int){
         loadingState = true
         presenter?.getDetail(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
@@ -98,20 +98,27 @@ class SummaryViewController: UIViewController {
           
         }).store(in: &cancellables)
     }
+ */
 
+ 
+    
     private func getRecipeDetailOffline(recipeId: Int) {
         loadingState = true
-        presenter?.getDetail(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
+        presenter?.getDetailOffline(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
             switch completion {
-            case .finished:
+            case .finished :
                 self.loadingState = false
-                
+                print("LESAI")
                 
             case .failure(_):
                 self.errorMessage = String(describing: completion)
+                print("FAIL")
             }
         }, receiveValue: { (result) in
-            self.detailResponse = result
+            
+            print("RESULT ",result)
+            
+            self.detailModel = result
             self.labelSummary.text = result.summary
             self.imageURL = result.image
             
@@ -128,9 +135,7 @@ class SummaryViewController: UIViewController {
                 }
             }
             
-          
         }).store(in: &cancellables)
-    }
  
-
+    }
 }

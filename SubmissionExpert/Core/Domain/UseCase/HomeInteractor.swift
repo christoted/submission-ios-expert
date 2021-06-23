@@ -12,7 +12,7 @@ import Combine
 protocol HomeUseCase {
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error >
     
-    func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
+  //  func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
     
     func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuModel, Error>
     
@@ -45,9 +45,9 @@ class HomeInteractor : HomeUseCase {
         return repository.getRandomMenu()
     }
 
-    func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error> {
-        repository.getRecipeDetail(recipeId: recipeId)
-    }
+//    func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error> {
+//        repository.getRecipeDetail(recipeId: recipeId)
+//    }
     
     
     func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuModel, Error> {

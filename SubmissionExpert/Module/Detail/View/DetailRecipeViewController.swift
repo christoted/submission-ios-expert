@@ -95,6 +95,7 @@ class DetailRecipeViewController: UIViewController {
         tableViewDetail.register(UINib(nibName: "IngridientTableViewCell", bundle: nil), forCellReuseIdentifier: "ingcell")
     }
     
+    /*
     private func getRecipeDetail(recipeId: Int){
         loadingState = true
         presenter?.getDetail(recipeId: recipeId).receive(on: RunLoop.main).sink(receiveCompletion: { (completion) in
@@ -114,6 +115,7 @@ class DetailRecipeViewController: UIViewController {
             self.tableViewDetail.reloadData()
         }).store(in: &cancellables)
     }
+ */
     
     
     private func getRecipeDetailOffline(recipeId: Int) {
