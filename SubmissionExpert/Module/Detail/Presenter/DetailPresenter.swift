@@ -10,6 +10,8 @@ import Combine
 
 class DetailPresenter: ObservableObject {
     private let useCase: HomeUseCase
+    var router: HomeRouter?
+    var detailView: DetailRecipeViewController?
     
     init(useCase: HomeUseCase) {
         self.useCase = useCase

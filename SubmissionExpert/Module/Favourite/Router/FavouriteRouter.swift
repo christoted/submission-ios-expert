@@ -19,7 +19,7 @@ class FavoriteRouter: FavouriteRouterDelegate {
         let favVC = storyboard.instantiateViewController(identifier: "FavouriteViewController") as! FavouriteViewController
         
         let favUseCase = Injection().provideHomeUseCase()
-        let presenter = FavouritePresenter(useCase: favUseCase)
+        let presenter = FavouritePresenter(useCase: favUseCase, favRouter: FavoriteRouter())
         
         favVC.presenter = presenter
         favVC.presenter?.favRouter = FavoriteRouter()

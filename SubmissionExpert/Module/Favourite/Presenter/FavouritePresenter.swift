@@ -13,8 +13,9 @@ class FavouritePresenter: ObservableObject {
     var favRouter: FavoriteRouter?
     var favView: FavouriteViewController?
     
-    init(useCase: HomeUseCase) {
+    init(useCase: HomeUseCase, favRouter: FavoriteRouter) {
         self.useCase = useCase
+        self.favRouter = favRouter
     }
     
     func getBookmarkedMenu()->AnyPublisher<[MenuModel], Error> {

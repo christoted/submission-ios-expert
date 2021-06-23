@@ -39,12 +39,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    func makeHomeView() {
-        let usecase = Injection().provideHomeUseCase()
-        let presenter = HomePresenter(useCase: usecase)
-
-        self.presenter = presenter
-    }
+  
 
     private func registerTableView() {
         tvHome.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "homecell")
@@ -63,13 +58,6 @@ class HomeViewController: UIViewController {
             self.randomMenuOffline = result
             self.tvHome.reloadData()
         }.store(in: &cancellables)
-    }
-    
-    private func setupRouter() {
-        let usecase = Injection().provideHomeUseCase()
-        let presenter = HomePresenter(useCase: usecase)
-        
-        self.presenter = presenter
     }
 }
 
@@ -117,6 +105,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let dest = segue.destination as! DetailRecipeViewController
             let row = (sender as! NSIndexPath).row
             dest.recipeId = randomMenuOffline[row].id ?? 654812
+            dest.presenter?.router = presenter?.homeRouter
+            dest.presenter = presenter?.homeRouter?.navigateToDetailModule()
           //  dest.recipeIdNew = randomMenuOffline[row].id ?? 654812
         }
     }

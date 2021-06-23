@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class SummaryViewController: UIViewController, DetailRouterDelegate {
+class SummaryViewController: UIViewController {
   
     
     private var errorMessage: String = ""

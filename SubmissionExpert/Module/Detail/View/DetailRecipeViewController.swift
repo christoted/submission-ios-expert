@@ -8,11 +8,8 @@
 import UIKit
 import Combine
 
-class DetailRecipeViewController: UIViewController, DetailRouterDelegate {
+class DetailRecipeViewController: UIViewController {
    
-    
-
-    
     @IBOutlet weak var navigationItemDetail: UINavigationItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableViewDetail: UITableView!
@@ -53,9 +50,7 @@ class DetailRecipeViewController: UIViewController, DetailRouterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        makeDetailView()
-        
-        setup()
+       
         registerTableViewCell()
 
         navigationItemDetail.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "suit.heart"), style: .plain, target: self, action: #selector(save))
@@ -73,19 +68,7 @@ class DetailRecipeViewController: UIViewController, DetailRouterDelegate {
         getRecipeDetailOffline(recipeId: recipeId!)
     }
     
-    func makeDetailView() {
-        let usecase = Injection().provideHomeUseCase()
-        let presenter = DetailPresenter(useCase: usecase)
-        
-        self.presenter = presenter
-    }
-    
-    private func setup() {
-        
-        let usecase = Injection().provideHomeUseCase()
-        self.presenter = DetailPresenter(useCase: usecase)
 
-    }
     
     
     @objc func save(){
