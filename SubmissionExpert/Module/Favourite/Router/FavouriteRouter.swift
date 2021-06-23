@@ -28,5 +28,12 @@ class FavoriteRouter: FavouriteRouterDelegate {
         return favVC
     }
     
+    func navigateToDetailModule()->DetailPresenter {
+    
+        let detailUseCase = Injection().provideHomeUseCase()
+        let presenter = DetailPresenter(useCase: detailUseCase)
+        
+        return presenter
+    }
     
 }

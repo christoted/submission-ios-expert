@@ -83,6 +83,7 @@ class FavouriteViewController: UIViewController {
             let dest = segue.destination as! DetailRecipeViewController
             let row = (sender as! NSIndexPath).row
             dest.recipeId = favouriteMenu[row].id ?? 654812
+            dest.presenter = presenter?.favRouter?.navigateToDetailModule()
         }
     }
     
