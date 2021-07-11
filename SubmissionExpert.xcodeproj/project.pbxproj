@@ -45,7 +45,6 @@
 		52A9C20E267B5CED003C6872 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C20D267B5CED003C6872 /* HomeRouter.swift */; };
 		52A9C211267B6B79003C6872 /* FavouriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C210267B6B79003C6872 /* FavouriteRouter.swift */; };
 		52A9C214267B6C19003C6872 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C213267B6C19003C6872 /* DetailRouter.swift */; };
-		52DB7A582696193A007F6249 /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 52DB7A572696193A007F6249 /* SwiftLintFramework */; };
 		52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */; };
 		52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F826727E8800B3E7EE /* FavouriteNavigationController.swift */; };
 		52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEA0E826675E9A0062770C /* MenuDetailRes.swift */; };
@@ -107,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52DB7A582696193A007F6249 /* SwiftLintFramework in Frameworks */,
 				52A71AD026581CDF00C6E2B6 /* RealmSwift in Frameworks */,
 				52A71ACE26581CDF00C6E2B6 /* Realm in Frameworks */,
 				528019932656B89D0036BA40 /* Alamofire in Frameworks */,
@@ -531,7 +529,6 @@
 				528019922656B89D0036BA40 /* Alamofire */,
 				52A71ACD26581CDF00C6E2B6 /* Realm */,
 				52A71ACF26581CDF00C6E2B6 /* RealmSwift */,
-				52DB7A572696193A007F6249 /* SwiftLintFramework */,
 			);
 			productName = SubmissionExpert;
 			productReference = 521890842653D43B00783413 /* SubmissionExpert.app */;
@@ -563,7 +560,6 @@
 			packageReferences = (
 				528019912656B89D0036BA40 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				52A71ACC26581CDF00C6E2B6 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-				52DB7A562696193A007F6249 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 521890852653D43B00783413 /* Products */;
 			projectDirPath = "";
@@ -850,14 +846,6 @@
 				minimumVersion = 10.7.6;
 			};
 		};
-		52DB7A562696193A007F6249 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/SwiftLint.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.43.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -875,11 +863,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 52A71ACC26581CDF00C6E2B6 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
-		};
-		52DB7A572696193A007F6249 /* SwiftLintFramework */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 52DB7A562696193A007F6249 /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = SwiftLintFramework;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
