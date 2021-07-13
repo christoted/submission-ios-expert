@@ -23,10 +23,13 @@ protocol LocalDatasourceProtocol {
     //Add Ingri
     func addIngridient(from ingridientEntity: ([IngridientEntity]))-> AnyPublisher<Bool, Error>
     
-    //Nanti
+    //Update fav
     func updateFavorite(by idMeal: Int, isBookmarked: Bool)
     
     func getFavoriteMeals() -> AnyPublisher<[MenuEntity], Error>
+    
+    //Search
+    func insertSearchMenu(by recipeName: String) -> AnyPublisher<[MenuEntity], Error>
 }
 
 class LocalDatasource: NSObject {
@@ -42,6 +45,24 @@ class LocalDatasource: NSObject {
 }
 
 extension LocalDatasource: LocalDatasourceProtocol {
+    func insertSearchMenu(by recipeName: String) -> AnyPublisher<[MenuEntity], Error> {
+        return Future<[MenuEntity], Error> { completion in
+            if let realmDBSave = self.realm {
+                let resultSearchMenu: Results<MenuEntity> =  {
+                    realmDBSave.objects(MenuEntity.self).sorted(byKeyPath: "title", ascending: true)
+                }()
+                
+                completion(.success(resultSearchMenu.toArray(ofType: MenuEntity.self)))
+                
+            } else {
+                
+                completion(.failure(DatabaseError.invalidInstance))
+            }
+        
+        }.eraseToAnyPublisher()
+    }
+    
+    
    
     func getFavoriteMeals() -> AnyPublisher<[MenuEntity], Error> {
         return Future<[MenuEntity], Error> { completion in
@@ -88,7 +109,6 @@ extension LocalDatasource: LocalDatasourceProtocol {
                     try realmDB.write{
                         menuEntitySave.setValue(menuEntity.summary, forKey: "summary")
                         menuEntitySave.setValue(menuEntity.extendedIngredients, forKey: "extendedIngredients")
-//                        menuEntity.setValue(menuEntity.nutrition, forKey: "nutrition")
                     }
                     
                     completion(.success(true))

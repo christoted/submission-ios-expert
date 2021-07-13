@@ -32,11 +32,17 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = cvSearch.dequeueReusableCell(withReuseIdentifier: "cellsearch", for: indexPath) as? SearchViewCell
+        guard let cell = cvSearch.dequeueReusableCell(withReuseIdentifier: "cellsearch", for: indexPath) as? SearchViewCell else {
+            let cell = SearchViewCell()
+            return cell
+        }
+        
+        
+        return cell
     }
     
     
