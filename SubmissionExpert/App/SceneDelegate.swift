@@ -66,7 +66,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         homeNC.viewControllers = [homeVC2]
         personalNC.viewControllers = [personalVC]
         searchNC.viewControllers = [searchVC]
-
+        
         tabBarController.viewControllers = [homeNC,searchNC, favouriteNC , personalNC]
         
         window?.rootViewController = tabBarController

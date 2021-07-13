@@ -19,8 +19,8 @@ protocol FoodieRepositoryProtocol {
     
     func getBookmarkedMenu()->AnyPublisher<[MenuModel], Error>
     
+    //Search
     func getSearchMenu(recipeName: String)->AnyPublisher<[MenuModel], Error>
-    
 }
 
 
@@ -43,9 +43,25 @@ final class FoodieRepository: NSObject {
 
 extension FoodieRepository: FoodieRepositoryProtocol {
     func getSearchMenu(recipeName: String) -> AnyPublisher<[MenuModel], Error> {
-        
+        self.remote.searchMenu(recipeName: recipeName).map {
+            MenuMapper.mapCategoryResponseToEntity(input: $0)
+        }.flatMap{ response in self.locale.getSearchMenu(by: recipeName)
+            .flatMap{ (locale) -> AnyPublisher<[MenuModel], Error> in
+                if response.count > locale.count {
+                    return self.locale.insertSearchMenu(by: recipeName, from: response)
+                        .filter{$0}
+                        .flatMap{ _ in self.locale.getSearchMenu(by: recipeName)
+                            .map{MenuMapper.mapCategoryEntityToDomains(input: $0)}
+                        }.eraseToAnyPublisher()
+                } else {
+                    return self.locale.getSearchMenu(by: recipeName)
+                        .map{MenuMapper.mapCategoryEntityToDomains(input: $0)}.eraseToAnyPublisher()
+                }
+            }
+            
+        }.eraseToAnyPublisher()
     }
-
+    
     func updateToBookmarkMenu(recipeId: Int, isBookmarked: Bool) {
         self.locale.updateFavorite(by: recipeId, isBookmarked: isBookmarked)
     }

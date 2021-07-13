@@ -271,6 +271,7 @@
                     <navigationItem key="navigationItem" id="G8V-8C-d2t"/>
                     <connections>
                         <outlet property="cvSearch" destination="4ms-zB-su3" id="brk-y5-kml"/>
+                        <outlet property="searhBar" destination="VkW-NK-r5P" id="BEM-we-zsQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wms-Af-Sge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
