@@ -206,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o4W-EF-DJk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2733.8461538461538" y="916.35071090047393"/>
+            <point key="canvasLocation" x="-515" y="916"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="L7s-6R-vjI">
@@ -272,11 +272,12 @@
                     <connections>
                         <outlet property="cvSearch" destination="4ms-zB-su3" id="brk-y5-kml"/>
                         <outlet property="searhBar" destination="VkW-NK-r5P" id="BEM-we-zsQ"/>
+                        <segue destination="09U-bM-6fh" kind="show" identifier="toDetailFromSearch" id="HlG-IG-zbM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wms-Af-Sge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="450.76923076923077" y="915.63981042654029"/>
+            <point key="canvasLocation" x="1825" y="916"/>
         </scene>
         <!--Profile-->
         <scene sceneID="SXm-NI-oJh">
@@ -295,7 +296,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3i6-a2-6YJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824.6153846153845" y="916.35071090047393"/>
+            <point key="canvasLocation" x="-1478" y="916"/>
         </scene>
         <!--Home-->
         <scene sceneID="vBY-qb-vDb">
@@ -352,11 +353,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0lW-r5-o9N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-478.46153846153845" y="915.63981042654029"/>
+            <point key="canvasLocation" x="537" y="916"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DEy-xg-f2b"/>
+        <segue reference="HlG-IG-zbM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="106"/>

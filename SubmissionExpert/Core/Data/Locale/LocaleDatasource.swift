@@ -80,7 +80,7 @@ extension LocalDatasource: LocalDatasourceProtocol {
         return Future<[MenuEntity], Error> { completion in
             if let realmDBSave = self.realm {
                 let resultSearchMenu: Results<MenuEntity> =  {
-                    realmDBSave.objects(MenuEntity.self).sorted(byKeyPath: "title", ascending: true)
+                    realmDBSave.objects(MenuEntity.self).filter("title contains[c] %@", recipeName).sorted(byKeyPath: "title", ascending: true)
                 }()
                 
                 completion(.success(resultSearchMenu.toArray(ofType: MenuEntity.self)))
@@ -218,6 +218,7 @@ extension LocalDatasource: LocalDatasourceProtocol {
             if let realmDB = self.realm {
                 let menus: Results<MenuEntity> = {
                     realmDB.objects(MenuEntity.self)
+                        .filter("title contains[c] %@", "Pizza")
                         .sorted(byKeyPath: "title", ascending: true)
                 }()
                 

@@ -25,4 +25,18 @@ class SearchRouter {
         
         return searchVC
     }
+    
+    func navigateToDetailModule()->DetailPresenter {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(identifier: "DetailRecipeViewController") as DetailRecipeViewController
+        
+        let detailUseCase = Injection().provideHomeUseCase()
+        let presenter = DetailPresenter(useCase: detailUseCase)
+        
+        detailVC.presenter = presenter
+        detailVC.presenter?.router = HomeRouter()
+        detailVC.presenter?.detailView = detailVC
+        
+        return presenter
+    }
 }
