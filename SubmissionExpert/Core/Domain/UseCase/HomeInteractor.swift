@@ -20,12 +20,12 @@ protocol HomeUseCase {
     
     func getFavouriteMenu()->AnyPublisher<[MenuModel], Error>
     
-    
+    func getSearchMenuByName(recipeName: String) -> AnyPublisher<[MenuModel],Error>
 }
 
 
 class HomeInteractor : HomeUseCase {
- 
+    
     func getFavouriteMenu() -> AnyPublisher<[MenuModel], Error> {
         return repository.getBookmarkedMenu()
     }
@@ -53,6 +53,12 @@ class HomeInteractor : HomeUseCase {
     func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuModel, Error> {
         return repository.getRecipeDetailOffline(recipeId: recipeId)
     }
+    
+    //Search
+    func getSearchMenuByName(recipeName: String) -> AnyPublisher<[MenuModel], Error> {
+        return repository.getSearchMenu(recipeName: recipeName)
+    }
+    
     
     
 }

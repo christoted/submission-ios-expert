@@ -13,6 +13,8 @@ protocol RemoteDatasourceProtocol: AnyObject {
     func getRandomMenu()->AnyPublisher<[RandomMenuResponse], Error>
     
     func getDetailMenu(recipeId: Int)->AnyPublisher<MenuDetailResponse, Error>
+    
+    func searchMenu(recipeName: String)->AnyPublisher<[RandomMenuResponse], Error>
 }
 
 final class RemoteDatasource: NSObject{
@@ -22,6 +24,28 @@ final class RemoteDatasource: NSObject{
 }
 
 extension RemoteDatasource: RemoteDatasourceProtocol {
+    func searchMenu(recipeName: String) -> AnyPublisher<[RandomMenuResponse], Error> {
+        //TODO:: Search Menu
+        return Future<[RandomMenuResponse], Error> { completion in
+            if let url = URL(string: EndPoints.Gets.searchByName(recipeName: recipeName).url) {
+                AF.request(url)
+                    .validate()
+                    .responseDecodable(of: Response.self) { (response) in
+                        switch response.result {
+                        case .success(let value):
+                            completion(.success(value.result))
+                            
+                            
+                        case .failure(let error):
+                            completion(.failure(error))
+                        }
+                    }
+                
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
     
     func getDetailMenu(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error> {
         return Future<MenuDetailResponse, Error> { completion in

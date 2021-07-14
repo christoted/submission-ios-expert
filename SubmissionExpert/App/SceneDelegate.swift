@@ -42,6 +42,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
+        
+        guard let searchNC = storyboard.instantiateViewController(identifier: "SearchNavigationController") as? SearchNavigationController else {
+            return
+        }
+        
+        
         let tabBarController  = storyboard.instantiateViewController(withIdentifier: "tabbar") as! TabBarViewController
         
         //Edit
@@ -51,11 +57,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let favRouter = FavoriteRouter()
         let favVC2 = favRouter.createFavouriteModule()
         
+        
+        //Search
+        let searchRouter = SearchRouter()
+        let searchVC = searchRouter.createSearchModule()
+        
         favouriteNC.viewControllers = [favVC2]
         homeNC.viewControllers = [homeVC2]
         personalNC.viewControllers = [personalVC]
-
-        tabBarController.viewControllers = [homeNC, favouriteNC, personalNC]
+        searchNC.viewControllers = [searchVC]
+        
+        tabBarController.viewControllers = [homeNC,searchNC, favouriteNC , personalNC]
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

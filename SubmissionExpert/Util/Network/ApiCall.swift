@@ -13,13 +13,13 @@ struct API {
 }
 
 protocol EndPoint {
-    var url: String { get }
+    var url: String { get  } 
 }
 
 enum EndPoints {
     enum Gets: EndPoint {
         
-        case search
+        case searchByName(recipeName: String)
         case recipeInformation(recipeId: Int)
         case randomMenu
         
@@ -27,7 +27,7 @@ enum EndPoints {
         public var url: String {
             switch self {
             
-            case EndPoints.Gets.search: return ""
+            case EndPoints.Gets.searchByName(let recipeName): return "\(API.baseUrl)recipes/complexSearch?query=\(recipeName)&maxFat=25&number=10&apiKey=\(API.APIKEY)"
                             
                 
             case EndPoints.Gets.recipeInformation(let recipeId): return "\(API.baseUrl)recipes/\(recipeId)/information?includeNutrition=false&apiKey=\(API.APIKEY)"

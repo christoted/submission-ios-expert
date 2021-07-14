@@ -10,8 +10,8 @@ import Combine
 
 protocol FoodieRepositoryProtocol {
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error>
-
-   // func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
+    
+    // func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
     
     func getRecipeDetailOffline(recipeId: Int)->AnyPublisher<MenuModel, Error>
     
@@ -19,27 +19,49 @@ protocol FoodieRepositoryProtocol {
     
     func getBookmarkedMenu()->AnyPublisher<[MenuModel], Error>
     
+    //Search
+    func getSearchMenu(recipeName: String)->AnyPublisher<[MenuModel], Error>
 }
 
 
 final class FoodieRepository: NSObject {
     typealias foodInstance = (RemoteDatasource, LocalDatasource) -> FoodieRepository
-
+    
     let remote: RemoteDatasource
     let locale: LocalDatasource
-
+    
     init(remoteDataSource: RemoteDatasource, localeDataSource: LocalDatasource) {
         self.remote = remoteDataSource
         self.locale = localeDataSource
     }
-
+    
     static let instance: foodInstance = { remoteDataSource, localeDataSource in
         return FoodieRepository(remoteDataSource: remoteDataSource, localeDataSource: localeDataSource)
     }
-
+    
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
+    func getSearchMenu(recipeName: String) -> AnyPublisher<[MenuModel], Error> {
+        self.remote.searchMenu(recipeName: recipeName).map {
+            MenuMapper.mapCategoryResponseToEntity(input: $0)
+        }.flatMap{ response in self.locale.getSearchMenu(by: recipeName)
+            .flatMap{ (locale) -> AnyPublisher<[MenuModel], Error> in
+                if response.count > locale.count {
+                    return self.locale.insertSearchMenu(by: recipeName, from: response)
+                        .filter{$0}
+                        .flatMap{ _ in self.locale.getSearchMenu(by: recipeName)
+                            .map{MenuMapper.mapCategoryEntityToDomains(input: $0)}
+                        }.eraseToAnyPublisher()
+                } else {
+                    return self.locale.getSearchMenu(by: recipeName)
+                        .map{MenuMapper.mapCategoryEntityToDomains(input: $0)}.eraseToAnyPublisher()
+                }
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
     func updateToBookmarkMenu(recipeId: Int, isBookmarked: Bool) {
         self.locale.updateFavorite(by: recipeId, isBookmarked: isBookmarked)
     }
@@ -71,7 +93,7 @@ extension FoodieRepository: FoodieRepositoryProtocol {
                         }
                         
                     }.eraseToAnyPublisher()
-                    //Terus update dah
+                //Terus update dah
             }else {
                 return self.locale.getDetailMenu(recipeId: recipeId).map {
                     MenuDetailMapper.mapCategoryDetailEntityToDomains(input: $0)
@@ -80,13 +102,10 @@ extension FoodieRepository: FoodieRepositoryProtocol {
             
         }.eraseToAnyPublisher()
     }
-
-//    func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error> {
-//        return self.remote.getDetailMenu(recipeId: recipeId)
-//    }
-
+    
+    
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error> {
-
+        
         return self.locale.getRandomMenu()
             .flatMap { (result) -> AnyPublisher<[MenuModel], Error> in
                 if result.isEmpty {
@@ -113,6 +132,6 @@ extension FoodieRepository: FoodieRepositoryProtocol {
                         .eraseToAnyPublisher()
                 }
             }.eraseToAnyPublisher()
-      }
- 
+    }
+    
 }

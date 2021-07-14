@@ -34,10 +34,6 @@ class MenuDetailMapper {
             
             let ingredientEntities = List<IngridientEntity>()
         
-            var ingredients = [
-                menuDetailResponse.extendedIngredients
-            ].compactMap { $0 }
-        
         
             menuDetailResponse.extendedIngredients!.map { (response)  in
                 let ingEntity = IngridientEntity()
