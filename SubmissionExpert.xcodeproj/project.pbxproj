@@ -11,6 +11,10 @@
 		5200DE672658D5DC00F8C830 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE662658D5DC00F8C830 /* HomeInteractor.swift */; };
 		5200DE6B2658DDD500F8C830 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE6A2658DDD500F8C830 /* Injection.swift */; };
 		5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE6E2658E02C00F8C830 /* HomePresenter.swift */; };
+		52188B5B26A84CCE006278B2 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52188B5A26A84CCE006278B2 /* PlanViewController.swift */; };
+		52188B5D26A84CF6006278B2 /* PlanNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52188B5C26A84CF6006278B2 /* PlanNavigationController.swift */; };
+		52188B6426A86619006278B2 /* CalenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52188B6326A86619006278B2 /* CalenderCollectionViewCell.swift */; };
+		52188B6826A86753006278B2 /* CalenderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52188B6726A86753006278B2 /* CalenderHelper.swift */; };
 		521890882653D43B00783413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890872653D43B00783413 /* AppDelegate.swift */; };
 		5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890892653D43B00783413 /* SceneDelegate.swift */; };
 		5218908C2653D43B00783413 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218908B2653D43B00783413 /* HomeViewController.swift */; };
@@ -37,6 +41,7 @@
 		528019932656B89D0036BA40 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 528019922656B89D0036BA40 /* Alamofire */; };
 		528019972656BB290036BA40 /* CustomError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019962656BB290036BA40 /* CustomError+Ext.swift */; };
 		5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019992656BD560036BA40 /* FoodieRepository.swift */; };
+		52931F3B26AB12AA007BD32B /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */; };
 		52A71ACE26581CDF00C6E2B6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACD26581CDF00C6E2B6 /* Realm */; };
 		52A71AD026581CDF00C6E2B6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACF26581CDF00C6E2B6 /* RealmSwift */; };
 		52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */; };
@@ -65,6 +70,10 @@
 		5200DE662658D5DC00F8C830 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		5200DE6A2658DDD500F8C830 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		5200DE6E2658E02C00F8C830 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		52188B5A26A84CCE006278B2 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
+		52188B5C26A84CF6006278B2 /* PlanNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationController.swift; sourceTree = "<group>"; };
+		52188B6326A86619006278B2 /* CalenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCollectionViewCell.swift; sourceTree = "<group>"; };
+		52188B6726A86753006278B2 /* CalenderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderHelper.swift; sourceTree = "<group>"; };
 		521890842653D43B00783413 /* SubmissionExpert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubmissionExpert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521890872653D43B00783413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		521890892653D43B00783413 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +101,7 @@
 		5280198E265687FB0036BA40 /* RandomMenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMenuResponse.swift; sourceTree = "<group>"; };
 		528019962656BB290036BA40 /* CustomError+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomError+Ext.swift"; sourceTree = "<group>"; };
 		528019992656BD560036BA40 /* FoodieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieRepository.swift; sourceTree = "<group>"; };
+		52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDatasource.swift; sourceTree = "<group>"; };
 		52A71AD62658201500C6E2B6 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
 		52A71AD92658255D00C6E2B6 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
@@ -168,6 +178,9 @@
 		520B134E2655244D0049DEB9 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
+				52188B6126A84DBD006278B2 /* Presenter */,
+				52188B6026A84DB9006278B2 /* Router */,
+				52188B5E26A84DA3006278B2 /* View */,
 			);
 			path = Plan;
 			sourceTree = "<group>";
@@ -179,6 +192,45 @@
 				526353D5265526BD00B615D1 /* Presenter */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		52188B5E26A84DA3006278B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52931F3D26AB22AE007BD32B /* Weekly Calendar */,
+				52931F3C26AB229F007BD32B /* Monthly Calender */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52188B6026A84DB9006278B2 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		52188B6126A84DBD006278B2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		52188B6226A865FF006278B2 /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				52188B6326A86619006278B2 /* CalenderCollectionViewCell.swift */,
+			);
+			path = Calender;
+			sourceTree = "<group>";
+		};
+		52188B6626A86746006278B2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				52188B6726A86753006278B2 /* CalenderHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		5218907B2653D43B00783413 = {
@@ -311,6 +363,7 @@
 		521890A72653D97500783413 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				52188B6626A86746006278B2 /* Helper */,
 				528019952656BB190036BA40 /* Extensions */,
 				521890A92653D98E00783413 /* Mapper */,
 				521890A82653D98800783413 /* Network */,
@@ -425,6 +478,7 @@
 		526353D32655264900B615D1 /* Custom View */ = {
 			isa = PBXGroup;
 			children = (
+				52188B6226A865FF006278B2 /* Calender */,
 				526353F426552A3500B615D1 /* HomeTableViewCell.swift */,
 				526353F526552A3500B615D1 /* HomeTableViewCell.xib */,
 			);
@@ -471,6 +525,23 @@
 				528019962656BB290036BA40 /* CustomError+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52931F3C26AB229F007BD32B /* Monthly Calender */ = {
+			isa = PBXGroup;
+			children = (
+				52188B5A26A84CCE006278B2 /* PlanViewController.swift */,
+				52188B5C26A84CF6006278B2 /* PlanNavigationController.swift */,
+			);
+			path = "Monthly Calender";
+			sourceTree = "<group>";
+		};
+		52931F3D26AB22AE007BD32B /* Weekly Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */,
+			);
+			path = "Weekly Calendar";
 			sourceTree = "<group>";
 		};
 		52A71AD226581FE400C6E2B6 /* Entity */ = {
@@ -653,14 +724,17 @@
 				52A9C211267B6B79003C6872 /* FavouriteRouter.swift in Sources */,
 				5218908C2653D43B00783413 /* HomeViewController.swift in Sources */,
 				528019972656BB290036BA40 /* CustomError+Ext.swift in Sources */,
+				52931F3B26AB12AA007BD32B /* WeeklyViewController.swift in Sources */,
 				52561BA0265BAFF6002148E3 /* TabBarViewController.swift in Sources */,
 				52FFDE70269AE7C7000A76C9 /* SearchRouter.swift in Sources */,
 				52A9C20E267B5CED003C6872 /* HomeRouter.swift in Sources */,
 				52561BD1265BC734002148E3 /* HomeNavigationViewController.swift in Sources */,
 				526353F626552A3600B615D1 /* HomeTableViewCell.swift in Sources */,
 				5280198B265687F00036BA40 /* Response.swift in Sources */,
+				52188B5B26A84CCE006278B2 /* PlanViewController.swift in Sources */,
 				523F00802660FBF300221A20 /* MenuDetailEntity.swift in Sources */,
 				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
+				52188B6426A86619006278B2 /* CalenderCollectionViewCell.swift in Sources */,
 				52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */,
 				523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */,
 				52561BE6265BCA54002148E3 /* SummaryViewController.swift in Sources */,
@@ -672,12 +746,14 @@
 				526353D02655264300B615D1 /* FavouriteViewController.swift in Sources */,
 				52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */,
 				52FFDE6C269AE792000A76C9 /* SearchViewController.swift in Sources */,
+				52188B5D26A84CF6006278B2 /* PlanNavigationController.swift in Sources */,
 				52561BCE265BC228002148E3 /* DetailPresenter.swift in Sources */,
 				52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */,
 				52FFDE78269AF277000A76C9 /* SearchViewCell.swift in Sources */,
 				5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */,
 				5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */,
 				52FA7FB0265CF3B7007F8836 /* IngridientResponse.swift in Sources */,
+				52188B6826A86753006278B2 /* CalenderHelper.swift in Sources */,
 				5200DE6B2658DDD500F8C830 /* Injection.swift in Sources */,
 				52561BC4265BBC61002148E3 /* ProfileNavigationViewController.swift in Sources */,
 				5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */,

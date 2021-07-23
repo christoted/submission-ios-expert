@@ -47,8 +47,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
+        guard let planNC = storyboard.instantiateViewController(identifier: "plannavigationcontroller") as? PlanNavigationController else {
+            return
+        }
+        
+        guard let planVC = storyboard.instantiateViewController(identifier: "planviewcontroller") as? PlanViewController else {
+            return
+        }
+        
         
         let tabBarController  = storyboard.instantiateViewController(withIdentifier: "tabbar") as! TabBarViewController
+        
+        //Plan
+        planNC.viewControllers = [planVC]
+        
         
         //Edit
         let homeRouter = HomeRouter()
@@ -67,7 +79,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         personalNC.viewControllers = [personalVC]
         searchNC.viewControllers = [searchVC]
         
-        tabBarController.viewControllers = [homeNC,searchNC, favouriteNC , personalNC]
+        tabBarController.viewControllers = [homeNC,searchNC,planNC, favouriteNC , personalNC]
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
