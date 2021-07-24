@@ -11,11 +11,13 @@ class WeeklyViewController: UIViewController {
     
     @IBOutlet weak var cvDate: UICollectionView!
     @IBOutlet weak var lblMonth: UILabel!
-    
+    @IBOutlet weak var tvFoodList: UITableView!
     
     var selectedDate = Date()
     //MARK:: It will hold the calender day for example 22 Jul, result 22
     var totalSqures = [Date]()
+    
+    var sectionFood: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +88,11 @@ extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if(date == selectedDate)
         {
             cell.backgroundColor = UIColor.systemGreen
+            cell.layer.cornerRadius = 10
+            cell.layer.shadowColor = UIColor.gray.cgColor
+            cell.layer.shadowOffset = CGSize(width: 2.0, height: 4.0)
+            cell.layer.shadowRadius = 2.0
+            cell.layer.shadowOpacity = 1.0
         }
         else
         {
@@ -102,8 +109,8 @@ extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (cvDate.frame.size.width ) / 9
-        let height = (cvDate.frame.size.height ) / 9
+        let width = (cvDate.frame.size.width) / 9
+        let height = (cvDate.frame.size.height) / 4.5
         
         let flowLayout = cvDate.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.itemSize = CGSize(width: width, height: height)

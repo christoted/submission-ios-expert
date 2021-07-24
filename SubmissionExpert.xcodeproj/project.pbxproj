@@ -50,6 +50,12 @@
 		52A9C20E267B5CED003C6872 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C20D267B5CED003C6872 /* HomeRouter.swift */; };
 		52A9C211267B6B79003C6872 /* FavouriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C210267B6B79003C6872 /* FavouriteRouter.swift */; };
 		52A9C214267B6C19003C6872 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C213267B6C19003C6872 /* DetailRouter.swift */; };
+		52B6269626AC411D0006B7D0 /* FoodPlannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6269426AC411D0006B7D0 /* FoodPlannerTableViewCell.swift */; };
+		52B6269726AC411D0006B7D0 /* FoodPlannerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B6269526AC411D0006B7D0 /* FoodPlannerTableViewCell.xib */; };
+		52B6269A26AC564E0006B7D0 /* ChooseFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6269826AC564E0006B7D0 /* ChooseFoodCollectionViewCell.swift */; };
+		52B6269B26AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B6269926AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib */; };
+		52B6269F26AC56FC0006B7D0 /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6269E26AC56FB0006B7D0 /* AddFoodViewController.swift */; };
+		52B626A126AC570B0006B7D0 /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B626A026AC570B0006B7D0 /* SearchFoodViewController.swift */; };
 		52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */; };
 		52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F826727E8800B3E7EE /* FavouriteNavigationController.swift */; };
 		52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEA0E826675E9A0062770C /* MenuDetailRes.swift */; };
@@ -108,6 +114,12 @@
 		52A9C20D267B5CED003C6872 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		52A9C210267B6B79003C6872 /* FavouriteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteRouter.swift; sourceTree = "<group>"; };
 		52A9C213267B6C19003C6872 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		52B6269426AC411D0006B7D0 /* FoodPlannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPlannerTableViewCell.swift; sourceTree = "<group>"; };
+		52B6269526AC411D0006B7D0 /* FoodPlannerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodPlannerTableViewCell.xib; sourceTree = "<group>"; };
+		52B6269826AC564E0006B7D0 /* ChooseFoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFoodCollectionViewCell.swift; sourceTree = "<group>"; };
+		52B6269926AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseFoodCollectionViewCell.xib; sourceTree = "<group>"; };
+		52B6269E26AC56FB0006B7D0 /* AddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
+		52B626A026AC570B0006B7D0 /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
 		52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePresenter.swift; sourceTree = "<group>"; };
 		52EE72F826727E8800B3E7EE /* FavouriteNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteNavigationController.swift; sourceTree = "<group>"; };
 		52EEA0E826675E9A0062770C /* MenuDetailRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailRes.swift; sourceTree = "<group>"; };
@@ -197,6 +209,9 @@
 		52188B5E26A84DA3006278B2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				52B6269D26AC56E10006B7D0 /* Search Food */,
+				52B6269C26AC56DA0006B7D0 /* Add Food */,
+				52B6269326AC40F50006B7D0 /* Custom View */,
 				52931F3D26AB22AE007BD32B /* Weekly Calendar */,
 				52931F3C26AB229F007BD32B /* Monthly Calender */,
 			);
@@ -577,6 +592,33 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		52B6269326AC40F50006B7D0 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				52B6269426AC411D0006B7D0 /* FoodPlannerTableViewCell.swift */,
+				52B6269526AC411D0006B7D0 /* FoodPlannerTableViewCell.xib */,
+				52B6269826AC564E0006B7D0 /* ChooseFoodCollectionViewCell.swift */,
+				52B6269926AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib */,
+			);
+			path = "Custom View";
+			sourceTree = "<group>";
+		};
+		52B6269C26AC56DA0006B7D0 /* Add Food */ = {
+			isa = PBXGroup;
+			children = (
+				52B6269E26AC56FB0006B7D0 /* AddFoodViewController.swift */,
+			);
+			path = "Add Food";
+			sourceTree = "<group>";
+		};
+		52B6269D26AC56E10006B7D0 /* Search Food */ = {
+			isa = PBXGroup;
+			children = (
+				52B626A026AC570B0006B7D0 /* SearchFoodViewController.swift */,
+			);
+			path = "Search Food";
+			sourceTree = "<group>";
+		};
 		52FA7FAA265CF090007F8836 /* Detail Recipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,6 +738,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B6269726AC411D0006B7D0 /* FoodPlannerTableViewCell.xib in Resources */,
+				52B6269B26AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib in Resources */,
 				526353EC2655284C00B615D1 /* Assets.xcassets in Resources */,
 				52FFDE79269AF277000A76C9 /* SearchViewCell.xib in Resources */,
 				52FA7FB7265D0D0F007F8836 /* IngridientTableViewCell.xib in Resources */,
@@ -727,12 +771,16 @@
 				52931F3B26AB12AA007BD32B /* WeeklyViewController.swift in Sources */,
 				52561BA0265BAFF6002148E3 /* TabBarViewController.swift in Sources */,
 				52FFDE70269AE7C7000A76C9 /* SearchRouter.swift in Sources */,
+				52B6269F26AC56FC0006B7D0 /* AddFoodViewController.swift in Sources */,
 				52A9C20E267B5CED003C6872 /* HomeRouter.swift in Sources */,
+				52B626A126AC570B0006B7D0 /* SearchFoodViewController.swift in Sources */,
 				52561BD1265BC734002148E3 /* HomeNavigationViewController.swift in Sources */,
 				526353F626552A3600B615D1 /* HomeTableViewCell.swift in Sources */,
+				52B6269A26AC564E0006B7D0 /* ChooseFoodCollectionViewCell.swift in Sources */,
 				5280198B265687F00036BA40 /* Response.swift in Sources */,
 				52188B5B26A84CCE006278B2 /* PlanViewController.swift in Sources */,
 				523F00802660FBF300221A20 /* MenuDetailEntity.swift in Sources */,
+				52B6269626AC411D0006B7D0 /* FoodPlannerTableViewCell.swift in Sources */,
 				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
 				52188B6426A86619006278B2 /* CalenderCollectionViewCell.swift in Sources */,
 				52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */,
