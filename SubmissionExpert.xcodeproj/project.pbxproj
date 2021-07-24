@@ -56,6 +56,7 @@
 		52B6269B26AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B6269926AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib */; };
 		52B6269F26AC56FC0006B7D0 /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6269E26AC56FB0006B7D0 /* AddFoodViewController.swift */; };
 		52B626A126AC570B0006B7D0 /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B626A026AC570B0006B7D0 /* SearchFoodViewController.swift */; };
+		52B626A726AC69240006B7D0 /* SearchFoodPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B626A626AC69240006B7D0 /* SearchFoodPresenter.swift */; };
 		52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */; };
 		52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F826727E8800B3E7EE /* FavouriteNavigationController.swift */; };
 		52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEA0E826675E9A0062770C /* MenuDetailRes.swift */; };
@@ -120,6 +121,7 @@
 		52B6269926AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseFoodCollectionViewCell.xib; sourceTree = "<group>"; };
 		52B6269E26AC56FB0006B7D0 /* AddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
 		52B626A026AC570B0006B7D0 /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
+		52B626A626AC69240006B7D0 /* SearchFoodPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodPresenter.swift; sourceTree = "<group>"; };
 		52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePresenter.swift; sourceTree = "<group>"; };
 		52EE72F826727E8800B3E7EE /* FavouriteNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteNavigationController.swift; sourceTree = "<group>"; };
 		52EEA0E826675E9A0062770C /* MenuDetailRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailRes.swift; sourceTree = "<group>"; };
@@ -190,9 +192,11 @@
 		520B134E2655244D0049DEB9 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
-				52188B6126A84DBD006278B2 /* Presenter */,
-				52188B6026A84DB9006278B2 /* Router */,
-				52188B5E26A84DA3006278B2 /* View */,
+				52931F3C26AB229F007BD32B /* Monthly Calender */,
+				52931F3D26AB22AE007BD32B /* Weekly Calendar */,
+				52B6269326AC40F50006B7D0 /* Custom View */,
+				52B6269C26AC56DA0006B7D0 /* Add Food */,
+				52B6269D26AC56E10006B7D0 /* Search Food */,
 			);
 			path = Plan;
 			sourceTree = "<group>";
@@ -204,32 +208,6 @@
 				526353D5265526BD00B615D1 /* Presenter */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		52188B5E26A84DA3006278B2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				52B6269D26AC56E10006B7D0 /* Search Food */,
-				52B6269C26AC56DA0006B7D0 /* Add Food */,
-				52B6269326AC40F50006B7D0 /* Custom View */,
-				52931F3D26AB22AE007BD32B /* Weekly Calendar */,
-				52931F3C26AB229F007BD32B /* Monthly Calender */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		52188B6026A84DB9006278B2 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		52188B6126A84DBD006278B2 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		52188B6226A865FF006278B2 /* Calender */ = {
@@ -545,8 +523,7 @@
 		52931F3C26AB229F007BD32B /* Monthly Calender */ = {
 			isa = PBXGroup;
 			children = (
-				52188B5A26A84CCE006278B2 /* PlanViewController.swift */,
-				52188B5C26A84CF6006278B2 /* PlanNavigationController.swift */,
+				52B626A226AC669A0006B7D0 /* View */,
 			);
 			path = "Monthly Calender";
 			sourceTree = "<group>";
@@ -614,9 +591,43 @@
 		52B6269D26AC56E10006B7D0 /* Search Food */ = {
 			isa = PBXGroup;
 			children = (
-				52B626A026AC570B0006B7D0 /* SearchFoodViewController.swift */,
+				52B626A526AC68D20006B7D0 /* Presenter */,
+				52B626A426AC68CD0006B7D0 /* Router */,
+				52B626A326AC68C60006B7D0 /* View */,
 			);
 			path = "Search Food";
+			sourceTree = "<group>";
+		};
+		52B626A226AC669A0006B7D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52188B5A26A84CCE006278B2 /* PlanViewController.swift */,
+				52188B5C26A84CF6006278B2 /* PlanNavigationController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52B626A326AC68C60006B7D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52B626A026AC570B0006B7D0 /* SearchFoodViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52B626A426AC68CD0006B7D0 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		52B626A526AC68D20006B7D0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				52B626A626AC69240006B7D0 /* SearchFoodPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		52FA7FAA265CF090007F8836 /* Detail Recipe */ = {
@@ -793,6 +804,7 @@
 				521890AB2653D99E00783413 /* ApiCall.swift in Sources */,
 				526353D02655264300B615D1 /* FavouriteViewController.swift in Sources */,
 				52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */,
+				52B626A726AC69240006B7D0 /* SearchFoodPresenter.swift in Sources */,
 				52FFDE6C269AE792000A76C9 /* SearchViewController.swift in Sources */,
 				52188B5D26A84CF6006278B2 /* PlanNavigationController.swift in Sources */,
 				52561BCE265BC228002148E3 /* DetailPresenter.swift in Sources */,
