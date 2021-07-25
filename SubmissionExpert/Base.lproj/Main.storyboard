@@ -543,16 +543,15 @@
         <!--Search Food View Controller-->
         <scene sceneID="6RD-TG-G3e">
             <objects>
-                <viewController id="Tdy-tm-X36" customClass="SearchFoodViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchfoodvc" id="Tdy-tm-X36" customClass="SearchFoodViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Xg-GQ-Yu8">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AN6-Ej-i1i">
-                                <rect key="frame" x="16" y="86" width="358" height="670"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AN6-Ej-i1i">
+                                <rect key="frame" x="0.0" y="64" width="390" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z0b-hd-EMq">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Z0b-hd-EMq">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -572,13 +571,21 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="haL-dE-MxB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AN6-Ej-i1i" firstAttribute="top" secondItem="haL-dE-MxB" secondAttribute="top" constant="8" id="5d9-Mn-C8u"/>
+                            <constraint firstItem="haL-dE-MxB" firstAttribute="trailing" secondItem="AN6-Ej-i1i" secondAttribute="trailing" id="AiS-Cq-U03"/>
+                            <constraint firstItem="haL-dE-MxB" firstAttribute="bottom" secondItem="AN6-Ej-i1i" secondAttribute="bottom" id="bD4-Ok-pSK"/>
+                            <constraint firstItem="AN6-Ej-i1i" firstAttribute="leading" secondItem="haL-dE-MxB" secondAttribute="leading" id="xSi-PQ-9EJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8gH-xE-TVW"/>
                     <connections>
                         <outlet property="cvSearchFood" destination="AN6-Ej-i1i" id="hdK-6D-mc2"/>
+                        <segue destination="LD4-Pb-Gpa" kind="unwind" identifier="unwindtoaddfood" unwindAction="unwindSegueFromSearchFood:" id="Cd8-JJ-mFZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sk-74-9d3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="LD4-Pb-Gpa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2123.0769230769229" y="1208.5308056872038"/>
         </scene>
@@ -638,7 +645,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Choose Food"/>
                                 <connections>
-                                    <segue destination="bjr-OO-cFh" kind="show" id="g8M-mE-CRP"/>
+                                    <action selector="chooseFood:" destination="x0L-pd-3TW" eventType="touchUpInside" id="nSO-vK-x2j"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rgJ-Xd-z9a">
@@ -670,6 +677,7 @@
                         <outlet property="categoryPicker" destination="rgJ-Xd-z9a" id="o5e-TB-D0N"/>
                         <outlet property="cvResultFood" destination="WBg-Cl-8LW" id="rdM-Xp-qfD"/>
                         <outlet property="dateLabel" destination="Uaq-eh-aPs" id="X47-DM-EUO"/>
+                        <segue destination="bjr-OO-cFh" kind="show" identifier="seguetosearchfood" id="kM3-Pm-OIc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="miD-z5-oyY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -846,10 +854,10 @@
             </objects>
             <point key="canvasLocation" x="-1745" y="-264"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search Food Navigation Controller-->
         <scene sceneID="p4Y-Ww-U11">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bjr-OO-cFh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SearchFoodNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="bjr-OO-cFh" customClass="SearchFoodNavigationController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="quw-mo-xK7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oO1-s2-XRK">

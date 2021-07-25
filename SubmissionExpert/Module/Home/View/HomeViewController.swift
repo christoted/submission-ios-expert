@@ -86,8 +86,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
         
-        
-        
         cell.lblFoodId.text = "\(menu.id ?? 0)"
         cell.lblFoodName.text = menu.title
         

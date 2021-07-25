@@ -51,6 +51,9 @@
 		52A9C211267B6B79003C6872 /* FavouriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C210267B6B79003C6872 /* FavouriteRouter.swift */; };
 		52A9C214267B6C19003C6872 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9C213267B6C19003C6872 /* DetailRouter.swift */; };
 		52AC834726AD7A3B006D719D /* ConnectivityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC834626AD7A3B006D719D /* ConnectivityHelper.swift */; };
+		52AC834926AD832C006D719D /* AddFoodRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC834826AD832C006D719D /* AddFoodRouter.swift */; };
+		52AC834B26AD833A006D719D /* AddFoodPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC834A26AD833A006D719D /* AddFoodPresenter.swift */; };
+		52AC835026AD8A69006D719D /* SearchFoodNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC834F26AD8A69006D719D /* SearchFoodNavigationController.swift */; };
 		52B6269626AC411D0006B7D0 /* FoodPlannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6269426AC411D0006B7D0 /* FoodPlannerTableViewCell.swift */; };
 		52B6269726AC411D0006B7D0 /* FoodPlannerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B6269526AC411D0006B7D0 /* FoodPlannerTableViewCell.xib */; };
 		52B6269A26AC564E0006B7D0 /* ChooseFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6269826AC564E0006B7D0 /* ChooseFoodCollectionViewCell.swift */; };
@@ -119,6 +122,9 @@
 		52A9C210267B6B79003C6872 /* FavouriteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteRouter.swift; sourceTree = "<group>"; };
 		52A9C213267B6C19003C6872 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
 		52AC834626AD7A3B006D719D /* ConnectivityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityHelper.swift; sourceTree = "<group>"; };
+		52AC834826AD832C006D719D /* AddFoodRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodRouter.swift; sourceTree = "<group>"; };
+		52AC834A26AD833A006D719D /* AddFoodPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodPresenter.swift; sourceTree = "<group>"; };
+		52AC834F26AD8A69006D719D /* SearchFoodNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodNavigationController.swift; sourceTree = "<group>"; };
 		52B6269426AC411D0006B7D0 /* FoodPlannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPlannerTableViewCell.swift; sourceTree = "<group>"; };
 		52B6269526AC411D0006B7D0 /* FoodPlannerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodPlannerTableViewCell.xib; sourceTree = "<group>"; };
 		52B6269826AC564E0006B7D0 /* ChooseFoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseFoodCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -578,6 +584,30 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		52AC834C26AD8340006D719D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52B6269E26AC56FB0006B7D0 /* AddFoodViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52AC834D26AD835B006D719D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				52AC834826AD832C006D719D /* AddFoodRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		52AC834E26AD8365006D719D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				52AC834A26AD833A006D719D /* AddFoodPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		52B6269326AC40F50006B7D0 /* Custom View */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,7 +622,9 @@
 		52B6269C26AC56DA0006B7D0 /* Add Food */ = {
 			isa = PBXGroup;
 			children = (
-				52B6269E26AC56FB0006B7D0 /* AddFoodViewController.swift */,
+				52AC834E26AD8365006D719D /* Presenter */,
+				52AC834D26AD835B006D719D /* Router */,
+				52AC834C26AD8340006D719D /* View */,
 			);
 			path = "Add Food";
 			sourceTree = "<group>";
@@ -620,6 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				52B626A026AC570B0006B7D0 /* SearchFoodViewController.swift */,
+				52AC834F26AD8A69006D719D /* SearchFoodNavigationController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -815,6 +848,7 @@
 				52931F3B26AB12AA007BD32B /* WeeklyViewController.swift in Sources */,
 				52561BA0265BAFF6002148E3 /* TabBarViewController.swift in Sources */,
 				52FFDE70269AE7C7000A76C9 /* SearchRouter.swift in Sources */,
+				52AC835026AD8A69006D719D /* SearchFoodNavigationController.swift in Sources */,
 				52B6269F26AC56FC0006B7D0 /* AddFoodViewController.swift in Sources */,
 				52B626AE26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift in Sources */,
 				52A9C20E267B5CED003C6872 /* HomeRouter.swift in Sources */,
@@ -828,12 +862,14 @@
 				52B6269626AC411D0006B7D0 /* FoodPlannerTableViewCell.swift in Sources */,
 				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
 				52188B6426A86619006278B2 /* CalenderCollectionViewCell.swift in Sources */,
+				52AC834926AD832C006D719D /* AddFoodRouter.swift in Sources */,
 				52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */,
 				523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */,
 				52561BE6265BCA54002148E3 /* SummaryViewController.swift in Sources */,
 				52AC834726AD7A3B006D719D /* ConnectivityHelper.swift in Sources */,
 				52FFDE72269AE7E1000A76C9 /* SearchPresenter.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
+				52AC834B26AD833A006D719D /* AddFoodPresenter.swift in Sources */,
 				52FA7FB6265D0D0F007F8836 /* IngridientTableViewCell.swift in Sources */,
 				52561BEA265BCAC2002148E3 /* DetailRecipeViewController.swift in Sources */,
 				521890AB2653D99E00783413 /* ApiCall.swift in Sources */,

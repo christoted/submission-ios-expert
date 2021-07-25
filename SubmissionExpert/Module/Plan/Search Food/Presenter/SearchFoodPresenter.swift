@@ -12,10 +12,15 @@ import Combine
 class SearchFoodPresenter: ObservableObject {
     
     private let useCase: RecipeUseCase
-    
+    var searchFoodVC: SearchFoodViewController?
+    var router: AddFoodRouter?
     
     init(useCase: RecipeUseCase) {
         self.useCase = useCase
+    }
+    
+    func getInitFood()-> AnyPublisher<[MenuModel], Error>{
+        return useCase.getRandomMenu()
     }
     
 }
