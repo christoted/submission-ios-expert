@@ -11,11 +11,11 @@ import UIKit
 
 class HomePresenter: ObservableObject {
   
-    private let useCase: HomeUseCase
+    private let useCase: RecipeUseCase
     var homeRouter:HomeRouter?
     var homeView: UIViewController?
     
-    init(useCase: HomeUseCase, homeRouter: HomeRouter) {
+    init(useCase: RecipeUseCase, homeRouter: HomeRouter) {
         self.useCase = useCase
         self.homeRouter = homeRouter
     }

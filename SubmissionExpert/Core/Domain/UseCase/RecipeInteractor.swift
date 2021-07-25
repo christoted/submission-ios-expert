@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 
-protocol HomeUseCase {
+protocol RecipeUseCase {
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error >
     
   //  func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
@@ -24,7 +24,7 @@ protocol HomeUseCase {
 }
 
 
-class HomeInteractor : HomeUseCase {
+class RecipeInteractor : RecipeUseCase {
     
     func getFavouriteMenu() -> AnyPublisher<[MenuModel], Error> {
         return repository.getBookmarkedMenu()

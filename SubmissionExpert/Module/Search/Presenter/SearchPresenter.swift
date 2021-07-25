@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 class SearchPresenter: ObservableObject {
-    private let useCase: HomeUseCase
+    private let useCase: RecipeUseCase
     var searchRouter: SearchRouter?
     var searchViewController: SearchViewController?
     
-    init(useCase: HomeUseCase, searchRouter: SearchRouter) {
+    init(useCase: RecipeUseCase, searchRouter: SearchRouter) {
         self.useCase = useCase
         self.searchRouter = searchRouter
     }

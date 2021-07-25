@@ -6,7 +6,16 @@
 //
 
 import Foundation
+import UIKit
+import Combine
 
-class SearchFoodPresenter {
+class SearchFoodPresenter: ObservableObject {
+    
+    private let useCase: RecipeUseCase
+    
+    
+    init(useCase: RecipeUseCase) {
+        self.useCase = useCase
+    }
     
 }

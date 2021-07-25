@@ -9,12 +9,12 @@ import Foundation
 import Combine
 
 class DetailPresenter: ObservableObject {
-    private let useCase: HomeUseCase
+    private let useCase: RecipeUseCase
     var router: HomeRouter?
     var searchRouter: SearchRouter?
     var detailView: DetailRecipeViewController?
     
-    init(useCase: HomeUseCase) {
+    init(useCase: RecipeUseCase) {
         self.useCase = useCase
     }
     

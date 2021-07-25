@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 class FavouritePresenter: ObservableObject {
-    private let useCase: HomeUseCase
+    private let useCase: RecipeUseCase
     var favRouter: FavoriteRouter?
     var favView: FavouriteViewController?
     
-    init(useCase: HomeUseCase, favRouter: FavoriteRouter) {
+    init(useCase: RecipeUseCase, favRouter: FavoriteRouter) {
         self.useCase = useCase
         self.favRouter = favRouter
     }

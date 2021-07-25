@@ -21,6 +21,9 @@ protocol FoodieRepositoryProtocol {
     
     //Search
     func getSearchMenu(recipeName: String)->AnyPublisher<[MenuModel], Error>
+    
+    //MARK:: Plan
+    
 }
 
 

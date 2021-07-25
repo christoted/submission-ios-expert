@@ -20,11 +20,11 @@ class Injection {
         return FoodieRepository(remoteDataSource: remoteDataSource, localeDataSource: localDataSource)
     }
     
-    func provideHomeUseCase()-> HomeUseCase {
+    func provideHomeUseCase()-> RecipeUseCase {
         
         let repository = provideRepository()
     
-        return HomeInteractor(repositoryProtocol: repository)
+        return RecipeInteractor(repositoryProtocol: repository)
     }
     
     
