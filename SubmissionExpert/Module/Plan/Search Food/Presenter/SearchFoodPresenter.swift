@@ -23,4 +23,8 @@ class SearchFoodPresenter: ObservableObject {
         return useCase.getRandomMenu()
     }
     
+    func searchFood(recipeName: String)->AnyPublisher<[MenuModel], Error> {
+        return useCase.getSearchMenuByName(recipeName: recipeName)
+    }
+    
 }

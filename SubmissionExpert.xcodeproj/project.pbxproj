@@ -41,6 +41,7 @@
 		528019932656B89D0036BA40 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 528019922656B89D0036BA40 /* Alamofire */; };
 		528019972656BB290036BA40 /* CustomError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019962656BB290036BA40 /* CustomError+Ext.swift */; };
 		5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019992656BD560036BA40 /* FoodieRepository.swift */; };
+		528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528730DB26AED3E000B42A62 /* SearchResultViewController.swift */; };
 		52931F3B26AB12AA007BD32B /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */; };
 		52A71ACE26581CDF00C6E2B6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACD26581CDF00C6E2B6 /* Realm */; };
 		52A71AD026581CDF00C6E2B6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACF26581CDF00C6E2B6 /* RealmSwift */; };
@@ -114,6 +115,7 @@
 		5280198E265687FB0036BA40 /* RandomMenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMenuResponse.swift; sourceTree = "<group>"; };
 		528019962656BB290036BA40 /* CustomError+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomError+Ext.swift"; sourceTree = "<group>"; };
 		528019992656BD560036BA40 /* FoodieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieRepository.swift; sourceTree = "<group>"; };
+		528730DB26AED3E000B42A62 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDatasource.swift; sourceTree = "<group>"; };
 		52A71AD62658201500C6E2B6 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
@@ -533,6 +535,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		528730D926AED3C700B42A62 /* Result Search */ = {
+			isa = PBXGroup;
+			children = (
+				528730DA26AED3D000B42A62 /* View */,
+			);
+			path = "Result Search";
+			sourceTree = "<group>";
+		};
+		528730DA26AED3D000B42A62 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				528730DB26AED3E000B42A62 /* SearchResultViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		52931F3C26AB229F007BD32B /* Monthly Calender */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +650,7 @@
 		52B6269D26AC56E10006B7D0 /* Search Food */ = {
 			isa = PBXGroup;
 			children = (
+				528730D926AED3C700B42A62 /* Result Search */,
 				52B626A526AC68D20006B7D0 /* Presenter */,
 				52B626A426AC68CD0006B7D0 /* Router */,
 				52B626A326AC68C60006B7D0 /* View */,
@@ -850,6 +869,7 @@
 				52FFDE70269AE7C7000A76C9 /* SearchRouter.swift in Sources */,
 				52AC835026AD8A69006D719D /* SearchFoodNavigationController.swift in Sources */,
 				52B6269F26AC56FC0006B7D0 /* AddFoodViewController.swift in Sources */,
+				528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */,
 				52B626AE26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift in Sources */,
 				52A9C20E267B5CED003C6872 /* HomeRouter.swift in Sources */,
 				52B626A126AC570B0006B7D0 /* SearchFoodViewController.swift in Sources */,

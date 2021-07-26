@@ -12,7 +12,6 @@ class PlanViewController: UIViewController {
     @IBOutlet weak var cvDate: UICollectionView!
     @IBOutlet weak var lblMonth: UILabel!
     
-    
     var selectedDate = Date()
     //MARK:: It will hold the calender day for example 22 Jul, result 22
     var totalSqures = [String]()
@@ -28,11 +27,6 @@ class PlanViewController: UIViewController {
         
         setCellsView()
         setMonthView()
-        
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-//        let someDateTime = formatter.date(from: "2021/7/24 22:31")
-        
     }
     
     @IBAction func btnNextMonth(_ sender: Any) {

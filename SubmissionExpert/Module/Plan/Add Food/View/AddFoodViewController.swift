@@ -19,20 +19,29 @@ class AddFoodViewController: UIViewController {
     var listResultFoodPicked:[MenuModel] = []
     var resultFoodPicker: MenuModel?
     
-    var resultBack: String = ""
+    var pickerData: [String] = []
+    var category: String = ""
+    var date: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cvResultFood.dataSource = self
-        cvResultFood.delegate = self
         
-        initFoodPresenter()
+        setLabelDate()
         registerCVResultFood()
+        initFoodPresenter()
         setUpCollectionView()
+        initPickerData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("DID APPER", listResultFoodPicked.count)
+    private func setLabelDate(){
+        let dateString: String = CalenderHelper().dateFormatter(date: date ?? Date())
+        dateLabel.text = dateString
+    }
+    
+    private func initPickerData(){
+        categoryPicker.dataSource = self
+        categoryPicker.delegate = self
+        pickerData = ["Morning", "Afternoon", "Evening"]
     }
     
     private func initFoodPresenter(){
@@ -41,6 +50,8 @@ class AddFoodViewController: UIViewController {
     }
     
     private func registerCVResultFood(){
+        cvResultFood.dataSource = self
+        cvResultFood.delegate = self
         cvResultFood.register(UINib(nibName: "ChooseFoodCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "foodplanresult")
     }
     
@@ -51,7 +62,21 @@ class AddFoodViewController: UIViewController {
             .setCollectionViewLayout(layout, animated: true)
     }
     
+    private func addAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { result in
+            print(result)
+        }))
+        self.present(alert, animated: true)
+    }
+    
     @IBAction func addPlanActionButton(_ sender: Any) {
+        print(category)
+        if(category.isEmpty) {
+            addAlert(title: "Please Choose the Category", message: "If you don't choose the category it might make us confused :D")
+        } else {
+            performSegue(withIdentifier: "backtoweekly", sender: self)
+        }
     }
     
     
@@ -77,7 +102,27 @@ class AddFoodViewController: UIViewController {
         }
     }
 }
-
+//MARK:: For the UI Picker
+extension AddFoodViewController:UIPickerViewDelegate, UIPickerViewDataSource {
+    // Number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        pickerData.count
+    }
+    //Title for Row
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(pickerData[row])
+        category = pickerData[row]
+    }
+    
+}
+//MARK:: For Collection View
 extension AddFoodViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("HITUNG", listResultFoodPicked.count)
@@ -85,11 +130,8 @@ extension AddFoodViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = cvResultFood.dequeueReusableCell(withReuseIdentifier: "foodplanresult", for: indexPath) as! ChooseFoodCollectionViewCell
-        print("COUNT", listResultFoodPicked.count)
         if (listResultFoodPicked.count > 0) {
-            print("COUNT", listResultFoodPicked[0].title)
             cell.chooseFoodLabel.text = listResultFoodPicked[indexPath.row].title
             let imageString = listResultFoodPicked[indexPath.row].image
             DispatchQueue.global(qos: .userInteractive).async {
@@ -102,13 +144,10 @@ extension AddFoodViewController: UICollectionViewDelegate, UICollectionViewDataS
                 }
             }
         }
-        
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: 100, height: 100)
     }
     

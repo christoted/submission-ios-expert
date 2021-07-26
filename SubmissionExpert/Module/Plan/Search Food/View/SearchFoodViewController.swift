@@ -10,8 +10,7 @@ import Combine
 
 class SearchFoodViewController: UIViewController {
     
-    let searchController = UISearchController()
-    
+    var searchController:UISearchController?
     var searchFoodPresenter: SearchFoodPresenter?
     private var errorMessage: String = ""
     private var loadingState: Bool = false
@@ -23,10 +22,15 @@ class SearchFoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchController = UISearchController(searchResultsController: nil)
+        
         cvSearchFood.dataSource = self
         cvSearchFood.delegate = self
         
         navigationItem.title = "Search"
+        searchController?.searchBar.delegate = self
+        searchController?.searchResultsUpdater = self
+        searchController?.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         
         registerCVSearchFood()
@@ -66,11 +70,48 @@ class SearchFoodViewController: UIViewController {
             print(result)
         }).store(in: &cancellables)
     }
+    
+    private func searchRecipe(name: String){
+        searchFoodPresenter?.searchFood(recipeName: name).receive(on: RunLoop.main).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished :
+                self.loadingState = true
+            case .failure(_) :
+                self.errorMessage = "Error"
+            }
+        }, receiveValue: { result in
+            self.listSearchMenu = result
+            self.cvSearchFood.reloadData()
+            print(result)
+        }).store(in: &cancellables)
+    }
 }
 
 
 
-extension SearchFoodViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SearchFoodViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating, UISearchBarDelegate{
+    func updateSearchResults(for searchController: UISearchController) {
+     
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let textResult = searchBar.text else {
+            return
+        }
+        /*
+        listSearchMenu = listSearchMenu.filter {
+            ($0.title?.lowercased().contains(textResult.lowercased()))!
+        }
+        */
+        searchRecipe(name: textResult)
+        cvSearchFood.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        getInitFood()
+        cvSearchFood.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listSearchMenu.count
     }
@@ -113,7 +154,6 @@ extension SearchFoodViewController: UICollectionViewDelegate, UICollectionViewDa
         if segue.identifier == "unwindtoaddfood" {
             let row = (sender as! NSIndexPath).row
             let destUnwind = segue.destination as! AddFoodViewController
-            destUnwind.resultBack = "DARI SEARCH OYY"
             destUnwind.resultFoodPicker = listSearchMenu[row]
         }
     }

@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class CalenderHelper {
-    
     //MARK:: Example 22 July 2021
     let calender = Calendar.current
     
@@ -91,5 +90,11 @@ class CalenderHelper {
         return current
     }
     
-    
+    //MARK:: Formatter
+    func dateFormatter(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        let someDateTime = formatter.string(from: date)
+        return someDateTime
+    }
 }

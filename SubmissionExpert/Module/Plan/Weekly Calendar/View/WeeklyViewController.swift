@@ -24,12 +24,27 @@ class WeeklyViewController: UIViewController {
         
         cvDate.dataSource = self
         cvDate.delegate = self
-        
-        // Do any additional setup after loading the view.
         self.navigationItem.title = "Plan Your Diet"
         
         setCellsView()
         setWeekView()
+    }
+    
+    @IBAction func unwindSegueFromAddFoodVC(_ sender: UIStoryboardSegue) {
+        //backtoweekly
+    }
+    
+    @IBAction func btnAddPlan(_ sender: Any) {
+        performSegue(withIdentifier: "toaddfoodvc", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toaddfoodvc" {
+            guard let dest = segue.destination as? AddFoodViewController else {
+                return
+            }
+            dest.date = selectedDate
+        }
     }
     
     @IBAction func btnNextMonth(_ sender: Any) {
@@ -64,14 +79,10 @@ class WeeklyViewController: UIViewController {
             totalSqures.append(current)
             current = CalenderHelper().addDays(date: current, days: 1)
         }
-        
-        
         lblMonth.text = CalenderHelper().monthString(date: selectedDate) + " " + CalenderHelper().yearStrig(date: selectedDate)
         
         cvDate.reloadData()
     }
-    
-    
 }
 
 extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
