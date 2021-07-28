@@ -96,8 +96,6 @@ class AddFoodViewController: UIViewController {
     @IBAction func unwindSegueFromSearchFood(_ sender: UIStoryboardSegue) {
         if resultFoodPicker != nil {
             listResultFoodPicked.append(resultFoodPicker!)
-            self.dateLabel.text = resultFoodPicker?.title
-            print(listResultFoodPicked.count)
             cvResultFood.reloadData()
         }
     }

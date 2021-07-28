@@ -7,6 +7,11 @@
 
 import UIKit
 
+struct TestData {
+    var title: String?
+    var date: Date?
+}
+
 class WeeklyViewController: UIViewController {
     
     @IBOutlet weak var cvDate: UICollectionView!
@@ -17,8 +22,14 @@ class WeeklyViewController: UIViewController {
     //MARK:: It will hold the calender day for example 22 Jul, result 22
     var totalSqures = [Date]()
     
-    var sectionFood: [String] = []
+    var sectionFood: [String] = ["Morning", "Afternoon", "Evening"]
+    var testDataFood:[[String]] = [["Salad", "Nanas", "Nangka 3"], ["Salad 1", "Nanas 1", "4", "5"], ["Salad 2"]]
+
+    var testDataFood2:[[TestData]] = [[TestData(title: "Teddy", date: CalenderHelper().dateStringToDate(date: "2021/07/26"))], [TestData(title: "Nuchika", date: CalenderHelper().dateStringToDate(date: "2021/07/26"))],
+        [TestData(title: "James", date: CalenderHelper().dateStringToDate(date: "2021/07/26"))]
+    ]
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +39,21 @@ class WeeklyViewController: UIViewController {
         
         setCellsView()
         setWeekView()
+        
+        //MARK:: Register the Table View Cell
+        registerTableViewCell()
+        
+    }
+    
+    private func registerTableViewCell() {
+        tvFoodList.register(UINib(nibName: "FoodPlannerTableViewCell", bundle: nil), forCellReuseIdentifier: "foodplannercell")
+        tvFoodList.delegate = self
+        tvFoodList.dataSource = self
+    }
+    
+    //MARK:: For Display the data that the content is same Calendar
+    private func manageData(){
+        
     }
     
     @IBAction func unwindSegueFromAddFoodVC(_ sender: UIStoryboardSegue) {
@@ -84,7 +110,50 @@ class WeeklyViewController: UIViewController {
         cvDate.reloadData()
     }
 }
+//MARK:: Manage the Table View Cell
+extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionFood.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return sectionFood[section]
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            let sectionMorning = testDataFood[section].count
+            print("Pagi ", sectionMorning)
+            return sectionMorning
+        case 1 :
+            let sectionAfternoon = testDataFood[section].count
+            print("Siang ", sectionAfternoon)
+            return sectionAfternoon
+        case 2 :
+            let sectionNight = testDataFood[section].count
+            print("Malem ", sectionNight)
+            return sectionNight
+        default :
+            let sectionMorning = testDataFood[section].count
+            print(sectionMorning)
+            return sectionMorning
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
+        print("TEST BRO", selectedDate)
+        return cell
+    }
+    
+    
+}
 
+//MARK::Manage the Calendar
 extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return totalSqures.count
@@ -115,6 +184,7 @@ extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedDate = totalSqures[indexPath.item]
+        print(CalenderHelper().dateFormatter(date: selectedDate ?? Date()))
         collectionView.reloadData()
     }
     

@@ -97,4 +97,14 @@ class CalenderHelper {
         let someDateTime = formatter.string(from: date)
         return someDateTime
     }
+    
+    func dateStringToDate(date: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.timeZone = TimeZone(identifier: "Asia/Tehran")
+        guard let someDateTime = formatter.date(from: date) else {
+            return Date()
+        }
+        return someDateTime
+    }
 }
