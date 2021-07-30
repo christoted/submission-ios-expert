@@ -24,12 +24,16 @@ class WeeklyViewController: UIViewController {
     
     var sectionFood: [String] = ["Morning", "Afternoon", "Evening"]
     var testDataFood:[[String]] = [["Salad", "Nanas", "Nangka 3"], ["Salad 1", "Nanas 1", "4", "5"], ["Salad 2"]]
-
-    var testDataFood2:[[TestData]] = [[TestData(title: "Teddy", date: CalenderHelper().dateStringToDate(date: "2021/07/26"))], [TestData(title: "Nuchika", date: CalenderHelper().dateStringToDate(date: "2021/07/26"))],
-        [TestData(title: "James", date: CalenderHelper().dateStringToDate(date: "2021/07/26"))]
+    
+    var testDataFood2:[[TestData]] = [
+        [TestData(title: "Teddy", date: CalenderHelper().dateStringToDate(date: "2021/07/25")), TestData(title: "Teddy 2", date: CalenderHelper().dateStringToDate(date: "2021/07/29")),
+         TestData(title: "Teddy 3", date: CalenderHelper().dateStringToDate(date: "2021/07/30")),
+        ],
+        [TestData(title: "Nuchika", date: CalenderHelper().dateStringToDate(date: "2021/07/26")), TestData(title: "Nuchika 2", date: CalenderHelper().dateStringToDate(date: "2021/07/25"))],
+        [TestData(title: "James", date: CalenderHelper().dateStringToDate(date: "2021/07/28")), TestData(title: "James", date: CalenderHelper().dateStringToDate(date: "2021/07/30"))]
     ]
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +47,7 @@ class WeeklyViewController: UIViewController {
         //MARK:: Register the Table View Cell
         registerTableViewCell()
         
+        print("calendar ", CalenderHelper().dateFormatter(date: testDataFood2[0][0].date!))
     }
     
     private func registerTableViewCell() {
@@ -122,19 +127,35 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
         return sectionFood[section]
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            let sectionMorning = testDataFood[section].count
-            print("Pagi ", sectionMorning)
-            return sectionMorning
+            var count = 0
+            for (_,element) in testDataFood2.enumerated() {
+                for (indexData, _) in element.enumerated() {
+                    let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[0][indexData].date ?? Date())
+                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                    
+                    print("date in section", dateInMorningSection)
+                    print("selected Date ", selectedDate)
+                    
+                    if (selectedDateString == dateInMorningSection) {
+                        count = count + 1
+                    }
+                }
+                
+            }
+            return count
         case 1 :
-            let sectionAfternoon = testDataFood[section].count
+            let sectionAfternoon = testDataFood2[section].count
             print("Siang ", sectionAfternoon)
             return sectionAfternoon
         case 2 :
-            let sectionNight = testDataFood[section].count
+            let sectionNight = testDataFood2[section].count
             print("Malem ", sectionNight)
             return sectionNight
         default :
@@ -145,9 +166,45 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
-        print("TEST BRO", selectedDate)
-        return cell
+        
+        switch indexPath.section {
+        case 0:
+            let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
+            
+            for (index,section) in testDataFood2.enumerated() {
+                for (indexData, elementData) in section.enumerated() {
+                    let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[0][indexData].date ?? Date())
+                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                    if (selectedDateString == dateInMorningSection) {
+                        cell.foodLabel.text = testDataFood2[0][indexData].title
+                        cell.foodCalLabel.text = dateInMorningSection
+                    }
+                }
+            }
+            return cell
+        case 1 :
+            let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
+            let calendarString = CalenderHelper().dateFormatter(date: testDataFood2[indexPath.section][indexPath.row].date!)
+            
+            cell.foodCalLabel.text = calendarString
+            return cell
+            
+        case 2 :
+            let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
+            let calendarString = CalenderHelper().dateFormatter(date: testDataFood2[indexPath.section][indexPath.row].date!)
+            
+            cell.foodCalLabel.text = calendarString
+            return cell
+        default:
+            let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
+            let calendarString = CalenderHelper().dateFormatter(date: testDataFood2[indexPath.section][indexPath.row].date!)
+            
+            cell.foodCalLabel.text = calendarString
+            return cell
+            
+        }
+        
+        
     }
     
     
@@ -184,8 +241,11 @@ extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedDate = totalSqures[indexPath.item]
-        print(CalenderHelper().dateFormatter(date: selectedDate ?? Date()))
+        let dateString = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
+        print("TEST",dateString)
+        
         collectionView.reloadData()
+        tvFoodList.reloadData()
     }
     
     
