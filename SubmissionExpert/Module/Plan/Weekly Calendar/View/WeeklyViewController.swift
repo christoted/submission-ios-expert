@@ -28,9 +28,14 @@ class WeeklyViewController: UIViewController {
     var testDataFood2:[[TestData]] = [
         [TestData(title: "Teddy", date: CalenderHelper().dateStringToDate(date: "2021/07/25")), TestData(title: "Teddy 2", date: CalenderHelper().dateStringToDate(date: "2021/07/29")),
          TestData(title: "Teddy 3", date: CalenderHelper().dateStringToDate(date: "2021/07/30")),
+         TestData(title: "Teddy 4", date: CalenderHelper().dateStringToDate(date: "2021/07/30")),
+         TestData(title: "Teddy 5", date: CalenderHelper().dateStringToDate(date: "2021/07/30")),
         ],
-        [TestData(title: "Nuchika", date: CalenderHelper().dateStringToDate(date: "2021/07/26")), TestData(title: "Nuchika 2", date: CalenderHelper().dateStringToDate(date: "2021/07/25"))],
-        [TestData(title: "James", date: CalenderHelper().dateStringToDate(date: "2021/07/28")), TestData(title: "James", date: CalenderHelper().dateStringToDate(date: "2021/07/30"))]
+        [TestData(title: "Nuchika", date: CalenderHelper().dateStringToDate(date: "2021/07/26")), TestData(title: "Nuchika 2", date: CalenderHelper().dateStringToDate(date: "2021/07/25")),
+         TestData(title: "Nuchika 3", date: CalenderHelper().dateStringToDate(date: "2021/07/30")),
+         TestData(title: "Nuchika 4", date: CalenderHelper().dateStringToDate(date: "2021/07/30"))
+        ],
+        [TestData(title: "James", date: CalenderHelper().dateStringToDate(date: "2021/07/28")), TestData(title: "James 3", date: CalenderHelper().dateStringToDate(date: "2021/07/30"))]
     ]
     
     
@@ -54,6 +59,7 @@ class WeeklyViewController: UIViewController {
         tvFoodList.register(UINib(nibName: "FoodPlannerTableViewCell", bundle: nil), forCellReuseIdentifier: "foodplannercell")
         tvFoodList.delegate = self
         tvFoodList.dataSource = self
+        tvFoodList.showsVerticalScrollIndicator = false
     }
     
     //MARK:: For Display the data that the content is same Calendar
@@ -122,6 +128,19 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
         return sectionFood.count
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let returnedView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 100)) //set these values as necessary
+        returnedView.backgroundColor = .white
+        
+        let label = UILabel(frame: CGRect(x: 2, y: 0, width: 200, height: 30))
+        
+        label.text = self.sectionFood[section]
+        label.font = label.font.withSize(22)
+        returnedView.addSubview(label)
+        
+        return returnedView
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         return sectionFood[section]
@@ -135,29 +154,40 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0:
             var count = 0
-            for (_,element) in testDataFood2.enumerated() {
-                for (indexData, _) in element.enumerated() {
-                    let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[0][indexData].date ?? Date())
-                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                    
-                    print("date in section", dateInMorningSection)
-                    print("selected Date ", selectedDate)
-                    
-                    if (selectedDateString == dateInMorningSection) {
-                        count = count + 1
-                    }
-                }
+            for (indexData, element) in testDataFood2[0].enumerated() {
+                let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[0][indexData].date ?? Date())
+                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
                 
+                if (selectedDateString == dateInMorningSection) {
+                    count = count + 1
+                }
             }
             return count
         case 1 :
-            let sectionAfternoon = testDataFood2[section].count
-            print("Siang ", sectionAfternoon)
-            return sectionAfternoon
+            var count = 0
+            for (indexData, element) in testDataFood2[1].enumerated() {
+                let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[1][indexData].date ?? Date())
+                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                
+                if (selectedDateString == dateInMorningSection) {
+                    count = count + 1
+                }
+            }
+            
+            
+            return count
         case 2 :
-            let sectionNight = testDataFood2[section].count
-            print("Malem ", sectionNight)
-            return sectionNight
+            var count = 0
+            for (indexData, element) in testDataFood2[2].enumerated() {
+                let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[2][indexData].date ?? Date())
+                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                
+                if (selectedDateString == dateInMorningSection) {
+                    count = count + 1
+                }
+            }
+            
+            return count
         default :
             let sectionMorning = testDataFood[section].count
             print(sectionMorning)
@@ -166,34 +196,57 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    
         switch indexPath.section {
         case 0:
+                    
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
             
-            for (index,section) in testDataFood2.enumerated() {
-                for (indexData, elementData) in section.enumerated() {
-                    let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[0][indexData].date ?? Date())
-                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                    if (selectedDateString == dateInMorningSection) {
-                        cell.foodLabel.text = testDataFood2[0][indexData].title
-                        cell.foodCalLabel.text = dateInMorningSection
-                    }
+            for (indexData, elementData) in testDataFood2[0].enumerated() {
+                let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
+                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                
+                if (selectedDateString == dateInMorningSection) {
+                    print("INDEX DATA \(indexData)")
+                    let indexMix = abs(indexPath.row - indexData)
+                    cell.foodLabel.text = testDataFood2[0][indexMix].title
+                    cell.foodCalLabel.text = dateInMorningSection
                 }
             }
+           
+         
+            
             return cell
         case 1 :
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
-            let calendarString = CalenderHelper().dateFormatter(date: testDataFood2[indexPath.section][indexPath.row].date!)
+            for (indexData, elementData) in testDataFood2[1].enumerated() {
+                let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
+                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                
+                if (selectedDateString == dateInMorningSection) {
+                    print("INDEX DATA \(indexData)")
+                    let indexMix = abs(indexPath.row - indexData)
+                    cell.foodLabel.text = testDataFood2[1][indexMix].title
+                    cell.foodCalLabel.text = dateInMorningSection
+                }
+            }
             
-            cell.foodCalLabel.text = calendarString
             return cell
             
         case 2 :
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
-            let calendarString = CalenderHelper().dateFormatter(date: testDataFood2[indexPath.section][indexPath.row].date!)
+            for (indexData, elementData) in testDataFood2[2].enumerated() {
+                let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
+                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                
+                if (selectedDateString == dateInMorningSection) {
+                    print("INDEX DATA \(indexData)")
+                    let indexMix = abs(indexPath.row - indexData)
+                    cell.foodLabel.text = testDataFood2[2][indexMix].title
+                    cell.foodCalLabel.text = dateInMorningSection
+                }
+            }
             
-            cell.foodCalLabel.text = calendarString
             return cell
         default:
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
