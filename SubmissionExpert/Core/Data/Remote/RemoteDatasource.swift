@@ -24,6 +24,8 @@ final class RemoteDatasource: NSObject{
 }
 
 extension RemoteDatasource: RemoteDatasourceProtocol {
+    
+    
     func searchMenu(recipeName: String) -> AnyPublisher<[RandomMenuResponse], Error> {
         //TODO:: Search Menu
         return Future<[RandomMenuResponse], Error> { completion in

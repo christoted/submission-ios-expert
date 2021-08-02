@@ -38,6 +38,11 @@ class WeeklyViewController: UIViewController {
         [TestData(title: "James", date: CalenderHelper().dateStringToDate(date: "2021/07/28")), TestData(title: "James 3", date: CalenderHelper().dateStringToDate(date: "2021/07/30"))]
     ]
     
+    var defaultData: [[TestData]] = [
+        [TestData(title: "Test Data", date: Date())]
+    ]
+    
+    var isDataEmpty: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,20 +165,31 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                 
                 if (selectedDateString == dateInMorningSection) {
                     count = count + 1
+                    isDataEmpty = false
                 }
             }
+            
+            if ( count == 0) {
+                count = 1
+                isDataEmpty = true
+            }
+            
             return count
         case 1 :
             var count = 0
             for (indexData, element) in testDataFood2[1].enumerated() {
                 let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[1][indexData].date ?? Date())
                 let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                
                 if (selectedDateString == dateInMorningSection) {
                     count = count + 1
+                    isDataEmpty = false
                 }
             }
             
+            if ( count == 0) {
+                count = 1
+                isDataEmpty = true
+            }
             
             return count
         case 2 :
@@ -184,7 +200,13 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                 
                 if (selectedDateString == dateInMorningSection) {
                     count = count + 1
+                    isDataEmpty = false
                 }
+            }
+            
+            if count == 0 {
+                count = 1
+                isDataEmpty = true
             }
             
             return count
@@ -202,51 +224,63 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                     
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
             
-            for (indexData, elementData) in testDataFood2[0].enumerated() {
-                let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
-                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                
-                if (selectedDateString == dateInMorningSection) {
-                    print("INDEX DATA \(indexData)")
-                    let indexMix = abs(indexPath.row - indexData)
-                    cell.foodLabel.text = testDataFood2[0][indexMix].title
-                    cell.foodCalLabel.text = dateInMorningSection
+            if (isDataEmpty) {
+                cell.foodLabel.text = "No Data"
+                cell.foodCalLabel.text = "-"
+            } else {
+                for (indexData, elementData) in testDataFood2[0].enumerated() {
+                    let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
+                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                    
+                    if (selectedDateString == dateInMorningSection) {
+                        print("INDEX DATA \(indexData)")
+                        let indexMix = abs(indexPath.row - indexData)
+                        cell.foodLabel.text = testDataFood2[0][indexMix].title
+                        cell.foodCalLabel.text = dateInMorningSection
+                    }
                 }
             }
-           
-         
             
             return cell
         case 1 :
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
-            for (indexData, elementData) in testDataFood2[1].enumerated() {
-                let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
-                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                
-                if (selectedDateString == dateInMorningSection) {
-                    print("INDEX DATA \(indexData)")
-                    let indexMix = abs(indexPath.row - indexData)
-                    cell.foodLabel.text = testDataFood2[1][indexMix].title
-                    cell.foodCalLabel.text = dateInMorningSection
+            if (isDataEmpty) {
+                cell.foodLabel.text = "No Data"
+                cell.foodCalLabel.text = "-"
+            } else {
+                for (indexData, elementData) in testDataFood2[1].enumerated() {
+                    let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
+                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                    
+                    if (selectedDateString == dateInMorningSection) {
+                        print("INDEX DATA \(indexData)")
+                        let indexMix = abs(indexPath.row - indexData)
+                        cell.foodLabel.text = testDataFood2[1][indexMix].title
+                        cell.foodCalLabel.text = dateInMorningSection
+                    }
                 }
             }
-            
+        
             return cell
             
         case 2 :
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
-            for (indexData, elementData) in testDataFood2[2].enumerated() {
-                let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
-                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                
-                if (selectedDateString == dateInMorningSection) {
-                    print("INDEX DATA \(indexData)")
-                    let indexMix = abs(indexPath.row - indexData)
-                    cell.foodLabel.text = testDataFood2[2][indexMix].title
-                    cell.foodCalLabel.text = dateInMorningSection
+            if isDataEmpty {
+                cell.foodLabel.text = "No Data"
+                cell.foodCalLabel.text = "-"
+            } else {
+                for (indexData, elementData) in testDataFood2[2].enumerated() {
+                    let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
+                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+                    
+                    if (selectedDateString == dateInMorningSection) {
+                        print("INDEX DATA \(indexData)")
+                        let indexMix = abs(indexPath.row - indexData)
+                        cell.foodLabel.text = testDataFood2[2][indexMix].title
+                        cell.foodCalLabel.text = dateInMorningSection
+                    }
                 }
             }
-            
             return cell
         default:
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
@@ -256,11 +290,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
             return cell
             
         }
-        
-        
     }
-    
-    
 }
 
 //MARK::Manage the Calendar
