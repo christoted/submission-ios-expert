@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Combine
 
 class AddFoodPresenter {
     
@@ -19,5 +19,9 @@ class AddFoodPresenter {
     
     func addToPlanDB(planEntity: PlanModel) {
         useCase?.insertPlan(planEntity: planEntity)
-    }    
+    }
+    
+    func getPlanDate(date: Date)->AnyPublisher<[PlanModel], Error> {
+        (useCase?.getPlanByDate(date: date))!
+    }
 }

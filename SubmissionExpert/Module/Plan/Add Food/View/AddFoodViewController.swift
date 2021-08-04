@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class AddFoodViewController: UIViewController {
     
@@ -13,6 +14,10 @@ class AddFoodViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cvResultFood: UICollectionView!
     @IBOutlet weak var categoryPicker: UIPickerView!
+    
+    private var errorMessage: String = ""
+    private var loadingState: Bool = false
+    private var cancellables: Set<AnyCancellable> = []
     
     var addFoodPresenter: AddFoodPresenter?
     
@@ -33,6 +38,21 @@ class AddFoodViewController: UIViewController {
         initPickerData()
         
         print("Add Food Presenter", addFoodPresenter)
+        
+        testGetData()
+    }
+    
+    private func testGetData() {
+        addFoodPresenter?.getPlanDate(date: Date()).receive(on: RunLoop.main).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                self.loadingState = false
+            case .failure(_):
+                self.errorMessage = String(describing: completion)
+            }
+        }, receiveValue: { (result) in
+            print("result", result)
+        })
     }
     
     private func addFoodToDB(){
