@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 
-protocol RecipeUseCase {
+protocol HomeUseCase {
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error >
     
   //  func getRecipeDetail(recipeId: Int) -> AnyPublisher<MenuDetailResponse, Error>
@@ -20,25 +20,12 @@ protocol RecipeUseCase {
     
     func getFavouriteMenu()->AnyPublisher<[MenuModel], Error>
     
-    func getSearchMenuByName(recipeName: String) -> AnyPublisher<[MenuModel],Error>
     
-    //MARK:: Plan
-    func insertPlan(planEntity: PlanModel)->AnyPublisher<Bool, Error>
-    func getPlanByDate(date: Date)->AnyPublisher<[PlanModel], Error>
 }
 
 
-class RecipeInteractor : RecipeUseCase {
-    
-    func insertPlan(planEntity: PlanModel) -> AnyPublisher<Bool, Error> {
-        return repository.insertPlan(from: planEntity)
-    }
-    
-    func getPlanByDate(date: Date) -> AnyPublisher<[PlanModel], Error> {
-        return repository.getPlan(byDate: date)
-    }
-    
-    
+class HomeInteractor : HomeUseCase {
+ 
     func getFavouriteMenu() -> AnyPublisher<[MenuModel], Error> {
         return repository.getBookmarkedMenu()
     }
@@ -66,12 +53,6 @@ class RecipeInteractor : RecipeUseCase {
     func getRecipeDetailOffline(recipeId: Int) -> AnyPublisher<MenuModel, Error> {
         return repository.getRecipeDetailOffline(recipeId: recipeId)
     }
-    
-    //Search
-    func getSearchMenuByName(recipeName: String) -> AnyPublisher<[MenuModel], Error> {
-        return repository.getSearchMenu(recipeName: recipeName)
-    }
-    
     
     
 }

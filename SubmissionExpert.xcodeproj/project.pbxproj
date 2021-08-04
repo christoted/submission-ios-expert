@@ -19,6 +19,9 @@
 		5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890892653D43B00783413 /* SceneDelegate.swift */; };
 		5218908C2653D43B00783413 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218908B2653D43B00783413 /* HomeViewController.swift */; };
 		521890AB2653D99E00783413 /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890AA2653D99E00783413 /* ApiCall.swift */; };
+		523546B526B83A99004F537E /* PlanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523546B426B83A99004F537E /* PlanEntity.swift */; };
+		523546B826B83BD3004F537E /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523546B726B83BD3004F537E /* PlanModel.swift */; };
+		523546BA26B83C2C004F537E /* PlanMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523546B926B83C2C004F537E /* PlanMapper.swift */; };
 		523F00802660FBF300221A20 /* MenuDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F007F2660FBF300221A20 /* MenuDetailEntity.swift */; };
 		523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F008226610B2200221A20 /* MenuDetailModel.swift */; };
 		52561BA0265BAFF6002148E3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561B9F265BAFF6002148E3 /* TabBarViewController.swift */; };
@@ -65,6 +68,8 @@
 		52B626A726AC69240006B7D0 /* SearchFoodPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B626A626AC69240006B7D0 /* SearchFoodPresenter.swift */; };
 		52B626A926AC6A2D0006B7D0 /* SearchFoodRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B626A826AC6A2D0006B7D0 /* SearchFoodRouter.swift */; };
 		52B626AE26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B626AD26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift */; };
+		52D051B226BA709400B47045 /* WeeklyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D051B126BA709400B47045 /* WeeklyRouter.swift */; };
+		52D051B426BA709E00B47045 /* WeeeklyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D051B326BA709E00B47045 /* WeeeklyPresenter.swift */; };
 		52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */; };
 		52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F826727E8800B3E7EE /* FavouriteNavigationController.swift */; };
 		52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEA0E826675E9A0062770C /* MenuDetailRes.swift */; };
@@ -98,6 +103,9 @@
 		521890932653D43C00783413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		521890952653D43C00783413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		521890AA2653D99E00783413 /* ApiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
+		523546B426B83A99004F537E /* PlanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEntity.swift; sourceTree = "<group>"; };
+		523546B726B83BD3004F537E /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
+		523546B926B83C2C004F537E /* PlanMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanMapper.swift; sourceTree = "<group>"; };
 		523F007F2660FBF300221A20 /* MenuDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailEntity.swift; sourceTree = "<group>"; };
 		523F008226610B2200221A20 /* MenuDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailModel.swift; sourceTree = "<group>"; };
 		52561B9F265BAFF6002148E3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +146,8 @@
 		52B626A626AC69240006B7D0 /* SearchFoodPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodPresenter.swift; sourceTree = "<group>"; };
 		52B626A826AC6A2D0006B7D0 /* SearchFoodRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodRouter.swift; sourceTree = "<group>"; };
 		52B626AD26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarRouter.swift; sourceTree = "<group>"; };
+		52D051B126BA709400B47045 /* WeeklyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRouter.swift; sourceTree = "<group>"; };
+		52D051B326BA709E00B47045 /* WeeeklyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeeeklyPresenter.swift; path = "SubmissionExpert/Module/Plan/Weekly Calendar/Router/WeeeklyPresenter.swift"; sourceTree = SOURCE_ROOT; };
 		52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePresenter.swift; sourceTree = "<group>"; };
 		52EE72F826727E8800B3E7EE /* FavouriteNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteNavigationController.swift; sourceTree = "<group>"; };
 		52EEA0E826675E9A0062770C /* MenuDetailRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailRes.swift; sourceTree = "<group>"; };
@@ -356,6 +366,7 @@
 		521890A42653D8ED00783413 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				523546B626B83BC0004F537E /* Plan */,
 				52A71AD92658255D00C6E2B6 /* MenuModel.swift */,
 				523F008226610B2200221A20 /* MenuDetailModel.swift */,
 			);
@@ -394,8 +405,25 @@
 			children = (
 				5200DE632658BB2000F8C830 /* MenuMapper.swift */,
 				52EEA0ED266793E70062770C /* MenuDetailMapper.swift */,
+				523546B926B83C2C004F537E /* PlanMapper.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		523546B326B83A83004F537E /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				523546B426B83A99004F537E /* PlanEntity.swift */,
+			);
+			path = Plan;
+			sourceTree = "<group>";
+		};
+		523546B626B83BC0004F537E /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				523546B726B83BD3004F537E /* PlanModel.swift */,
+			);
+			path = Plan;
 			sourceTree = "<group>";
 		};
 		52561B9D265B9F12002148E3 /* Tab Bar */ = {
@@ -574,6 +602,7 @@
 		52931F3D26AB22AE007BD32B /* Weekly Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				52D051B026BA701B00B47045 /* Presenter */,
 				52B626AB26AC6A700006B7D0 /* Router */,
 				52B626AA26AC6A6A0006B7D0 /* View */,
 			);
@@ -583,6 +612,7 @@
 		52A71AD226581FE400C6E2B6 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				523546B326B83A83004F537E /* Plan */,
 				52A71AD62658201500C6E2B6 /* MenuEntity.swift */,
 				523F007F2660FBF300221A20 /* MenuDetailEntity.swift */,
 			);
@@ -714,6 +744,7 @@
 		52B626AB26AC6A700006B7D0 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				52D051B126BA709400B47045 /* WeeklyRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -724,6 +755,14 @@
 				52B626AD26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		52D051B026BA701B00B47045 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				52D051B326BA709E00B47045 /* WeeeklyPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		52FA7FAA265CF090007F8836 /* Detail Recipe */ = {
@@ -883,6 +922,7 @@
 				528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */,
 				52B626AE26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift in Sources */,
 				52A9C20E267B5CED003C6872 /* HomeRouter.swift in Sources */,
+				523546BA26B83C2C004F537E /* PlanMapper.swift in Sources */,
 				52B626A126AC570B0006B7D0 /* SearchFoodViewController.swift in Sources */,
 				52561BD1265BC734002148E3 /* HomeNavigationViewController.swift in Sources */,
 				5282BDF126B5832900D95ED8 /* AddRecipeResponse.swift in Sources */,
@@ -903,6 +943,7 @@
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
 				52AC834B26AD833A006D719D /* AddFoodPresenter.swift in Sources */,
 				52FA7FB6265D0D0F007F8836 /* IngridientTableViewCell.swift in Sources */,
+				523546B526B83A99004F537E /* PlanEntity.swift in Sources */,
 				52561BEA265BCAC2002148E3 /* DetailRecipeViewController.swift in Sources */,
 				521890AB2653D99E00783413 /* ApiCall.swift in Sources */,
 				526353D02655264300B615D1 /* FavouriteViewController.swift in Sources */,
@@ -911,9 +952,11 @@
 				52FFDE6C269AE792000A76C9 /* SearchViewController.swift in Sources */,
 				52188B5D26A84CF6006278B2 /* PlanNavigationController.swift in Sources */,
 				52561BCE265BC228002148E3 /* DetailPresenter.swift in Sources */,
+				523546B826B83BD3004F537E /* PlanModel.swift in Sources */,
 				52B626A926AC6A2D0006B7D0 /* SearchFoodRouter.swift in Sources */,
 				52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */,
 				52FFDE78269AF277000A76C9 /* SearchViewCell.swift in Sources */,
+				52D051B226BA709400B47045 /* WeeklyRouter.swift in Sources */,
 				5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */,
 				5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */,
 				52FA7FB0265CF3B7007F8836 /* IngridientResponse.swift in Sources */,
@@ -923,6 +966,7 @@
 				5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */,
 				52EEA0EE266793E70062770C /* MenuDetailMapper.swift in Sources */,
 				5200DE672658D5DC00F8C830 /* RecipeInteractor.swift in Sources */,
+				52D051B426BA709E00B47045 /* WeeeklyPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

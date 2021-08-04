@@ -11,8 +11,13 @@ import Foundation
 class AddFoodPresenter {
     
     var useCase: RecipeUseCase?
-    var addFoodRouter: AddFoodRouter?
+    var weeklyRouter: WeeklyRouter?
+    var viewController: AddFoodViewController?
     init(useCase: RecipeUseCase) {
         self.useCase = useCase
     }
+    
+    func addToPlanDB(planEntity: PlanModel) {
+        useCase?.insertPlan(planEntity: planEntity)
+    }    
 }

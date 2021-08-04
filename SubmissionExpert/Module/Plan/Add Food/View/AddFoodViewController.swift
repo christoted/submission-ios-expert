@@ -31,6 +31,17 @@ class AddFoodViewController: UIViewController {
         initFoodPresenter()
         setUpCollectionView()
         initPickerData()
+        
+        print("Add Food Presenter", addFoodPresenter)
+    }
+    
+    private func addFoodToDB(){
+        if listResultFoodPicked.count == 0 {
+            addAlert(title: "Choose One", message: "You haven't choose any food, Please Choose")
+        } else {
+            let planModel = PlanModel(dayCategory: category, date: date, listMenuModel: listResultFoodPicked)
+            addFoodPresenter?.addToPlanDB(planEntity: planModel)
+        }
     }
     
     private func setLabelDate(){
@@ -76,6 +87,7 @@ class AddFoodViewController: UIViewController {
             addAlert(title: "Please Choose the Category", message: "If you don't choose the category it might make us confused :D")
         } else {
             performSegue(withIdentifier: "backtoweekly", sender: self)
+            addFoodToDB()
         }
     }
     
@@ -123,7 +135,6 @@ extension AddFoodViewController:UIPickerViewDelegate, UIPickerViewDataSource {
 //MARK:: For Collection View
 extension AddFoodViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("HITUNG", listResultFoodPicked.count)
         return listResultFoodPicked.count
     }
     

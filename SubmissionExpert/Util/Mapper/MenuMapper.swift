@@ -32,11 +32,7 @@ class MenuMapper {
             else {
                 return menuEntity
             }
-            
-           
-            
-            
-            
+                        
             menuEntity.id = menuId
             menuEntity.title = menuTitle
             menuEntity.image = menuImage

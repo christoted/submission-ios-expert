@@ -592,7 +592,7 @@
         <!--Add Food View Controller-->
         <scene sceneID="okf-LC-7am">
             <objects>
-                <viewController id="x0L-pd-3TW" customClass="AddFoodViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addfoodvc" id="x0L-pd-3TW" customClass="AddFoodViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fVF-pN-syH">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

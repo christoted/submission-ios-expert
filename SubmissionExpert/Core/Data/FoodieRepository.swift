@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import RealmSwift
 
 protocol FoodieRepositoryProtocol {
     func getRandomMenu() -> AnyPublisher<[MenuModel], Error>
@@ -23,7 +24,9 @@ protocol FoodieRepositoryProtocol {
     func getSearchMenu(recipeName: String)->AnyPublisher<[MenuModel], Error>
     
     //MARK:: Plan
+    func insertPlan(from planModel: PlanModel) -> AnyPublisher<Bool, Error>
     
+    func getPlan(byDate date: Date) -> AnyPublisher<[PlanModel], Error>
 }
 
 
@@ -41,10 +44,21 @@ final class FoodieRepository: NSObject {
     static let instance: foodInstance = { remoteDataSource, localeDataSource in
         return FoodieRepository(remoteDataSource: remoteDataSource, localeDataSource: localeDataSource)
     }
-    
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
+    
+    func insertPlan(from planModel: PlanModel) -> AnyPublisher<Bool, Error> {
+        //Need Plan Entity 
+        self.locale.insertPlan(from: PlanMapper.mapSinglePlanDomainToPlanEntity(planModel: planModel))
+    }
+    
+    func getPlan(byDate date: Date) -> AnyPublisher<[PlanModel], Error> {
+        self.locale.getPlan(byDate: date).map {
+            PlanMapper.mapPlanEntityToPlanDomains(planEntities: $0)
+        }.eraseToAnyPublisher()
+    }
+    
     func getSearchMenu(recipeName: String) -> AnyPublisher<[MenuModel], Error> {
         self.remote.searchMenu(recipeName: recipeName).map {
             MenuMapper.mapCategoryResponseToEntity(input: $0)

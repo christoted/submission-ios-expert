@@ -86,6 +86,7 @@ class WeeklyViewController: UIViewController {
                 return
             }
             dest.date = selectedDate
+            dest.addFoodPresenter = WeeklyRouter().navigateToAddFoodModule()
         }
     }
     

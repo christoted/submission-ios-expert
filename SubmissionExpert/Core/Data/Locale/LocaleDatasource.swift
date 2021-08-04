@@ -32,6 +32,11 @@ protocol LocalDatasourceProtocol {
     func insertSearchMenu(by recipeName: String, from menuEntities: [MenuEntity]) -> AnyPublisher<Bool, Error>
     
     func getSearchMenu(by recipeName: String) -> AnyPublisher<[MenuEntity], Error>
+    
+    //MARK:: Plan
+    func insertPlan(from planEntity: PlanEntity) -> AnyPublisher<Bool, Error>
+    
+    func getPlan(byDate date: Date)->AnyPublisher<[PlanEntity], Error>
 }
 
 class LocalDatasource: NSObject {
@@ -47,6 +52,37 @@ class LocalDatasource: NSObject {
 }
 
 extension LocalDatasource: LocalDatasourceProtocol {
+    //MARK:: Plan
+    func insertPlan(from planEntity: PlanEntity) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            if let realmDB = self.realm {
+                do {
+                    try realmDB.write {
+                        realmDB.add(planEntity, update: .all)
+                    }
+                    completion(.success(true))
+                } catch {
+                    completion(.failure(DatabaseError.requestFailed))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func getPlan(byDate date: Date) -> AnyPublisher<[PlanEntity], Error> {
+        return Future<[PlanEntity], Error> { completion in
+            if let realmDB = self.realm {
+                let planEntities: Results<PlanEntity> = {
+                    realmDB.objects(PlanEntity.self)
+                        .filter("date == \(date)")
+                }()
+                
+                completion(.success(planEntities.toArray(ofType: PlanEntity.self)))
+            } else {
+                completion(.failure(DatabaseError.invalidInstance))
+            }
+        }.eraseToAnyPublisher()
+    }
+    
     func insertSearchMenu(by recipeName: String, from menuEntities: [MenuEntity]) ->AnyPublisher<Bool, Error> {
         return Future<Bool, Error> { completion in
             if let realmDB = self.realm {
