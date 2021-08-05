@@ -28,6 +28,10 @@ class AddFoodViewController: UIViewController {
     var category: String = ""
     var date: Date?
     
+    var id: Int = 0
+    
+    var planId = "PlanId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,14 +40,14 @@ class AddFoodViewController: UIViewController {
         initFoodPresenter()
         setUpCollectionView()
         initPickerData()
-        
         print("Add Food Presenter", addFoodPresenter)
-        
         testGetData()
     }
     
+
+    
     private func testGetData() {
-        addFoodPresenter?.getPlanDate(date: Date()).receive(on: RunLoop.main).sink(receiveCompletion: { completion in
+        addFoodPresenter?.getPlanDate(date: dateLabel.text!).receive(on: RunLoop.main).sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 self.loadingState = false
@@ -52,15 +56,23 @@ class AddFoodViewController: UIViewController {
             }
         }, receiveValue: { (result) in
             print("result", result)
-        })
+        }).store(in: &cancellables)
     }
     
     private func addFoodToDB(){
         if listResultFoodPicked.count == 0 {
             addAlert(title: "Choose One", message: "You haven't choose any food, Please Choose")
         } else {
-            let planModel = PlanModel(dayCategory: category, date: date, listMenuModel: listResultFoodPicked)
+            let prefences = UserDefaults.standard
+            if ( prefences.object(forKey: planId) != nil ) {
+                id = prefences.integer(forKey: planId)
+            }
+           
+            let planModel = PlanModel(dayCategory: category, date: dateLabel.text!, listMenuModel: listResultFoodPicked, id: id)
             addFoodPresenter?.addToPlanDB(planEntity: planModel)
+            prefences.setValue(id+1, forKey: planId)
+     
+            print("id \(id)")
         }
     }
     

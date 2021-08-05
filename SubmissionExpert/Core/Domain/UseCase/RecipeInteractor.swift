@@ -24,7 +24,7 @@ protocol RecipeUseCase {
     
     //MARK:: Plan
     func insertPlan(planEntity: PlanModel)->AnyPublisher<Bool, Error>
-    func getPlanByDate(date: Date)->AnyPublisher<[PlanModel], Error>
+    func getPlanByDate(date: String)->AnyPublisher<[PlanModel], Error>
 }
 
 
@@ -34,7 +34,7 @@ class RecipeInteractor : RecipeUseCase {
         return repository.insertPlan(from: planEntity)
     }
     
-    func getPlanByDate(date: Date) -> AnyPublisher<[PlanModel], Error> {
+    func getPlanByDate(date: String) -> AnyPublisher<[PlanModel], Error> {
         return repository.getPlan(byDate: date)
     }
     

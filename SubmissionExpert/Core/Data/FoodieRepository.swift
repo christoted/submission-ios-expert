@@ -26,7 +26,7 @@ protocol FoodieRepositoryProtocol {
     //MARK:: Plan
     func insertPlan(from planModel: PlanModel) -> AnyPublisher<Bool, Error>
     
-    func getPlan(byDate date: Date) -> AnyPublisher<[PlanModel], Error>
+    func getPlan(byDate date: String) -> AnyPublisher<[PlanModel], Error>
 }
 
 
@@ -53,7 +53,7 @@ extension FoodieRepository: FoodieRepositoryProtocol {
         self.locale.insertPlan(from: PlanMapper.mapSinglePlanDomainToPlanEntity(planModel: planModel))
     }
     
-    func getPlan(byDate date: Date) -> AnyPublisher<[PlanModel], Error> {
+    func getPlan(byDate date: String) -> AnyPublisher<[PlanModel], Error> {
         self.locale.getPlan(byDate: date).map {
             PlanMapper.mapPlanEntityToPlanDomains(planEntities: $0)
         }.eraseToAnyPublisher()

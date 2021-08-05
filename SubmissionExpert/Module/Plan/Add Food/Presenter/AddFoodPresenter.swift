@@ -21,7 +21,7 @@ class AddFoodPresenter {
         useCase?.insertPlan(planEntity: planEntity)
     }
     
-    func getPlanDate(date: Date)->AnyPublisher<[PlanModel], Error> {
+    func getPlanDate(date: String)->AnyPublisher<[PlanModel], Error> {
         (useCase?.getPlanByDate(date: date))!
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 struct PlanModel {
     let dayCategory: String?
-    let date: Date?
+    let date: String?
     let listMenuModel: [MenuModel]?
+    let id: Int?
 }

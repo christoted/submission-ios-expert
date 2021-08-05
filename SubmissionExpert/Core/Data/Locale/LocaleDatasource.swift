@@ -36,7 +36,7 @@ protocol LocalDatasourceProtocol {
     //MARK:: Plan
     func insertPlan(from planEntity: PlanEntity) -> AnyPublisher<Bool, Error>
     
-    func getPlan(byDate date: Date)->AnyPublisher<[PlanEntity], Error>
+    func getPlan(byDate date: String)->AnyPublisher<[PlanEntity], Error>
 }
 
 class LocalDatasource: NSObject {
@@ -68,12 +68,12 @@ extension LocalDatasource: LocalDatasourceProtocol {
         }.eraseToAnyPublisher()
     }
     
-    func getPlan(byDate date: Date) -> AnyPublisher<[PlanEntity], Error> {
+    func getPlan(byDate date: String) -> AnyPublisher<[PlanEntity], Error> {
         return Future<[PlanEntity], Error> { completion in
             if let realmDB = self.realm {
                 let planEntities: Results<PlanEntity> = {
                     realmDB.objects(PlanEntity.self)
-                        .filter("date == \(date)")
+                        .filter("date == %@", date)
                 }()
                 
                 completion(.success(planEntities.toArray(ofType: PlanEntity.self)))
@@ -307,6 +307,4 @@ extension Results {
         
         return array
     }
-    
-    
 }

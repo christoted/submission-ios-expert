@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class PlanMapper {
     static func mapPlanEntityToPlanDomains(planEntities: [PlanEntity]) -> [PlanModel] {
@@ -15,7 +16,7 @@ class PlanMapper {
                     return MenuModel(id: menuEntity.id, title: menuEntity.title, image: menuEntity.image, imageType: menuEntity.imageType, nutrition: menuEntity.nutrition.map{ (nutrientEntity) in
                         return NutrientModel(title: nutrientEntity.title, amount: nutrientEntity.amount, unit: nutrientEntity.unit)
                     }, summary: menuEntity.summary, extendedIngridients: [], isBookmarked: menuEntity.isBookmarked)
-                })
+                }, id: planEntity.id)
         }
         
     }
@@ -26,25 +27,35 @@ class PlanMapper {
                 return MenuModel(id: menuEntity.id, title: menuEntity.title, image: menuEntity.image, imageType: menuEntity.imageType, nutrition: menuEntity.nutrition.map{ (nutrientEntity) in
                     return NutrientModel(title: nutrientEntity.title, amount: nutrientEntity.amount, unit: nutrientEntity.unit)
                 }, summary: menuEntity.summary, extendedIngridients: [], isBookmarked: menuEntity.isBookmarked)
-            })
+            }, id: planEntity.id)
     }
     
     static func mapSinglePlanDomainToPlanEntity(planModel: PlanModel) -> PlanEntity {
+        
+        let listMenuEntity = List<MenuEntity>()
+        let menuEntity = MenuEntity()
+        
+        planModel.listMenuModel?.map { menuModel in
+            menuEntity.id = menuModel.id!
+            menuEntity.image = menuModel.image!
+            menuEntity.title = menuModel.title!
+            menuEntity.isBookmarked = menuModel.isBookmarked!
+            menuEntity.imageType = menuModel.imageType!
+            menuEntity.summary = menuModel.summary!
+        }
+        
+        listMenuEntity.append(menuEntity)
+        
         let planEntity = PlanEntity()
         planEntity.date = planModel.date!
         planEntity.dayCategory = planModel.dayCategory!
-    
-        _ = Array(planEntity.listMenuEntity)
-        _ = planModel.listMenuModel?.map { menuModel in
-            let menuEntity = MenuEntity()
-            menuEntity.id = menuModel.id!
-            menuEntity.title = menuModel.title!
-            menuEntity.image = menuModel.image!
-            menuEntity.imageType = menuModel.imageType!
-        } as? [MenuEntity]
+        planEntity.id = planModel.id!
+        planEntity.listMenuEntity = listMenuEntity
+
         
         return planEntity
     }
+
     
 }
 
