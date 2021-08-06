@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 struct TestData {
     var title: String?
@@ -21,6 +22,12 @@ class WeeklyViewController: UIViewController {
     var selectedDate = Date()
     //MARK:: It will hold the calender day for example 22 Jul, result 22
     var totalSqures = [Date]()
+    
+    var weeklyPresenter: WeeklyPresenter?
+    
+    private var errorMessage: String = ""
+    private var loadingState: Bool = false
+    private var cancellables: Set<AnyCancellable> = []
     
     var sectionFood: [String] = ["Morning", "Afternoon", "Evening"]
     var testDataFood:[[String]] = [["Salad", "Nanas", "Nangka 3"], ["Salad 1", "Nanas 1", "4", "5"], ["Salad 2"]]
@@ -44,6 +51,8 @@ class WeeklyViewController: UIViewController {
     
     var isDataEmpty: Bool = false
     
+    var dataFoodPlan = [[PlanModel]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +66,11 @@ class WeeklyViewController: UIViewController {
         //MARK:: Register the Table View Cell
         registerTableViewCell()
         
-        print("calendar ", CalenderHelper().dateFormatter(date: testDataFood2[0][0].date!))
+        //print("calendar ", CalenderHelper().dateFormatter(date: testDataFood2[0][0].date!))
+        
+        //MARK:: Get Data
+        let dateString = CalenderHelper().dateFormatter(date:Date())
+        getData(date: dateString)
     }
     
     private func registerTableViewCell() {
@@ -328,6 +341,7 @@ extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let dateString = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
         print("TEST",dateString)
         
+        getData(date: dateString)
         collectionView.reloadData()
         tvFoodList.reloadData()
     }
@@ -341,6 +355,34 @@ extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSo
         flowLayout.itemSize = CGSize(width: width, height: height)
         return flowLayout.itemSize
     }
-    
-    
+}
+
+extension WeeklyViewController {
+    private func getData(date: String) {
+        weeklyPresenter?.getFoodPlanByDate(date: date).receive(on: RunLoop.main).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                self.loadingState = false
+            case .failure(_):
+                self.errorMessage = String(describing: completion)
+            }
+        }, receiveValue: { [self] (result) in
+            result.forEach { planModel in
+                if planModel.dayCategory! == "Morning" {
+                    print("Morning")
+                    self.dataFoodPlan[0].append(planModel)
+                    tvFoodList.reloadData()
+                } else if planModel.dayCategory! == "Evening" {
+                    print("Afternoon")
+                    self.dataFoodPlan[1].append(planModel)
+                    tvFoodList.reloadData()
+                } else if planModel.dayCategory! == "Afternoon" {
+                    print("Evening")
+                    self.dataFoodPlan[2].append(planModel)
+                    tvFoodList.reloadData()
+                }
+            }
+           
+        }).store(in: &cancellables)
+    }
 }

@@ -352,13 +352,14 @@
                     <navigationItem key="navigationItem" id="UxL-Mv-4gl">
                         <barButtonItem key="rightBarButtonItem" title="Weekly" id="S7g-d8-YpU">
                             <connections>
-                                <segue destination="gaT-o0-xUV" kind="show" id="fu2-A4-FgB"/>
+                                <action selector="btnToWeekly:" destination="7rK-e1-F71" id="GXn-sQ-EVL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cvDate" destination="tBq-SD-Hgq" id="A7e-nf-w7y"/>
                         <outlet property="lblMonth" destination="0Pn-Nk-zVa" id="PaT-rw-NNZ"/>
+                        <segue destination="gaT-o0-xUV" kind="show" identifier="toweeklyvc" id="yzp-SM-Tuf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95I-St-vHK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

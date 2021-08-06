@@ -40,24 +40,9 @@ class AddFoodViewController: UIViewController {
         initFoodPresenter()
         setUpCollectionView()
         initPickerData()
-        print("Add Food Presenter", addFoodPresenter)
-        testGetData()
+        
     }
-    
 
-    
-    private func testGetData() {
-        addFoodPresenter?.getPlanDate(date: dateLabel.text!).receive(on: RunLoop.main).sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                self.loadingState = false
-            case .failure(_):
-                self.errorMessage = String(describing: completion)
-            }
-        }, receiveValue: { (result) in
-            print("result", result)
-        }).store(in: &cancellables)
-    }
     
     private func addFoodToDB(){
         if listResultFoodPicked.count == 0 {

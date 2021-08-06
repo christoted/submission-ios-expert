@@ -29,6 +29,19 @@ class PlanViewController: UIViewController {
         setMonthView()
     }
     
+    @IBAction func btnToWeekly(_ sender: Any) {
+        performSegue(withIdentifier: "toweeklyvc", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toweeklyvc" {
+            guard let dest = segue.destination as? WeeklyViewController else {
+                return
+            }
+            dest.weeklyPresenter = MonthlyCalendarRouter().navigateToWeeklyModule()
+        }
+    }
+    
     @IBAction func btnNextMonth(_ sender: Any) {
         selectedDate = CalenderHelper().plusMonth(date: selectedDate)
         setMonthView()

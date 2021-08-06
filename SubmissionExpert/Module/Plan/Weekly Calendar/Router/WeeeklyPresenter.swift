@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import Combine
+
+class WeeklyPresenter {
+    var useCase: RecipeUseCase?
+    var router: MonthlyCalendarRouter?
+    var controller: WeeklyViewController?
+    
+    init(useCase: RecipeUseCase) {
+        self.useCase = useCase
+    }
+    
+    func getFoodPlanByDate(date: String)->AnyPublisher<[PlanModel], Error> {
+        return (useCase?.getPlanByDate(date: date))!
+    }
+}
