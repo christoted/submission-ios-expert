@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2733.8461538461538" y="157.10900473933648"/>
+            <point key="canvasLocation" x="3663.0769230769229" y="157.10900473933648"/>
         </scene>
         <!--Pasta with Tuna-->
         <scene sceneID="gwb-78-m3c">
@@ -157,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ST-2T-W2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3770.7692307692305" y="156.39810426540285"/>
+            <point key="canvasLocation" x="4700" y="156.39810426540285"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="dqM-Lr-6Rq">
@@ -371,7 +371,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </objects>
-            <point key="canvasLocation" x="-323" y="-371"/>
+            <point key="canvasLocation" x="-595" y="-589"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="L7s-6R-vjI">
@@ -393,7 +393,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgD-oP-B8k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="126"/>
+            <point key="canvasLocation" x="1770.7692307692307" y="125.82938388625591"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="2Bk-EU-fvy">
@@ -481,7 +481,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z18-m1-a5e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824.6153846153845" y="157.10900473933648"/>
+            <point key="canvasLocation" x="2753.8461538461538" y="157.10900473933648"/>
         </scene>
         <!--Favourite-->
         <scene sceneID="PVP-7O-DIQ">
@@ -539,7 +539,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evs-O6-QMI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1863" y="-697"/>
+            <point key="canvasLocation" x="1377" y="-872"/>
         </scene>
         <!--Search Food View Controller-->
         <scene sceneID="6RD-TG-G3e">
@@ -854,11 +854,65 @@
                         <outlet property="lblMonth" destination="MSH-jO-Go7" id="gia-r3-GYM"/>
                         <outlet property="tvFoodList" destination="iVB-Is-OTH" id="osX-xA-vDW"/>
                         <segue destination="x0L-pd-3TW" kind="presentation" identifier="toaddfoodvc" id="uRi-8e-TEU"/>
+                        <segue destination="LRk-tj-Vri" kind="show" identifier="toweeklyfooddetail" id="Ypw-Pd-KxF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5n-i6-zCH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1789.2307692307693" y="-279.38388625592415"/>
+            <point key="canvasLocation" x="-1483" y="-5"/>
+        </scene>
+        <!--Weekly Detail View Controller-->
+        <scene sceneID="K0c-E8-hkD">
+            <objects>
+                <viewController id="OqG-3u-O41" customClass="WeeklyDetailViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UuU-1v-PuO">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cAX-iN-ajD">
+                                <rect key="frame" x="16" y="122" width="358" height="623"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1V5-N6-j60">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dhu-75-IJx">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vKg-9n-brj">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="OqG-3u-O41" id="MUy-Xb-8Jw"/>
+                                    <outlet property="delegate" destination="OqG-3u-O41" id="vrD-KK-vhU"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food Plan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqm-E0-Ate">
+                                <rect key="frame" x="16" y="63" width="358" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qnn-Ul-5ga"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GAz-sS-cSH"/>
+                    <connections>
+                        <outlet property="cvPlanWeeklyDetail" destination="cAX-iN-ajD" id="eVm-LH-uOm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qmS-ya-nu3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="571" y="126"/>
         </scene>
         <!--Search Food Navigation Controller-->
         <scene sceneID="p4Y-Ww-U11">
@@ -878,6 +932,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elv-EZ-s1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3052.3076923076924" y="1208.5308056872038"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VTP-cg-78a">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LRk-tj-Vri" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="oiC-iO-Fos"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VPx-SZ-3gn">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OqG-3u-O41" kind="relationship" relationship="rootViewController" id="viW-E4-bpo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rli-t9-8c5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-225" y="126"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
