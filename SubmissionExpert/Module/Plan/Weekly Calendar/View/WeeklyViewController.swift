@@ -15,6 +15,10 @@ struct TestData {
 
 class WeeklyViewController: UIViewController {
     
+    let morningKey = "Morning"
+    let afternoonKey = "Afternoon"
+    let eveningKey = "Evening"
+    
     @IBOutlet weak var cvDate: UICollectionView!
     @IBOutlet weak var lblMonth: UILabel!
     @IBOutlet weak var tvFoodList: UITableView!
@@ -50,8 +54,12 @@ class WeeklyViewController: UIViewController {
     ]
     
     var isDataEmpty: Bool = false
+    var isDataAfternoonEmpty: Bool = false
+    var isDataEvening: Bool = false
     
     var dataFoodPlan = [[PlanModel]]()
+    
+    var dateStringFromAddFood: String?
     
     //MARK:: Save With Dictonary ["Morning" : ["","",""]
     
@@ -79,6 +87,24 @@ class WeeklyViewController: UIViewController {
         print("data \(foodPlans["Morning"]) \(foodPlans["Afternoon"]) \(foodPlans["Evening"]) ")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let stringDate = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
+        getData(date: stringDate)
+        tvFoodList.reloadData()
+        
+        print("VIEW WILL APPEAR")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        print("VIEW WILL APPEAR")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        print("VIEW WILL APPEAR")
+    }
+    
+  
+
     private func registerTableViewCell() {
         tvFoodList.register(UINib(nibName: "FoodPlannerTableViewCell", bundle: nil), forCellReuseIdentifier: "foodplannercell")
         tvFoodList.delegate = self
@@ -92,7 +118,21 @@ class WeeklyViewController: UIViewController {
     }
     
     @IBAction func unwindSegueFromAddFoodVC(_ sender: UIStoryboardSegue) {
-        //backtoweekly
+        
+        tvFoodList.reloadData()
+        if !dateStringFromAddFood!.isEmpty {
+            getData(date: dateStringFromAddFood!)
+            print("Date From Add Food \(dateStringFromAddFood)")
+           // tvFoodList.reloadData()
+            
+            let stringDate = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
+            getData(date: stringDate)
+            tvFoodList.reloadData()
+        }
+        
+        let stringDate = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
+        getData(date: stringDate)
+        tvFoodList.reloadData()
     }
     
     @IBAction func btnAddPlan(_ sender: Any) {
@@ -111,7 +151,7 @@ class WeeklyViewController: UIViewController {
             let destNavigation = segue.destination as! UINavigationController
             
             let targetController = destNavigation.topViewController as! WeeklyDetailViewController
-        
+            
             let section =  (sender as! NSIndexPath).section
             print("section", section)
             switch section {
@@ -135,10 +175,6 @@ class WeeklyViewController: UIViewController {
                 let row = (sender as! NSIndexPath).row
                 targetController.foodPlan = foodPlans["Morning"]![row]
             }
-            
-          
-            
-            
         }
     }
     
@@ -177,8 +213,6 @@ class WeeklyViewController: UIViewController {
         lblMonth.text = CalenderHelper().monthString(date: selectedDate) + " " + CalenderHelper().yearStrig(date: selectedDate)
         
         cvDate.reloadData()
-        
-        
     }
 }
 //MARK:: Manage the Table View Cell
@@ -215,19 +249,19 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
         case 0:
             var count = 0
             /*
-            for (indexData, element) in testDataFood2[0].enumerated() {
-                let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[0][indexData].date ?? Date())
-                let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                
-                if (selectedDateString == dateInMorningSection) {
-                    count = count + 1
-                    isDataEmpty = false
-                }
-            }
-            */
+             for (indexData, element) in testDataFood2[0].enumerated() {
+             let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[0][indexData].date ?? Date())
+             let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
+             
+             if (selectedDateString == dateInMorningSection) {
+             count = count + 1
+             isDataEmpty = false
+             }
+             }
+             */
             
             for (indexData, element) in foodPlans["Morning"]!.enumerated() {
-              //  let dateInMorningSection = CalenderHelper().dateFormatter(date: foodPlans["Morning"][indexData].date!)
+                //  let dateInMorningSection = CalenderHelper().dateFormatter(date: foodPlans["Morning"][indexData].date!)
                 let dateInMorningSection = foodPlans["Morning"]![indexData].date!
                 let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
                 
@@ -246,37 +280,37 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
         case 1 :
             var count = 0
             for (indexData, element) in foodPlans["Afternoon"]!.enumerated() {
-               // let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[1][indexData].date ?? Date())
+                // let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[1][indexData].date ?? Date())
                 let dateInMorningSection = foodPlans["Afternoon"]![indexData].date!
                 let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
                 if (selectedDateString == dateInMorningSection) {
                     count = count + 1
-                    isDataEmpty = false
+                    isDataAfternoonEmpty = false
                 }
             }
             
             if ( count == 0) {
                 count = 1
-                isDataEmpty = true
+                isDataAfternoonEmpty = true
             }
             
             return count
         case 2 :
             var count = 0
             for (indexData, element) in foodPlans["Evening"]!.enumerated() {
-              //  let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[2][indexData].date ?? Date())
+                //  let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[2][indexData].date ?? Date())
                 let dateInMorningSection = foodPlans["Evening"]![indexData].date!
                 let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
                 
                 if (selectedDateString == dateInMorningSection) {
                     count = count + 1
-                    isDataEmpty = false
+                    isDataEvening = false
                 }
             }
             
             if count == 0 {
                 count = 1
-                isDataEmpty = true
+                isDataEvening = true
             }
             
             return count
@@ -288,10 +322,10 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         switch indexPath.section {
         case 0:
-                    
+            
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
             
             if (isDataEmpty) {
@@ -299,12 +333,12 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.foodCalLabel.text = "-"
             } else {
                 for (indexData, elementData) in foodPlans["Morning"]!.enumerated() {
-                 //   let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
+                    //   let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
                     let dateInMorningSection = foodPlans["Morning"]![indexData].date!
                     let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
                     
                     if (selectedDateString == dateInMorningSection) {
-                        print("INDEX DATA \(indexData)")
+                        print("INDEX DATA \(indexData) \(selectedDate)")
                         let indexMix = abs(indexPath.row - indexData)
                         cell.foodLabel.text = "\(foodPlans["Morning"]![indexMix].id)"
                         cell.foodCalLabel.text = dateInMorningSection
@@ -315,13 +349,13 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
             return cell
         case 1 :
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
-            if (isDataEmpty) {
+            if (isDataAfternoonEmpty) {
                 cell.foodLabel.text = "No Data"
                 cell.foodCalLabel.text = "-"
             } else {
                 for (indexData, elementData) in foodPlans["Afternoon"]!.enumerated() {
-                //    let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
-                    let dateInMorningSection = foodPlans["Morning"]![indexData].date!
+                    //    let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
+                    let dateInMorningSection = foodPlans["Afternoon"]![indexData].date!
                     let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
                     
                     if (selectedDateString == dateInMorningSection) {
@@ -332,24 +366,24 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             }
-        
+            
             return cell
             
         case 2 :
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
-            if isDataEmpty {
+            if isDataEvening {
                 cell.foodLabel.text = "No Data"
                 cell.foodCalLabel.text = "-"
             } else {
-                for (indexData, elementData) in foodPlans["Afternoon"]!.enumerated() {
-                  //  let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
-                    let dateInMorningSection = foodPlans["Afternoon"]![indexData].date!
+                for (indexData, elementData) in foodPlans["Evening"]!.enumerated() {
+                    //  let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
+                    let dateInMorningSection = foodPlans["Evening"]![indexData].date!
                     let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
                     
                     if (selectedDateString == dateInMorningSection) {
                         print("INDEX DATA \(indexData)")
                         let indexMix = abs(indexPath.row - indexData)
-                        cell.foodLabel.text = "\(foodPlans["Afternoon"]![indexMix].id)"
+                        cell.foodLabel.text = "\(foodPlans["Evening"]![indexMix].id)"
                         cell.foodCalLabel.text = dateInMorningSection
                     }
                 }
@@ -366,10 +400,12 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toweeklyfooddetail", sender: indexPath)
+        if isDataEmpty {
+            print("Empty")
+        } else  {
+            performSegue(withIdentifier: "toweeklyfooddetail", sender: indexPath)
+        }
     }
-    
-
 }
 
 //MARK::Manage the Calendar
@@ -405,10 +441,17 @@ extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSo
         selectedDate = totalSqures[indexPath.item]
         let dateString = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
         print("TEST",dateString)
-        
-      //  getData(date: dateString)
+        //   removeAllDataInArray()
+        getData(date: dateString)
         collectionView.reloadData()
         tvFoodList.reloadData()
+        
+    }
+    
+    private func removeAllDataInArray(){
+        foodPlans["Morning"]?.removeAll()
+        foodPlans["Afternoon"]?.removeAll()
+        foodPlans["Evening"]?.removeAll()
     }
     
     
@@ -432,19 +475,23 @@ extension WeeklyViewController {
                 self.errorMessage = String(describing: completion)
             }
         }, receiveValue: { [self] (result) in
+            removeAllDataInArray()
             result.forEach { planModel in
                 if planModel.dayCategory! == "Morning" {
                     print("Morning")
                     print("Plan Model Morning \(planModel)")
                     foodPlans["Morning"]?.append(planModel)
+             
                 } else if planModel.dayCategory! == "Afternoon" {
                     foodPlans["Afternoon"]?.append(planModel)
                     print("Plan Model Afternoon \(planModel.dayCategory)")
                     print("Plan Model Afternoon \(planModel)")
+                   
                 } else if planModel.dayCategory! == "Evening" {
                     foodPlans["Evening"]?.append(planModel)
                     print("Plan Model Evening\(planModel.dayCategory)")
                     print("Plan Model Evening \(planModel)")
+             
                 }
                 tvFoodList.reloadData()
             }
