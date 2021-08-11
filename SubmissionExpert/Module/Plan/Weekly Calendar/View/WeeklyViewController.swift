@@ -86,24 +86,6 @@ class WeeklyViewController: UIViewController {
         
         print("data \(foodPlans["Morning"]) \(foodPlans["Afternoon"]) \(foodPlans["Evening"]) ")
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let stringDate = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
-        getData(date: stringDate)
-        tvFoodList.reloadData()
-        
-        print("VIEW WILL APPEAR")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        print("VIEW WILL APPEAR")
-    }
-    
-    override func viewWillLayoutSubviews() {
-        print("VIEW WILL APPEAR")
-    }
-    
-  
 
     private func registerTableViewCell() {
         tvFoodList.register(UINib(nibName: "FoodPlannerTableViewCell", bundle: nil), forCellReuseIdentifier: "foodplannercell")

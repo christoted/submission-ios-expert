@@ -79,7 +79,7 @@ extension WeeklyDetailViewController: UICollectionViewDataSource, UICollectionVi
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let lay = collectionViewLayout as! UICollectionViewFlowLayout
         let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-        return CGSize(width: widthPerItem - 8, height: 250)
+        return CGSize(width: 250, height: 250)
     }
 }
 
