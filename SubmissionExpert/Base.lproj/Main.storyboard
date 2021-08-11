@@ -669,7 +669,7 @@
                     <navigationItem key="navigationItem" id="jAE-mv-Zn6">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="qCB-g4-P1Z">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UBg-Yw-6ui">
-                                <rect key="frame" x="251" y="109" width="130" height="30"/>
+                                <rect key="frame" x="244" y="7" width="130" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Choose Food"/>
                                 <connections>

@@ -42,9 +42,9 @@ class PlanMapper {
             menuEntity.isBookmarked = menuModel.isBookmarked!
             menuEntity.imageType = menuModel.imageType!
             menuEntity.summary = menuModel.summary!
+            
+            listMenuEntity.append(menuEntity)
         }
-        
-        listMenuEntity.append(menuEntity)
         
         let planEntity = PlanEntity()
         planEntity.date = planModel.date!
