@@ -268,12 +268,14 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                 if (selectedDateString == dateInMorningSection) {
                     count = count + 1
                     isDataEmpty = false
+                    print("morning data")
                 }
             }
             
             if ( count == 0) {
                 count = 1
                 isDataEmpty = true
+                print("morning empty")
             }
             
             return count
@@ -286,12 +288,14 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                 if (selectedDateString == dateInMorningSection) {
                     count = count + 1
                     isDataAfternoonEmpty = false
+                    print("afternoon data")
                 }
             }
             
             if ( count == 0) {
                 count = 1
                 isDataAfternoonEmpty = true
+                print("afternoon empty")
             }
             
             return count
@@ -400,10 +404,32 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isDataEmpty {
-            print("Empty")
-        } else  {
-            performSegue(withIdentifier: "toweeklyfooddetail", sender: indexPath)
+        
+        switch indexPath.section {
+        case 0:
+            if isDataEmpty  == true {
+                print("Empty")
+            } else {
+                performSegue(withIdentifier: "toweeklyfooddetail", sender: indexPath)
+            }
+        case 1:
+            if isDataAfternoonEmpty  == true {
+                print("Empty")
+            } else {
+                performSegue(withIdentifier: "toweeklyfooddetail", sender: indexPath)
+            }
+        case 2:
+            if isDataEvening  == true {
+                print("Empty")
+            } else {
+                performSegue(withIdentifier: "toweeklyfooddetail", sender: indexPath)
+            }
+        default:
+            if isDataEvening  == true {
+                print("Empty")
+            } else {
+                performSegue(withIdentifier: "toweeklyfooddetail", sender: indexPath)
+            }
         }
     }
 }

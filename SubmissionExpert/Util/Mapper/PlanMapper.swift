@@ -33,9 +33,9 @@ class PlanMapper {
     static func mapSinglePlanDomainToPlanEntity(planModel: PlanModel) -> PlanEntity {
         
         let listMenuEntity = List<MenuEntity>()
-        let menuEntity = MenuEntity()
         
         planModel.listMenuModel?.map { menuModel in
+            let menuEntity = MenuEntity()
             menuEntity.id = menuModel.id!
             menuEntity.image = menuModel.image!
             menuEntity.title = menuModel.title!
