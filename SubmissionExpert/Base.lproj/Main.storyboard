@@ -546,11 +546,11 @@
             <objects>
                 <viewController storyboardIdentifier="searchfoodvc" id="Tdy-tm-X36" customClass="SearchFoodViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Xg-GQ-Yu8">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AN6-Ej-i1i">
-                                <rect key="frame" x="0.0" y="64" width="390" height="692"/>
+                                <rect key="frame" x="0.0" y="96" width="390" height="665"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Z0b-hd-EMq">
                                     <size key="itemSize" width="128" height="128"/>
@@ -595,7 +595,7 @@
             <objects>
                 <viewController storyboardIdentifier="addfoodvc" id="x0L-pd-3TW" customClass="AddFoodViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fVF-pN-syH">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZG-cC-r2f">
@@ -645,14 +645,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UBg-Yw-6ui">
-                                <rect key="frame" x="253" y="45" width="130" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Choose Food"/>
-                                <connections>
-                                    <action selector="chooseFood:" destination="x0L-pd-3TW" eventType="touchUpInside" id="ZBt-cj-mP2"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdm-oO-vfp">
                                 <rect key="frame" x="17" y="522" width="364" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -674,6 +666,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="jAE-mv-Zn6">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="qCB-g4-P1Z">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UBg-Yw-6ui">
+                                <rect key="frame" x="251" y="109" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Choose Food"/>
+                                <connections>
+                                    <action selector="chooseFood:" destination="x0L-pd-3TW" eventType="touchUpInside" id="ZBt-cj-mP2"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addPlanButton" destination="xdm-oO-vfp" id="s8m-wB-EaM"/>
@@ -853,7 +857,7 @@
                         <outlet property="cvDate" destination="xZO-rP-iW2" id="Gcd-MH-szg"/>
                         <outlet property="lblMonth" destination="MSH-jO-Go7" id="gia-r3-GYM"/>
                         <outlet property="tvFoodList" destination="iVB-Is-OTH" id="osX-xA-vDW"/>
-                        <segue destination="x0L-pd-3TW" kind="presentation" identifier="toaddfoodvc" id="uRi-8e-TEU"/>
+                        <segue destination="x0L-pd-3TW" kind="show" identifier="toaddfoodvc" id="uRi-8e-TEU"/>
                         <segue destination="LRk-tj-Vri" kind="show" identifier="toweeklyfooddetail" id="Ypw-Pd-KxF"/>
                     </connections>
                 </viewController>
@@ -921,7 +925,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="quw-mo-xK7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oO1-s2-XRK">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

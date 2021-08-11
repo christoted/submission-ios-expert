@@ -119,6 +119,9 @@ class AddFoodViewController: UIViewController {
             let destSearchFoodNC = segue.destination as! SearchFoodNavigationController
             let destSearchFoodVC = destSearchFoodNC.topViewController as? SearchFoodViewController
             destSearchFoodVC?.searchFoodPresenter = AddFoodRouter().navigateToSearchFoodModule()
+        } else if segue.identifier == "backtoweekly" {
+            let dest = segue.destination as! WeeklyViewController
+            dest.dateStringFromAddFood = dateLabel.text
         }
     }
     
