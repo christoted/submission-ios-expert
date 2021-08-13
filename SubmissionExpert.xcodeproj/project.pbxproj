@@ -11,6 +11,8 @@
 		5200DE672658D5DC00F8C830 /* RecipeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE662658D5DC00F8C830 /* RecipeInteractor.swift */; };
 		5200DE6B2658DDD500F8C830 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE6A2658DDD500F8C830 /* Injection.swift */; };
 		5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200DE6E2658E02C00F8C830 /* HomePresenter.swift */; };
+		5202244526C6C10800F7E100 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202244426C6C10800F7E100 /* NotificationManager.swift */; };
+		5202244726C6C5A900F7E100 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202244626C6C5A900F7E100 /* Task.swift */; };
 		5205C36026C16DBD00BB712C /* WeeklyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5205C35F26C16DBD00BB712C /* WeeklyDetailViewController.swift */; };
 		52188B5B26A84CCE006278B2 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52188B5A26A84CCE006278B2 /* PlanViewController.swift */; };
 		52188B5D26A84CF6006278B2 /* PlanNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52188B5C26A84CF6006278B2 /* PlanNavigationController.swift */; };
@@ -92,6 +94,9 @@
 		5200DE662658D5DC00F8C830 /* RecipeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInteractor.swift; sourceTree = "<group>"; };
 		5200DE6A2658DDD500F8C830 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		5200DE6E2658E02C00F8C830 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		5202244226C6BEBA00F7E100 /* SubmissionExpert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SubmissionExpert.entitlements; sourceTree = "<group>"; };
+		5202244426C6C10800F7E100 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		5202244626C6C5A900F7E100 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		5205C35F26C16DBD00BB712C /* WeeklyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyDetailViewController.swift; sourceTree = "<group>"; };
 		52188B5A26A84CCE006278B2 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
 		52188B5C26A84CF6006278B2 /* PlanNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationController.swift; sourceTree = "<group>"; };
@@ -189,6 +194,14 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
+		5202244326C6C0ED00F7E100 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5202244426C6C10800F7E100 /* NotificationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		5205C35E26C16C0800BB712C /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +297,7 @@
 		521890862653D43B00783413 /* SubmissionExpert */ = {
 			isa = PBXGroup;
 			children = (
+				5202244226C6BEBA00F7E100 /* SubmissionExpert.entitlements */,
 				5200DE692658DDC500F8C830 /* DI */,
 				521890A72653D97500783413 /* Util */,
 				5218909E2653D86200783413 /* Supporting Files */,
@@ -381,6 +395,7 @@
 				523546B626B83BC0004F537E /* Plan */,
 				52A71AD92658255D00C6E2B6 /* MenuModel.swift */,
 				523F008226610B2200221A20 /* MenuDetailModel.swift */,
+				5202244626C6C5A900F7E100 /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -396,6 +411,7 @@
 		521890A72653D97500783413 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				5202244326C6C0ED00F7E100 /* Manager */,
 				52188B6626A86746006278B2 /* Helper */,
 				528019952656BB190036BA40 /* Extensions */,
 				521890A92653D98E00783413 /* Mapper */,
@@ -957,6 +973,7 @@
 				52B6269626AC411D0006B7D0 /* FoodPlannerTableViewCell.swift in Sources */,
 				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
 				52188B6426A86619006278B2 /* CalenderCollectionViewCell.swift in Sources */,
+				5202244726C6C5A900F7E100 /* Task.swift in Sources */,
 				52AC834926AD832C006D719D /* AddFoodRouter.swift in Sources */,
 				52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */,
 				523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */,
@@ -964,6 +981,7 @@
 				52AC834726AD7A3B006D719D /* ConnectivityHelper.swift in Sources */,
 				52FFDE72269AE7E1000A76C9 /* SearchPresenter.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
+				5202244526C6C10800F7E100 /* NotificationManager.swift in Sources */,
 				52AC834B26AD833A006D719D /* AddFoodPresenter.swift in Sources */,
 				52FA7FB6265D0D0F007F8836 /* IngridientTableViewCell.swift in Sources */,
 				523546B526B83A99004F537E /* PlanEntity.swift in Sources */,
@@ -1137,6 +1155,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SubmissionExpert/SubmissionExpert.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4NVTRVW5X;
 				INFOPLIST_FILE = SubmissionExpert/Info.plist;
@@ -1156,6 +1175,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SubmissionExpert/SubmissionExpert.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4NVTRVW5X;
 				INFOPLIST_FILE = SubmissionExpert/Info.plist;

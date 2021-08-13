@@ -58,7 +58,8 @@ class AddFoodViewController: UIViewController {
             addFoodPresenter?.addToPlanDB(planEntity: planModel)
             prefences.setValue(id+1, forKey: planId)
      
-            print("id \(id)")
+            //Trigger the notification
+            NotificationManager.shared.scheduleNotification2(planModel: planModel)
         }
     }
     

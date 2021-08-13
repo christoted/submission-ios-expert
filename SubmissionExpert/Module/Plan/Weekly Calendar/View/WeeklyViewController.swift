@@ -78,13 +78,11 @@ class WeeklyViewController: UIViewController {
         //MARK:: Register the Table View Cell
         registerTableViewCell()
         
-        //print("calendar ", CalenderHelper().dateFormatter(date: testDataFood2[0][0].date!))
-        
         //MARK:: Get Data
         let dateString = CalenderHelper().dateFormatter(date:Date())
         getData(date: dateString)
         
-        print("data \(foodPlans["Morning"]) \(foodPlans["Afternoon"]) \(foodPlans["Evening"]) ")
+        print("Date",Date())
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -6,14 +6,33 @@
 //
 
 import UIKit
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    private func registerForPushNotifications(){
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge]) { granted, _ in
+            print("Permission Granted")
+            guard granted else {return}
+            self.getNotificationSettings()
+        }
+    }
+    
+    private func getNotificationSettings(){
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            print("Notification Setting \(settings)")
+        }
+    }
+    
+    private func configureUserNotifications(){
+        UNUserNotificationCenter.current().delegate = self
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        registerForPushNotifications()
+        configureUserNotifications()
         return true
     }
 
@@ -30,7 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+}
 
-
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.banner)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
 }
 
