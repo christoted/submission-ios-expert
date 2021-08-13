@@ -12,4 +12,5 @@ struct PlanModel {
     let date: String?
     let listMenuModel: [MenuModel]?
     let id: Int?
+    let foodListTitle: String?
 }

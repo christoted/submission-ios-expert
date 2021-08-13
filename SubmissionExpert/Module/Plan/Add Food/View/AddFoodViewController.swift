@@ -15,6 +15,7 @@ class AddFoodViewController: UIViewController {
     @IBOutlet weak var cvResultFood: UICollectionView!
     @IBOutlet weak var categoryPicker: UIPickerView!
     
+    @IBOutlet weak var foodListTitle: UITextField!
     private var errorMessage: String = ""
     private var loadingState: Bool = false
     private var cancellables: Set<AnyCancellable> = []
@@ -53,7 +54,7 @@ class AddFoodViewController: UIViewController {
                 id = prefences.integer(forKey: planId)
             }
            
-            let planModel = PlanModel(dayCategory: category, date: dateLabel.text!, listMenuModel: listResultFoodPicked, id: id)
+            let planModel = PlanModel(dayCategory: category, date: dateLabel.text!, listMenuModel: listResultFoodPicked, id: id, foodListTitle: foodListTitle.text)
             addFoodPresenter?.addToPlanDB(planEntity: planModel)
             prefences.setValue(id+1, forKey: planId)
      

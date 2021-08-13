@@ -599,7 +599,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZG-cC-r2f">
-                                <rect key="frame" x="16" y="223" width="122" height="34"/>
+                                <rect key="frame" x="16" y="234" width="122" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
@@ -646,7 +646,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdm-oO-vfp">
-                                <rect key="frame" x="17" y="522" width="364" height="42"/>
+                                <rect key="frame" x="14" y="655" width="364" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Add to Plan"/>
@@ -656,6 +656,19 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnV-WE-JMw">
                                 <rect key="frame" x="16" y="43" width="66" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your food list name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fRM-3B-YGg">
+                                <rect key="frame" x="15" y="570" width="358" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food List Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkr-Zb-WOt">
+                                <rect key="frame" x="16" y="527" width="202" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
@@ -684,6 +697,7 @@
                         <outlet property="categoryPicker" destination="rgJ-Xd-z9a" id="o5e-TB-D0N"/>
                         <outlet property="cvResultFood" destination="WBg-Cl-8LW" id="rdM-Xp-qfD"/>
                         <outlet property="dateLabel" destination="Uaq-eh-aPs" id="X47-DM-EUO"/>
+                        <outlet property="foodListTitle" destination="fRM-3B-YGg" id="8fT-wR-vbZ"/>
                         <segue destination="bjr-OO-cFh" kind="show" identifier="seguetosearchfood" id="kM3-Pm-OIc"/>
                         <segue destination="Iwl-aD-6SB" kind="unwind" identifier="backtoweekly" unwindAction="unwindSegueFromAddFoodVC:" id="2pb-Uf-8xw"/>
                     </connections>

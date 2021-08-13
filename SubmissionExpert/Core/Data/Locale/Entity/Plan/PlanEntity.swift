@@ -13,6 +13,7 @@ class PlanEntity: Object {
     @objc dynamic var dayCategory: String = ""
     @objc dynamic var date: String = ""
     var listMenuEntity = List<MenuEntity>()
+    @objc dynamic var foodListTitle: String = ""
     
     override static func primaryKey() -> String? {
         return "id"

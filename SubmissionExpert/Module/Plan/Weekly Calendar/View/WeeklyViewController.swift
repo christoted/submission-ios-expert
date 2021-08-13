@@ -86,6 +86,12 @@ class WeeklyViewController: UIViewController {
         
         print("data \(foodPlans["Morning"]) \(foodPlans["Afternoon"]) \(foodPlans["Evening"]) ")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getData(date: CalenderHelper().dateFormatter(date: selectedDate ?? Date()))
+        tvFoodList.reloadData()
+        cvDate.reloadData()
+    }
 
     private func registerTableViewCell() {
         tvFoodList.register(UINib(nibName: "FoodPlannerTableViewCell", bundle: nil), forCellReuseIdentifier: "foodplannercell")
@@ -163,12 +169,14 @@ class WeeklyViewController: UIViewController {
     @IBAction func btnNextMonth(_ sender: Any) {
         selectedDate = CalenderHelper().addDays(date: selectedDate, days: 7)
         setWeekView()
+        tvFoodList.reloadData()
     }
     
     
     @IBAction func btnPrevMonth(_ sender: Any) {
         selectedDate = CalenderHelper().addDays(date: selectedDate, days: -7)
         setWeekView()
+        tvFoodList.reloadData()
     }
     
     func setCellsView()
@@ -318,16 +326,17 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.foodLabel.text = "No Data"
                 cell.foodCalLabel.text = "-"
             } else {
-                for (indexData, elementData) in foodPlans["Morning"]!.enumerated() {
-                    //   let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
-                    let dateInMorningSection = foodPlans["Morning"]![indexData].date!
-                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                    
-                    if (selectedDateString == dateInMorningSection) {
-                        print("INDEX DATA \(indexData) \(selectedDate)")
-                        let indexMix = abs(indexPath.row - indexData)
-                        cell.foodLabel.text = "\(foodPlans["Morning"]![indexMix].id)"
-                        cell.foodCalLabel.text = dateInMorningSection
+                
+                guard let foodPlansSave = foodPlans["Morning"] else {
+                    return cell
+                }
+                foodPlansSave.forEach { planModel in
+                    let dateInMorningSection = planModel.date!
+                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate)
+                    if dateInMorningSection == selectedDateString {
+                       
+                        cell.foodLabel.text = foodPlansSave[indexPath.row].foodListTitle
+                        cell.foodCalLabel.text = planModel.date
                     }
                 }
             }
@@ -339,16 +348,16 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.foodLabel.text = "No Data"
                 cell.foodCalLabel.text = "-"
             } else {
-                for (indexData, elementData) in foodPlans["Afternoon"]!.enumerated() {
-                    //    let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
-                    let dateInMorningSection = foodPlans["Afternoon"]![indexData].date!
-                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                    
-                    if (selectedDateString == dateInMorningSection) {
-                        print("INDEX DATA \(indexData)")
-                        let indexMix = abs(indexPath.row - indexData)
-                        cell.foodLabel.text = "\(foodPlans["Afternoon"]![indexMix].id)"
-                        cell.foodCalLabel.text = dateInMorningSection
+                guard let foodPlansSave = foodPlans[afternoonKey] else {
+                    return cell
+                }
+                foodPlansSave.forEach { planModel in
+                    let dateInMorningSection = planModel.date!
+                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate)
+                    if dateInMorningSection == selectedDateString {
+                       
+                        cell.foodLabel.text = foodPlansSave[indexPath.row].foodListTitle
+                        cell.foodCalLabel.text = planModel.date
                     }
                 }
             }
@@ -361,16 +370,18 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.foodLabel.text = "No Data"
                 cell.foodCalLabel.text = "-"
             } else {
-                for (indexData, elementData) in foodPlans["Evening"]!.enumerated() {
-                    //  let dateInMorningSection = CalenderHelper().dateFormatter(date: elementData.date ?? Date())
-                    let dateInMorningSection = foodPlans["Evening"]![indexData].date!
-                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-                    
-                    if (selectedDateString == dateInMorningSection) {
-                        print("INDEX DATA \(indexData)")
-                        let indexMix = abs(indexPath.row - indexData)
-                        cell.foodLabel.text = "\(foodPlans["Evening"]![indexMix].id)"
-                        cell.foodCalLabel.text = dateInMorningSection
+                guard let foodPlansSave = foodPlans[eveningKey] else {
+                    return cell
+                }
+                foodPlansSave.forEach { planModel in
+                    guard let dateSave = planModel.date else {
+                        return
+                    }
+                    let dateInMorningSection = dateSave
+                    let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate)
+                    if dateInMorningSection == selectedDateString {
+                        cell.foodLabel.text = foodPlansSave[indexPath.row].foodListTitle
+                        cell.foodCalLabel.text = planModel.date
                     }
                 }
             }

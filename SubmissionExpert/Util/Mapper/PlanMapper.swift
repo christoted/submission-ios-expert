@@ -16,7 +16,7 @@ class PlanMapper {
                     return MenuModel(id: menuEntity.id, title: menuEntity.title, image: menuEntity.image, imageType: menuEntity.imageType, nutrition: menuEntity.nutrition.map{ (nutrientEntity) in
                         return NutrientModel(title: nutrientEntity.title, amount: nutrientEntity.amount, unit: nutrientEntity.unit)
                     }, summary: menuEntity.summary, extendedIngridients: [], isBookmarked: menuEntity.isBookmarked)
-                }, id: planEntity.id)
+                }, id: planEntity.id, foodListTitle: planEntity.foodListTitle)
         }
         
     }
@@ -27,7 +27,7 @@ class PlanMapper {
                 return MenuModel(id: menuEntity.id, title: menuEntity.title, image: menuEntity.image, imageType: menuEntity.imageType, nutrition: menuEntity.nutrition.map{ (nutrientEntity) in
                     return NutrientModel(title: nutrientEntity.title, amount: nutrientEntity.amount, unit: nutrientEntity.unit)
                 }, summary: menuEntity.summary, extendedIngridients: [], isBookmarked: menuEntity.isBookmarked)
-            }, id: planEntity.id)
+            }, id: planEntity.id, foodListTitle: planEntity.foodListTitle)
     }
     
     static func mapSinglePlanDomainToPlanEntity(planModel: PlanModel) -> PlanEntity {
@@ -51,6 +51,7 @@ class PlanMapper {
         planEntity.dayCategory = planModel.dayCategory!
         planEntity.id = planModel.id!
         planEntity.listMenuEntity = listMenuEntity
+        planEntity.foodListTitle = planModel.foodListTitle ?? ""
 
         
         return planEntity
