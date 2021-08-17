@@ -512,7 +512,6 @@ extension WeeklyViewController {
                     foodPlans["Evening"]?.append(planModel)
                     print("Plan Model Evening\(planModel.dayCategory)")
                     print("Plan Model Evening \(planModel)")
-             
                 }
                 tvFoodList.reloadData()
             }
@@ -523,5 +522,6 @@ extension WeeklyViewController {
 extension WeeklyViewController: ButtonCheckmarkProtocol {
     func onButtonTapped(isCheckmarked: Bool) {
         print("Tapped protocol \(isCheckmarked)")
-    }    
+        //TODO:: Trigger the database udpate the checkmark session!!! 
+    }
 }
