@@ -24,11 +24,19 @@ protocol RecipeUseCase {
     
     //MARK:: Plan
     func insertPlan(planEntity: PlanModel)->AnyPublisher<Bool, Error>
+    
     func getPlanByDate(date: String)->AnyPublisher<[PlanModel], Error>
+    
+    func updateCheckmark(idPlan: Int, isCheckmarked: Bool)
 }
 
 
 class RecipeInteractor : RecipeUseCase {
+    
+    func updateCheckmark(idPlan: Int, isCheckmarked: Bool) {
+        return repository.updateCheckmark(idPlan: idPlan, isCheckmarked: isCheckmarked)
+    }
+    
     
     func insertPlan(planEntity: PlanModel) -> AnyPublisher<Bool, Error> {
         return repository.insertPlan(from: planEntity)

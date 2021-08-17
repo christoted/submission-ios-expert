@@ -16,7 +16,7 @@ class PlanMapper {
                     return MenuModel(id: menuEntity.id, title: menuEntity.title, image: menuEntity.image, imageType: menuEntity.imageType, nutrition: menuEntity.nutrition.map{ (nutrientEntity) in
                         return NutrientModel(title: nutrientEntity.title, amount: nutrientEntity.amount, unit: nutrientEntity.unit)
                     }, summary: menuEntity.summary, extendedIngridients: [], isBookmarked: menuEntity.isBookmarked)
-                }, id: planEntity.id, foodListTitle: planEntity.foodListTitle)
+                }, id: planEntity.id, foodListTitle: planEntity.foodListTitle, isChecked: false)
         }
         
     }
@@ -27,7 +27,7 @@ class PlanMapper {
                 return MenuModel(id: menuEntity.id, title: menuEntity.title, image: menuEntity.image, imageType: menuEntity.imageType, nutrition: menuEntity.nutrition.map{ (nutrientEntity) in
                     return NutrientModel(title: nutrientEntity.title, amount: nutrientEntity.amount, unit: nutrientEntity.unit)
                 }, summary: menuEntity.summary, extendedIngridients: [], isBookmarked: menuEntity.isBookmarked)
-            }, id: planEntity.id, foodListTitle: planEntity.foodListTitle)
+            }, id: planEntity.id, foodListTitle: planEntity.foodListTitle, isChecked: false)
     }
     
     static func mapSinglePlanDomainToPlanEntity(planModel: PlanModel) -> PlanEntity {
@@ -52,6 +52,7 @@ class PlanMapper {
         planEntity.id = planModel.id!
         planEntity.listMenuEntity = listMenuEntity
         planEntity.foodListTitle = planModel.foodListTitle ?? ""
+        planEntity.isChecked = planModel.isChecked ?? false
 
         
         return planEntity

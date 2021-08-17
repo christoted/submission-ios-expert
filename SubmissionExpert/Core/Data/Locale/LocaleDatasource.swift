@@ -37,6 +37,8 @@ protocol LocalDatasourceProtocol {
     func insertPlan(from planEntity: PlanEntity) -> AnyPublisher<Bool, Error>
     
     func getPlan(byDate date: String)->AnyPublisher<[PlanEntity], Error>
+    
+    func updateCheckmark(by idPlanEntity: Int, isCheckmarked: Bool)
 }
 
 class LocalDatasource: NSObject {
@@ -52,6 +54,23 @@ class LocalDatasource: NSObject {
 }
 
 extension LocalDatasource: LocalDatasourceProtocol {
+    func updateCheckmark(by idPlanEntity: Int, isCheckmarked: Bool) {
+        if let realmDB = self.realm, let planEntitySave = {
+            realmDB.objects(PlanEntity.self).filter("id == \(idPlanEntity)")
+        }().first {
+            do {
+                try realmDB.write {
+                    planEntitySave.setValue(isCheckmarked, forKey: "isChecked")
+                    print("Success")
+                }
+            } catch {
+                print("Error")
+            }
+        } else {
+            print("Fail update checkmarked")
+        }
+    }
+    
     //MARK:: Plan
     func insertPlan(from planEntity: PlanEntity) -> AnyPublisher<Bool, Error> {
         return Future<Bool, Error> { completion in

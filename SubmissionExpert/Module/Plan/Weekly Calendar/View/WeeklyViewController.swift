@@ -34,25 +34,6 @@ class WeeklyViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     
     var sectionFood: [String] = ["Morning", "Afternoon", "Evening"]
-    var testDataFood:[[String]] = [["Salad", "Nanas", "Nangka 3"], ["Salad 1", "Nanas 1", "4", "5"], ["Salad 2"]]
-    
-    var testDataFood2:[[TestData]] = [
-        [TestData(title: "Teddy", date: CalenderHelper().dateStringToDate(date: "2021/07/25")), TestData(title: "Teddy 2", date: CalenderHelper().dateStringToDate(date: "2021/07/29")),
-         TestData(title: "Teddy 3", date: CalenderHelper().dateStringToDate(date: "2021/07/30")),
-         TestData(title: "Teddy 4", date: CalenderHelper().dateStringToDate(date: "2021/07/30")),
-         TestData(title: "Teddy 5", date: CalenderHelper().dateStringToDate(date: "2021/07/30")),
-        ],
-        [TestData(title: "Nuchika", date: CalenderHelper().dateStringToDate(date: "2021/07/26")), TestData(title: "Nuchika 2", date: CalenderHelper().dateStringToDate(date: "2021/07/25")),
-         TestData(title: "Nuchika 3", date: CalenderHelper().dateStringToDate(date: "2021/07/30")),
-         TestData(title: "Nuchika 4", date: CalenderHelper().dateStringToDate(date: "2021/07/30"))
-        ],
-        [TestData(title: "James", date: CalenderHelper().dateStringToDate(date: "2021/07/28")), TestData(title: "James 3", date: CalenderHelper().dateStringToDate(date: "2021/07/30"))]
-    ]
-    
-    var defaultData: [[TestData]] = [
-        [TestData(title: "Test Data", date: Date())]
-    ]
-    
     var isDataEmpty: Bool = false
     var isDataAfternoonEmpty: Bool = false
     var isDataEvening: Bool = false
@@ -297,9 +278,8 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
             
             return count
         default :
-            let sectionMorning = testDataFood[section].count
-            print(sectionMorning)
-            return sectionMorning
+            var count = 0
+            return count
         }
     }
     
@@ -313,6 +293,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
             if (isDataEmpty) {
                 cell.foodLabel.text = "No Data"
                 cell.foodCalLabel.text = "-"
+                cell.buttonCheck.isHidden = true
             } else {
                 
                 guard let foodPlansSave = foodPlans["Morning"] else {
@@ -325,6 +306,8 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                        
                         cell.foodLabel.text = foodPlansSave[indexPath.row].foodListTitle
                         cell.foodCalLabel.text = planModel.date
+                        cell.buttonCheck.isHidden = false
+                        cell.delegate = self
                     }
                 }
             }
@@ -335,6 +318,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
             if (isDataAfternoonEmpty) {
                 cell.foodLabel.text = "No Data"
                 cell.foodCalLabel.text = "-"
+                cell.buttonCheck.isHidden = true
             } else {
                 guard let foodPlansSave = foodPlans[afternoonKey] else {
                     return cell
@@ -346,6 +330,8 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                        
                         cell.foodLabel.text = foodPlansSave[indexPath.row].foodListTitle
                         cell.foodCalLabel.text = planModel.date
+                        cell.buttonCheck.isHidden = false
+                        cell.delegate = self
                     }
                 }
             }
@@ -357,6 +343,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
             if isDataEvening {
                 cell.foodLabel.text = "No Data"
                 cell.foodCalLabel.text = "-"
+                cell.buttonCheck.isHidden = true
             } else {
                 guard let foodPlansSave = foodPlans[eveningKey] else {
                     return cell
@@ -370,15 +357,15 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                     if dateInMorningSection == selectedDateString {
                         cell.foodLabel.text = foodPlansSave[indexPath.row].foodListTitle
                         cell.foodCalLabel.text = planModel.date
+                        cell.buttonCheck.isHidden = false
+                        cell.delegate = self
                     }
                 }
             }
             return cell
         default:
             let cell = tvFoodList.dequeueReusableCell(withIdentifier: "foodplannercell") as! FoodPlannerTableViewCell
-            let calendarString = CalenderHelper().dateFormatter(date: testDataFood2[indexPath.section][indexPath.row].date!)
             
-            cell.foodCalLabel.text = calendarString
             return cell
             
         }
@@ -388,7 +375,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            if isDataEmpty  == true {
+            if isDataEmpty == true {
                 print("Empty")
             } else {
                 performSegue(withIdentifier: "toweeklyfooddetail", sender: indexPath)
@@ -435,7 +422,10 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if ( editingStyle == .delete) {
+            //Check First, isCheck ? can delete : alert woy are you sure because u don't check the finish
         
+        }
     }
 }
 
@@ -528,4 +518,10 @@ extension WeeklyViewController {
             }
         }).store(in: &cancellables)
     }
+}
+
+extension WeeklyViewController: ButtonCheckmarkProtocol {
+    func onButtonTapped(isCheckmarked: Bool) {
+        print("Tapped protocol \(isCheckmarked)")
+    }    
 }

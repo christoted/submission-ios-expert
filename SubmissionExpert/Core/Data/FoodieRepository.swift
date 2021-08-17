@@ -27,6 +27,8 @@ protocol FoodieRepositoryProtocol {
     func insertPlan(from planModel: PlanModel) -> AnyPublisher<Bool, Error>
     
     func getPlan(byDate date: String) -> AnyPublisher<[PlanModel], Error>
+    
+    func updateCheckmark(idPlan: Int, isCheckmarked: Bool)
 }
 
 
@@ -47,6 +49,11 @@ final class FoodieRepository: NSObject {
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
+    
+    func updateCheckmark(idPlan: Int, isCheckmarked: Bool) {
+        self.locale.updateCheckmark(by: idPlan, isCheckmarked: isCheckmarked)
+    }
+    
     
     func insertPlan(from planModel: PlanModel) -> AnyPublisher<Bool, Error> {
         //Need Plan Entity 

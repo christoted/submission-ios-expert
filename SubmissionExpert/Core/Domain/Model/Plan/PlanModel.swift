@@ -13,4 +13,5 @@ struct PlanModel {
     let listMenuModel: [MenuModel]?
     let id: Int?
     let foodListTitle: String?
+    let isChecked: Bool?
 }

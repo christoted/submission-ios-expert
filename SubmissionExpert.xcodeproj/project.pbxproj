@@ -51,6 +51,7 @@
 		5282BDF126B5832900D95ED8 /* AddRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */; };
 		528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528730DB26AED3E000B42A62 /* SearchResultViewController.swift */; };
 		52931F3B26AB12AA007BD32B /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */; };
+		5293D5BC26CC0AD300B791C1 /* ButtonCheckmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293D5BB26CC0AD300B791C1 /* ButtonCheckmark.swift */; };
 		52A71ACE26581CDF00C6E2B6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACD26581CDF00C6E2B6 /* Realm */; };
 		52A71AD026581CDF00C6E2B6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACF26581CDF00C6E2B6 /* RealmSwift */; };
 		52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */; };
@@ -136,6 +137,7 @@
 		5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeResponse.swift; sourceTree = "<group>"; };
 		528730DB26AED3E000B42A62 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
+		5293D5BB26CC0AD300B791C1 /* ButtonCheckmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCheckmark.swift; sourceTree = "<group>"; };
 		52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDatasource.swift; sourceTree = "<group>"; };
 		52A71AD62658201500C6E2B6 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
 		52A71AD92658255D00C6E2B6 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
@@ -711,6 +713,7 @@
 				52B6269526AC411D0006B7D0 /* FoodPlannerTableViewCell.xib */,
 				52B6269826AC564E0006B7D0 /* ChooseFoodCollectionViewCell.swift */,
 				52B6269926AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib */,
+				5293D5BB26CC0AD300B791C1 /* ButtonCheckmark.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -943,6 +946,7 @@
 			files = (
 				5280198F265687FB0036BA40 /* RandomMenuResponse.swift in Sources */,
 				528019862656869A0036BA40 /* RemoteDatasource.swift in Sources */,
+				5293D5BC26CC0AD300B791C1 /* ButtonCheckmark.swift in Sources */,
 				52FFDE6E269AE7AA000A76C9 /* SearchNavigationController.swift in Sources */,
 				5200DE642658BB2000F8C830 /* MenuMapper.swift in Sources */,
 				52A71AD72658201500C6E2B6 /* MenuEntity.swift in Sources */,

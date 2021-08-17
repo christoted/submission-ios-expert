@@ -8,6 +8,9 @@
 import UIKit
 import Combine
 
+//TODO:: - Implement the Protocl Delegate
+//       - Trigger the  update method
+
 class AddFoodViewController: UIViewController {
     
     @IBOutlet weak var addPlanButton: UIButton!
@@ -54,7 +57,7 @@ class AddFoodViewController: UIViewController {
                 id = prefences.integer(forKey: planId)
             }
            
-            let planModel = PlanModel(dayCategory: category, date: dateLabel.text!, listMenuModel: listResultFoodPicked, id: id, foodListTitle: foodListTitle.text)
+            let planModel = PlanModel(dayCategory: category, date: dateLabel.text!, listMenuModel: listResultFoodPicked, id: id, foodListTitle: foodListTitle.text, isChecked: false)
             addFoodPresenter?.addToPlanDB(planEntity: planModel)
             prefences.setValue(id+1, forKey: planId)
      
@@ -181,6 +184,5 @@ extension AddFoodViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
     }
-    
     
 }

@@ -20,4 +20,8 @@ class WeeklyPresenter {
     func getFoodPlanByDate(date: String)->AnyPublisher<[PlanModel], Error> {
         return (useCase?.getPlanByDate(date: date))!
     }
+    
+    func updateCheckmarked(idPlan: Int, isCheckmarked: Bool)  {
+        useCase?.updateCheckmark(idPlan: idPlan, isCheckmarked: isCheckmarked)
+    }
 }

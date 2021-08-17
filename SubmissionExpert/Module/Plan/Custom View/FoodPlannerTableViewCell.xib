@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -34,10 +34,22 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdL-Qc-hN3" customClass="ButtonCheckmark" customModule="SubmissionExpert" customModuleProvider="target">
+                        <rect key="frame" x="277" y="23" width="34" height="34"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="checkmark.square" catalog="system"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="checkmark.square.fill" catalog="system"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="onPress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ln4-Jm-Hvx"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="buttonCheck" destination="fdL-Qc-hN3" id="7Fu-jk-ALP"/>
                 <outlet property="foodCalLabel" destination="EYz-oq-Zh0" id="0M1-Nr-diC"/>
                 <outlet property="foodImageView" destination="X9v-dc-t9j" id="uUX-cl-lDi"/>
                 <outlet property="foodLabel" destination="lCX-LQ-d5P" id="FAl-vw-R9T"/>
@@ -45,4 +57,8 @@
             <point key="canvasLocation" x="44.927536231884062" y="118.52678571428571"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
+    </resources>
 </document>
