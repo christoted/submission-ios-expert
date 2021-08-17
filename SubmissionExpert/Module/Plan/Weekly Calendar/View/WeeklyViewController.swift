@@ -225,6 +225,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
+        
         return sectionFood[section]
     }
     
@@ -236,17 +237,6 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0:
             var count = 0
-            /*
-             for (indexData, element) in testDataFood2[0].enumerated() {
-             let dateInMorningSection = CalenderHelper().dateFormatter(date: testDataFood2[0][indexData].date ?? Date())
-             let selectedDateString = CalenderHelper().dateFormatter(date: selectedDate )
-             
-             if (selectedDateString == dateInMorningSection) {
-             count = count + 1
-             isDataEmpty = false
-             }
-             }
-             */
             
             for (indexData, element) in foodPlans["Morning"]!.enumerated() {
                 //  let dateInMorningSection = CalenderHelper().dateFormatter(date: foodPlans["Morning"][indexData].date!)
@@ -422,6 +412,30 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                 performSegue(withIdentifier: "toweeklyfooddetail", sender: indexPath)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        switch indexPath.section {
+        case 0:
+            if !isDataEmpty {
+                return true
+            }
+        case 1:
+            if !isDataAfternoonEmpty {
+                return true
+            }
+        case 2:
+            if !isDataEvening {
+                return true
+            }
+        default:
+            return false
+        }
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
     }
 }
 
