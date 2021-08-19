@@ -44,7 +44,7 @@ class AddFoodViewController: UIViewController {
         initFoodPresenter()
         setUpCollectionView()
         initPickerData()
-        
+        self.hideKeyboardWhenTappedAround()
     }
 
     

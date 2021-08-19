@@ -46,6 +46,8 @@ class WeeklyViewController: UIViewController {
     
     var foodPlans: [String: [PlanModel]] = ["Morning" : [PlanModel](), "Afternoon" : [PlanModel](), "Evening": [PlanModel]()]
     
+    var isCheckmarked: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +66,8 @@ class WeeklyViewController: UIViewController {
         getData(date: dateString)
         
         print("Date",Date())
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -307,6 +311,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                         cell.foodLabel.text = foodPlansSave[indexPath.row].foodListTitle
                         cell.foodCalLabel.text = planModel.date
                         cell.buttonCheck.isHidden = false
+                        cell.idPlan = foodPlansSave[indexPath.row].id!
                         cell.delegate = self
                     }
                 }
@@ -331,6 +336,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                         cell.foodLabel.text = foodPlansSave[indexPath.row].foodListTitle
                         cell.foodCalLabel.text = planModel.date
                         cell.buttonCheck.isHidden = false
+                        cell.idPlan = foodPlansSave[indexPath.row].id!
                         cell.delegate = self
                     }
                 }
@@ -358,6 +364,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                         cell.foodLabel.text = foodPlansSave[indexPath.row].foodListTitle
                         cell.foodCalLabel.text = planModel.date
                         cell.buttonCheck.isHidden = false
+                        cell.idPlan = foodPlansSave[indexPath.row].id!
                         cell.delegate = self
                     }
                 }
@@ -502,16 +509,19 @@ extension WeeklyViewController {
                     print("Morning")
                     print("Plan Model Morning \(planModel)")
                     foodPlans["Morning"]?.append(planModel)
+                    self.onButtonTapped(isCheckmarked: planModel.isChecked!, idPlan: planModel.id!)
              
                 } else if planModel.dayCategory! == "Afternoon" {
                     foodPlans["Afternoon"]?.append(planModel)
                     print("Plan Model Afternoon \(planModel.dayCategory)")
                     print("Plan Model Afternoon \(planModel)")
+                    self.onButtonTapped(isCheckmarked: planModel.isChecked!, idPlan: planModel.id!)
                    
                 } else if planModel.dayCategory! == "Evening" {
                     foodPlans["Evening"]?.append(planModel)
                     print("Plan Model Evening\(planModel.dayCategory)")
                     print("Plan Model Evening \(planModel)")
+                    self.onButtonTapped(isCheckmarked: planModel.isChecked!, idPlan: planModel.id!)
                 }
                 tvFoodList.reloadData()
             }
@@ -520,8 +530,13 @@ extension WeeklyViewController {
 }
 
 extension WeeklyViewController: ButtonCheckmarkProtocol {
-    func onButtonTapped(isCheckmarked: Bool) {
-        print("Tapped protocol \(isCheckmarked)")
-        //TODO:: Trigger the database udpate the checkmark session!!! 
+    func onButtonTapped(isCheckmarked: Bool, idPlan: Int) {
+        print("ID Plan \(idPlan) \(isCheckmarked)")
+        //MARK:: Update bookmarked
+        if (!isCheckmarked) {
+            weeklyPresenter?.updateCheckmarked(idPlan: idPlan, isCheckmarked: isCheckmarked)
+            
+            print("Checklisted")
+        }
     }
 }

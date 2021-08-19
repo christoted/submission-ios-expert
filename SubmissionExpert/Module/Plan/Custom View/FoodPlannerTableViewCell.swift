@@ -8,9 +8,8 @@
 import UIKit
 
 protocol ButtonCheckmarkProtocol {
-    func onButtonTapped(isCheckmarked: Bool)
+    func onButtonTapped(isCheckmarked: Bool, idPlan: Int)
 }
-
 
 class FoodPlannerTableViewCell: UITableViewCell {
 
@@ -22,9 +21,11 @@ class FoodPlannerTableViewCell: UITableViewCell {
     var delegate: ButtonCheckmarkProtocol?
     
     var isButtonSelected = false
+    var idPlan:Int?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,7 +36,7 @@ class FoodPlannerTableViewCell: UITableViewCell {
     
     @IBAction func onPress(_ sender: Any) {
         isButtonSelected = !isButtonSelected
-        //TODO:: Using Protocol Delegate
-        delegate?.onButtonTapped(isCheckmarked: isButtonSelected)
+        //TODO:: Using Protocol Delegatei
+        delegate?.onButtonTapped(isCheckmarked: isButtonSelected, idPlan: idPlan ?? 10)
     }
 }

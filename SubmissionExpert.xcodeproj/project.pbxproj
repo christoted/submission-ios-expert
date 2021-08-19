@@ -75,6 +75,7 @@
 		52B626AE26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B626AD26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift */; };
 		52D051B226BA709400B47045 /* WeeklyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D051B126BA709400B47045 /* WeeklyRouter.swift */; };
 		52D051B426BA709E00B47045 /* WeeeklyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D051B326BA709E00B47045 /* WeeeklyPresenter.swift */; };
+		52D5821926CE85E600047F0E /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5821826CE85E600047F0E /* DismissKeyboard.swift */; };
 		52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */; };
 		52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EE72F826727E8800B3E7EE /* FavouriteNavigationController.swift */; };
 		52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEA0E826675E9A0062770C /* MenuDetailRes.swift */; };
@@ -159,6 +160,7 @@
 		52B626AD26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarRouter.swift; sourceTree = "<group>"; };
 		52D051B126BA709400B47045 /* WeeklyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRouter.swift; sourceTree = "<group>"; };
 		52D051B326BA709E00B47045 /* WeeeklyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeeeklyPresenter.swift; path = "SubmissionExpert/Module/Plan/Weekly Calendar/Router/WeeeklyPresenter.swift"; sourceTree = SOURCE_ROOT; };
+		52D5821826CE85E600047F0E /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
 		52EE72F5267271ED00B3E7EE /* FavouritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePresenter.swift; sourceTree = "<group>"; };
 		52EE72F826727E8800B3E7EE /* FavouriteNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteNavigationController.swift; sourceTree = "<group>"; };
 		52EEA0E826675E9A0062770C /* MenuDetailRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailRes.swift; sourceTree = "<group>"; };
@@ -592,6 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				528019962656BB290036BA40 /* CustomError+Ext.swift */,
+				52D5821826CE85E600047F0E /* DismissKeyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -983,6 +986,7 @@
 				523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */,
 				52561BE6265BCA54002148E3 /* SummaryViewController.swift in Sources */,
 				52AC834726AD7A3B006D719D /* ConnectivityHelper.swift in Sources */,
+				52D5821926CE85E600047F0E /* DismissKeyboard.swift in Sources */,
 				52FFDE72269AE7E1000A76C9 /* SearchPresenter.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
 				5202244526C6C10800F7E100 /* NotificationManager.swift in Sources */,
