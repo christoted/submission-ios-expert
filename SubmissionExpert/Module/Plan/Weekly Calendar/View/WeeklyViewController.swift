@@ -313,6 +313,13 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                         cell.buttonCheck.isHidden = false
                         cell.idPlan = foodPlansSave[indexPath.row].id!
                         cell.delegate = self
+                        
+                        if foodPlansSave[indexPath.row].isChecked! == true {
+//                            cell.buttonCheck.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
+                            cell.buttonCheck.isSelected = true
+                        } else {
+                            cell.buttonCheck.isSelected = false
+                        }
                     }
                 }
             }
@@ -508,20 +515,21 @@ extension WeeklyViewController {
                 if planModel.dayCategory! == "Morning" {
                     print("Morning")
                     print("Plan Model Morning \(planModel)")
+                    print("Checked \(planModel.isChecked)")
                     foodPlans["Morning"]?.append(planModel)
-                    self.onButtonTapped(isCheckmarked: planModel.isChecked!, idPlan: planModel.id!)
+                   
              
                 } else if planModel.dayCategory! == "Afternoon" {
                     foodPlans["Afternoon"]?.append(planModel)
                     print("Plan Model Afternoon \(planModel.dayCategory)")
                     print("Plan Model Afternoon \(planModel)")
-                    self.onButtonTapped(isCheckmarked: planModel.isChecked!, idPlan: planModel.id!)
+                  
                    
                 } else if planModel.dayCategory! == "Evening" {
                     foodPlans["Evening"]?.append(planModel)
                     print("Plan Model Evening\(planModel.dayCategory)")
                     print("Plan Model Evening \(planModel)")
-                    self.onButtonTapped(isCheckmarked: planModel.isChecked!, idPlan: planModel.id!)
+                 
                 }
                 tvFoodList.reloadData()
             }
@@ -531,12 +539,11 @@ extension WeeklyViewController {
 
 extension WeeklyViewController: ButtonCheckmarkProtocol {
     func onButtonTapped(isCheckmarked: Bool, idPlan: Int) {
-        print("ID Plan \(idPlan) \(isCheckmarked)")
+        print("id plan button Tapped \(idPlan) \(isCheckmarked)")
         //MARK:: Update bookmarked
-        if (!isCheckmarked) {
+        
             weeklyPresenter?.updateCheckmarked(idPlan: idPlan, isCheckmarked: isCheckmarked)
-            
-            print("Checklisted")
-        }
+        
+        
     }
 }

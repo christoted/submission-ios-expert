@@ -50,7 +50,7 @@ class AddFoodViewController: UIViewController {
     
     private func addFoodToDB(){
         if listResultFoodPicked.count == 0 {
-            addAlert(title: "Choose One", message: "You haven't choose any food, Please Choose")
+            addAlert(title: "Choose One", message: "You ha/Users/christopherteddy/Documents/Dicoding/MiDE/SubmissionExpert/SubmissionExpert/Core/Data/Locale/LocaleDatasource.swiftven't choose any food, Please Choose")
         } else {
             let prefences = UserDefaults.standard
             if ( prefences.object(forKey: planId) != nil ) {

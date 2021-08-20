@@ -38,5 +38,6 @@ class FoodPlannerTableViewCell: UITableViewCell {
         isButtonSelected = !isButtonSelected
         //TODO:: Using Protocol Delegatei
         delegate?.onButtonTapped(isCheckmarked: isButtonSelected, idPlan: idPlan ?? 10)
+       
     }
 }

@@ -62,7 +62,7 @@ extension LocalDatasource: LocalDatasourceProtocol {
                 try realmDB.write {
                     planEntitySave.setValue(isCheckmarked, forKey: "isChecked")
                     print("Success")
-                    print("\(idPlanEntity) \(isCheckmarked)")
+                    print("localdataource \(idPlanEntity) \(isCheckmarked)")
                 }
             } catch {
                 print("Error")

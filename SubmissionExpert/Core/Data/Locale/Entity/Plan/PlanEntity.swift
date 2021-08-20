@@ -19,6 +19,6 @@ class PlanEntity: Object {
         return "id"
     }
     
-    @objc dynamic var isChecked: Bool = false
+    @objc dynamic var isChecked: Bool = true
     
 }
