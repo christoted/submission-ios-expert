@@ -33,7 +33,7 @@ class ButtonCheckmark: UIButton {
     }
     
     private func setup(){
-        isSelected = false
+     //   isSelected = false
         addTarget(self, action: #selector(tap), for: .touchUpInside)
     }
     

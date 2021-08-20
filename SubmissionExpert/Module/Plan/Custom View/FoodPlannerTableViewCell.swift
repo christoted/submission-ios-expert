@@ -20,7 +20,7 @@ class FoodPlannerTableViewCell: UITableViewCell {
     
     var delegate: ButtonCheckmarkProtocol?
     
-    var isButtonSelected = false
+    var isButtonSelected: Bool?
     var idPlan:Int?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,12 +32,13 @@ class FoodPlannerTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        print("State \(isButtonSelected)")
     }
     
     @IBAction func onPress(_ sender: Any) {
-        isButtonSelected = !isButtonSelected
+        isButtonSelected = !(isButtonSelected ?? false)
         //TODO:: Using Protocol Delegatei
-        delegate?.onButtonTapped(isCheckmarked: isButtonSelected, idPlan: idPlan ?? 10)
+        delegate?.onButtonTapped(isCheckmarked: isButtonSelected!, idPlan: idPlan ?? 10)
        
     }
 }

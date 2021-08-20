@@ -312,6 +312,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                         cell.foodCalLabel.text = planModel.date
                         cell.buttonCheck.isHidden = false
                         cell.idPlan = foodPlansSave[indexPath.row].id!
+                        cell.isButtonSelected = foodPlansSave[indexPath.row].isChecked
                         cell.delegate = self
                         
                         if foodPlansSave[indexPath.row].isChecked! == true {
@@ -344,6 +345,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                         cell.foodCalLabel.text = planModel.date
                         cell.buttonCheck.isHidden = false
                         cell.idPlan = foodPlansSave[indexPath.row].id!
+                        cell.isButtonSelected = foodPlansSave[indexPath.row].isChecked
                         cell.delegate = self
                     }
                 }
