@@ -316,7 +316,6 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                         cell.delegate = self
                         
                         if foodPlansSave[indexPath.row].isChecked! == true {
-//                            cell.buttonCheck.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
                             cell.buttonCheck.isSelected = true
                         } else {
                             cell.buttonCheck.isSelected = false
@@ -347,6 +346,12 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                         cell.idPlan = foodPlansSave[indexPath.row].id!
                         cell.isButtonSelected = foodPlansSave[indexPath.row].isChecked
                         cell.delegate = self
+                        
+                        if foodPlansSave[indexPath.row].isChecked! == true {
+                            cell.buttonCheck.isSelected = true
+                        } else {
+                            cell.buttonCheck.isSelected = false
+                        }
                     }
                 }
             }
@@ -374,7 +379,14 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                         cell.foodCalLabel.text = planModel.date
                         cell.buttonCheck.isHidden = false
                         cell.idPlan = foodPlansSave[indexPath.row].id!
+                        cell.isButtonSelected = foodPlansSave[indexPath.row].isChecked
                         cell.delegate = self
+                        
+                        if foodPlansSave[indexPath.row].isChecked! == true {
+                            cell.buttonCheck.isSelected = true
+                        } else {
+                            cell.buttonCheck.isSelected = false
+                        }
                     }
                 }
             }
