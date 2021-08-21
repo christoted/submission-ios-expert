@@ -29,6 +29,8 @@ protocol FoodieRepositoryProtocol {
     func getPlan(byDate date: String) -> AnyPublisher<[PlanModel], Error>
     
     func updateCheckmark(idPlan: Int, isCheckmarked: Bool)
+    
+    func deletePlanEntity(idPlan:Int)
 }
 
 
@@ -49,6 +51,10 @@ final class FoodieRepository: NSObject {
 }
 
 extension FoodieRepository: FoodieRepositoryProtocol {
+    func deletePlanEntity(idPlan: Int) {
+        self.locale.deletePlanEntity(by: idPlan)
+    }
+    
     
     func updateCheckmark(idPlan: Int, isCheckmarked: Bool) {
         self.locale.updateCheckmark(by: idPlan, isCheckmarked: isCheckmarked)

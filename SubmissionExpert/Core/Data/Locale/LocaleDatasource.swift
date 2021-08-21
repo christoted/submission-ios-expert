@@ -39,6 +39,8 @@ protocol LocalDatasourceProtocol {
     func getPlan(byDate date: String)->AnyPublisher<[PlanEntity], Error>
     
     func updateCheckmark(by idPlanEntity: Int, isCheckmarked: Bool)
+    
+    func deletePlanEntity(by idPlanEntity: Int)
 }
 
 class LocalDatasource: NSObject {
@@ -54,6 +56,26 @@ class LocalDatasource: NSObject {
 }
 
 extension LocalDatasource: LocalDatasourceProtocol {
+    
+    func deletePlanEntity(by idPlanEntity: Int) {
+        // query all objects where the id in not included
+        guard let realmDB = self.realm else {
+            return
+        }
+        let objectsToDelete = realmDB.objects(PlanEntity.self).filter("id == \(idPlanEntity)")
+        
+        do {
+            try realmDB.write {
+                realmDB.delete(objectsToDelete)
+                print("Success delete")
+            }
+        } catch {
+            print("Cannot delete")
+        }
+        
+      
+    }
+    
     func updateCheckmark(by idPlanEntity: Int, isCheckmarked: Bool) {
         if let realmDB = self.realm, let planEntitySave = {
             realmDB.objects(PlanEntity.self).filter("id == \(idPlanEntity)")

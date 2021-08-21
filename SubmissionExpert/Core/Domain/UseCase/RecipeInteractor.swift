@@ -28,10 +28,16 @@ protocol RecipeUseCase {
     func getPlanByDate(date: String)->AnyPublisher<[PlanModel], Error>
     
     func updateCheckmark(idPlan: Int, isCheckmarked: Bool)
+    
+    func deletePlanEntity(idPlan:Int)
 }
 
 
 class RecipeInteractor : RecipeUseCase {
+    func deletePlanEntity(idPlan: Int) {
+        repository.deletePlanEntity(idPlan: idPlan)
+    }
+    
     
     func updateCheckmark(idPlan: Int, isCheckmarked: Bool) {
         return repository.updateCheckmark(idPlan: idPlan, isCheckmarked: isCheckmarked)

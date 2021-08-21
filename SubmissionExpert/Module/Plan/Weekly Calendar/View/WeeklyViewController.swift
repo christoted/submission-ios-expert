@@ -452,8 +452,59 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if ( editingStyle == .delete) {
             //Check First, isCheck ? can delete : alert woy are you sure because u don't check the finish
-        
+            switch indexPath.section {
+            case 0:
+                let isCheckmarked = foodPlans[morningKey]![indexPath.row].isChecked!
+                let id = foodPlans[morningKey]![indexPath.row].id
+                print("Checkmarked \(isCheckmarked)")
+                if isCheckmarked == true {
+                    weeklyPresenter?.deletePlanEntity(idPlan: id ?? 0)
+                    let dateString = CalenderHelper().dateFormatter(date: selectedDate)
+                    self.getData(date: dateString)
+                } else {
+                    showAlert(title: "Are You Sure?", message: "You haven't checklist this food plan", idPlanEntity: id ?? 0)
+                }
+            case 1 :
+                let isCheckmarked = foodPlans[afternoonKey]![indexPath.row].isChecked!
+                let id = foodPlans[afternoonKey]![indexPath.row].id
+                if isCheckmarked == true {
+                    weeklyPresenter?.deletePlanEntity(idPlan: id ?? 0)
+                    let dateString = CalenderHelper().dateFormatter(date: selectedDate)
+                    self.getData(date: dateString)
+                } else {
+                    showAlert(title: "Are You Sure?", message: "You haven't checklist this food plan", idPlanEntity: id ?? 0)
+                }
+            case 2 :
+                let isCheckmarked = foodPlans[eveningKey]![indexPath.row].isChecked!
+                let id = foodPlans[eveningKey]![indexPath.row].id
+                if isCheckmarked == true {
+                    weeklyPresenter?.deletePlanEntity(idPlan: id ?? 0)
+                    let dateString = CalenderHelper().dateFormatter(date: selectedDate)
+                    self.getData(date: dateString)
+                } else {
+                    showAlert(title: "Are You Sure?", message: "You haven't checklist this food plan", idPlanEntity: id ?? 0)
+                }
+                print("Checkmarked \(isCheckmarked)")
+            default:
+                print("Defailt")
+            }
+          
         }
+    }
+    
+    private func showAlert(title: String, message: String, idPlanEntity: Int){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [self] action in
+            weeklyPresenter?.deletePlanEntity(idPlan: idPlanEntity)
+            let dateString = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
+            self.getData(date: dateString)
+            tvFoodList.reloadData()
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+       
+
+        self.present(alert, animated: true)
     }
 }
 
@@ -555,9 +606,8 @@ extension WeeklyViewController: ButtonCheckmarkProtocol {
     func onButtonTapped(isCheckmarked: Bool, idPlan: Int) {
         print("id plan button Tapped \(idPlan) \(isCheckmarked)")
         //MARK:: Update bookmarked
-        
-            weeklyPresenter?.updateCheckmarked(idPlan: idPlan, isCheckmarked: isCheckmarked)
-        
-        
+        weeklyPresenter?.updateCheckmarked(idPlan: idPlan, isCheckmarked: isCheckmarked)
+        let dateString = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
+        self.getData(date: dateString)
     }
 }

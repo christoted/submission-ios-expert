@@ -24,4 +24,8 @@ class WeeklyPresenter {
     func updateCheckmarked(idPlan: Int, isCheckmarked: Bool)  {
         useCase?.updateCheckmark(idPlan: idPlan, isCheckmarked: isCheckmarked)
     }
+    
+    func deletePlanEntity(idPlan: Int) {
+        useCase?.deletePlanEntity(idPlan: idPlan)
+    }
 }
