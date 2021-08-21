@@ -460,7 +460,9 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                     weeklyPresenter?.deletePlanEntity(idPlan: id ?? 0)
                     let dateString = CalenderHelper().dateFormatter(date: selectedDate)
                     self.getData(date: dateString)
-                    tvFoodList.reloadData()
+                    
+                    print("COUNT NYA BRO \(foodPlans[morningKey])")
+                    
                 } else {
                     showAlert(title: "Are You Sure?", message: "You haven't checklist this food plan", idPlanEntity: id ?? 0)
                 }
@@ -471,8 +473,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                     weeklyPresenter?.deletePlanEntity(idPlan: id ?? 0)
                     let dateString = CalenderHelper().dateFormatter(date: selectedDate)
                     self.getData(date: dateString)
-                    tvFoodList.reloadData()
-                    cvDate.reloadData()
+                   
 
                 } else {
                     showAlert(title: "Are You Sure?", message: "You haven't checklist this food plan", idPlanEntity: id ?? 0)
@@ -577,6 +578,7 @@ extension WeeklyViewController {
             }
         }, receiveValue: { [self] (result) in
             removeAllDataInArray()
+            
             result.forEach { planModel in
                 if planModel.dayCategory! == "Morning" {
                     print("Morning")
