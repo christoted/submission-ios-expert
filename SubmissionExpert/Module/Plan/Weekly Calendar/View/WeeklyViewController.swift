@@ -238,7 +238,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
             if ( count == 0) {
                 count = 1
                 isDataEmpty = true
-                print("morning empty")
+            
             }
             
             return count
@@ -278,6 +278,7 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
             if count == 0 {
                 count = 1
                 isDataEvening = true
+                
             }
             
             return count
@@ -451,16 +452,15 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if ( editingStyle == .delete) {
-            //Check First, isCheck ? can delete : alert woy are you sure because u don't check the finish
             switch indexPath.section {
             case 0:
                 let isCheckmarked = foodPlans[morningKey]![indexPath.row].isChecked!
                 let id = foodPlans[morningKey]![indexPath.row].id
-                print("Checkmarked \(isCheckmarked)")
                 if isCheckmarked == true {
                     weeklyPresenter?.deletePlanEntity(idPlan: id ?? 0)
                     let dateString = CalenderHelper().dateFormatter(date: selectedDate)
                     self.getData(date: dateString)
+                    tvFoodList.reloadData()
                 } else {
                     showAlert(title: "Are You Sure?", message: "You haven't checklist this food plan", idPlanEntity: id ?? 0)
                 }
@@ -471,6 +471,9 @@ extension WeeklyViewController : UITableViewDelegate, UITableViewDataSource {
                     weeklyPresenter?.deletePlanEntity(idPlan: id ?? 0)
                     let dateString = CalenderHelper().dateFormatter(date: selectedDate)
                     self.getData(date: dateString)
+                    tvFoodList.reloadData()
+                    cvDate.reloadData()
+
                 } else {
                     showAlert(title: "Are You Sure?", message: "You haven't checklist this food plan", idPlanEntity: id ?? 0)
                 }
@@ -540,8 +543,6 @@ extension WeeklyViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedDate = totalSqures[indexPath.item]
         let dateString = CalenderHelper().dateFormatter(date: selectedDate ?? Date())
-        print("TEST",dateString)
-        //   removeAllDataInArray()
         getData(date: dateString)
         collectionView.reloadData()
         tvFoodList.reloadData()
