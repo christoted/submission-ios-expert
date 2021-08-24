@@ -81,6 +81,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         tabBarController.viewControllers = [homeNC,searchNC,planNC, favouriteNC , personalNC]
         
+        guard let rootPageVC = storyboard.instantiateViewController(identifier: "RootPageViewController") as? RootPageViewController else {
+            return
+        }
+        
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         

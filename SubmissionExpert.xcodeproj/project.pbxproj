@@ -47,6 +47,8 @@
 		528019932656B89D0036BA40 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 528019922656B89D0036BA40 /* Alamofire */; };
 		528019972656BB290036BA40 /* CustomError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019962656BB290036BA40 /* CustomError+Ext.swift */; };
 		5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019992656BD560036BA40 /* FoodieRepository.swift */; };
+		5280E3C526D4B84600C8BF8B /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280E3C426D4B84600C8BF8B /* RootPageViewController.swift */; };
+		5280E3C926D4B87000C8BF8B /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280E3C826D4B87000C8BF8B /* PageVC.swift */; };
 		5282A88726BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282A88626BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift */; };
 		5282BDF126B5832900D95ED8 /* AddRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */; };
 		528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528730DB26AED3E000B42A62 /* SearchResultViewController.swift */; };
@@ -134,6 +136,8 @@
 		5280198E265687FB0036BA40 /* RandomMenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMenuResponse.swift; sourceTree = "<group>"; };
 		528019962656BB290036BA40 /* CustomError+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomError+Ext.swift"; sourceTree = "<group>"; };
 		528019992656BD560036BA40 /* FoodieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieRepository.swift; sourceTree = "<group>"; };
+		5280E3C426D4B84600C8BF8B /* RootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
+		5280E3C826D4B87000C8BF8B /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
 		5282A88626BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarPresenter.swift; sourceTree = "<group>"; };
 		5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeResponse.swift; sourceTree = "<group>"; };
 		528730DB26AED3E000B42A62 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 		5218909F2653D88E00783413 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				5280E3C326D4B7BF00C8BF8B /* Page Control */,
 				52561BC6265BC1F6002148E3 /* Detail */,
 				52561B9D265B9F12002148E3 /* Tab Bar */,
 				526353D32655264900B615D1 /* Custom View */,
@@ -597,6 +602,15 @@
 				52D5821826CE85E600047F0E /* DismissKeyboard.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5280E3C326D4B7BF00C8BF8B /* Page Control */ = {
+			isa = PBXGroup;
+			children = (
+				5280E3C426D4B84600C8BF8B /* RootPageViewController.swift */,
+				5280E3C826D4B87000C8BF8B /* PageVC.swift */,
+			);
+			path = "Page Control";
 			sourceTree = "<group>";
 		};
 		5282A88526BD85AC00ADCE92 /* Presenter */ = {
@@ -955,6 +969,7 @@
 				52A71AD72658201500C6E2B6 /* MenuEntity.swift in Sources */,
 				526353D8265526D900B615D1 /* ProfileViewController.swift in Sources */,
 				5282A88726BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift in Sources */,
+				5280E3C526D4B84600C8BF8B /* RootPageViewController.swift in Sources */,
 				52A9C214267B6C19003C6872 /* DetailRouter.swift in Sources */,
 				52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */,
 				52A9C211267B6B79003C6872 /* FavouriteRouter.swift in Sources */,
@@ -1007,6 +1022,7 @@
 				52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */,
 				52FFDE78269AF277000A76C9 /* SearchViewCell.swift in Sources */,
 				52D051B226BA709400B47045 /* WeeklyRouter.swift in Sources */,
+				5280E3C926D4B87000C8BF8B /* PageVC.swift in Sources */,
 				5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */,
 				5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */,
 				52FA7FB0265CF3B7007F8836 /* IngridientResponse.swift in Sources */,
