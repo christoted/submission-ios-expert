@@ -14,6 +14,7 @@ protocol MoveDelegate {
 class PageVC: UIViewController {
     
     var titleLabel: UILabel?
+    var imageView: UIImageView?
     
     var page: Pages
     
@@ -31,18 +32,24 @@ class PageVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
-        titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
-        titleLabel?.center = CGPoint(x: 160, y: 250)
-        titleLabel?.text = page.name
-        self.view.addSubview(titleLabel!)
-        
-        if page == Pages.pageThree {
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-            button.setTitle("Tap Here", for: .normal)
-            button.addTarget(self, action: #selector(onTap(sender:)), for: .touchUpInside)
-            self.view.addSubview(button)
+        switch page {
+        case Pages.pageZero:
+            setupImage(imageName: "food1")
+            setupTitle(title: "Have you feel tired to manage your diet?")
+        case Pages.pageOne:
+            setupTitle(title: "Don’t worry, that’s why Here we are")
+        case Pages.pageTwo:
+            setupTitle(title: "Are you ready to Start your diet with us?")
+        case Pages.pageThree:
+           // setupTitle(title: "Have you feel tired to manage your diet?")
+        setupButton(buttonText: "Let's Start!")
+        default:
+            setupTitle(title: "Have you feel tired to manage your diet?")
         }
+        
+       
         
     }
     
@@ -50,6 +57,37 @@ class PageVC: UIViewController {
         delegate?.moveToVC()
     }
 
+    private func setupTitle(title: String) {
+        titleLabel = UILabel(frame: CGRect(x: 0, y: 200, width: view.frame.size.width, height: 30))
+     //   titleLabel?.center = CGPoint(x: 160, y: 250)
+        titleLabel?.text = title
+        titleLabel?.textAlignment = .center
+        
+     
+        
+        
+        self.view.addSubview(titleLabel!)
+    }
+    
+    private func setupImage(imageName: String){
+        let image = UIImage(named: imageName)
+        imageView = UIImageView(image: image)
+        imageView!.frame = CGRect(x: 0, y: 200, width: view.frame.size.width, height: image!.size.height)
+        view.addSubview(imageView!)
+    }
+    
+    private func setupButton(buttonText: String) {
+        let button = UIButton(frame: CGRect(x: 0, y: 400, width: view.frame.size.width / 4 , height: 20))
+        
+        button.addTarget(self, action: #selector(onTap(sender:)), for: .touchUpInside)
+        button.setTitle(buttonText, for: .normal)
+        
+        self.view.addSubview(button)
+        let centerXConstraint = NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+        let centerYConstraint = NSLayoutConstraint(item: button, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+           NSLayoutConstraint.activate([centerXConstraint, centerYConstraint])
+    }
    
+    
 
 }

@@ -49,6 +49,9 @@
 		5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019992656BD560036BA40 /* FoodieRepository.swift */; };
 		5280E3C526D4B84600C8BF8B /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280E3C426D4B84600C8BF8B /* RootPageViewController.swift */; };
 		5280E3C926D4B87000C8BF8B /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280E3C826D4B87000C8BF8B /* PageVC.swift */; };
+		5280E3CC26D4C5FD00C8BF8B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280E3CB26D4C5FD00C8BF8B /* Constant.swift */; };
+		5280E3D126D4C83300C8BF8B /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280E3D026D4C83300C8BF8B /* TabBarPresenter.swift */; };
+		5280E3D326D4C84600C8BF8B /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280E3D226D4C84600C8BF8B /* TabBarRouter.swift */; };
 		5282A88726BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282A88626BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift */; };
 		5282BDF126B5832900D95ED8 /* AddRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */; };
 		528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528730DB26AED3E000B42A62 /* SearchResultViewController.swift */; };
@@ -138,6 +141,9 @@
 		528019992656BD560036BA40 /* FoodieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieRepository.swift; sourceTree = "<group>"; };
 		5280E3C426D4B84600C8BF8B /* RootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
 		5280E3C826D4B87000C8BF8B /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
+		5280E3CB26D4C5FD00C8BF8B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		5280E3D026D4C83300C8BF8B /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
+		5280E3D226D4C84600C8BF8B /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
 		5282A88626BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarPresenter.swift; sourceTree = "<group>"; };
 		5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeResponse.swift; sourceTree = "<group>"; };
 		528730DB26AED3E000B42A62 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
@@ -420,6 +426,7 @@
 		521890A72653D97500783413 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				5280E3CA26D4C59500C8BF8B /* Constant */,
 				5202244326C6C0ED00F7E100 /* Manager */,
 				52188B6626A86746006278B2 /* Helper */,
 				528019952656BB190036BA40 /* Extensions */,
@@ -466,7 +473,9 @@
 		52561B9D265B9F12002148E3 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
-				52561B9F265BAFF6002148E3 /* TabBarViewController.swift */,
+				5280E3CF26D4C7B800C8BF8B /* View */,
+				5280E3CE26D4C7B300C8BF8B /* Presenter */,
+				5280E3CD26D4C7AE00C8BF8B /* Router */,
 			);
 			path = "Tab Bar";
 			sourceTree = "<group>";
@@ -611,6 +620,38 @@
 				5280E3C826D4B87000C8BF8B /* PageVC.swift */,
 			);
 			path = "Page Control";
+			sourceTree = "<group>";
+		};
+		5280E3CA26D4C59500C8BF8B /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				5280E3CB26D4C5FD00C8BF8B /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		5280E3CD26D4C7AE00C8BF8B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				5280E3D226D4C84600C8BF8B /* TabBarRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		5280E3CE26D4C7B300C8BF8B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5280E3D026D4C83300C8BF8B /* TabBarPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		5280E3CF26D4C7B800C8BF8B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52561B9F265BAFF6002148E3 /* TabBarViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5282A88526BD85AC00ADCE92 /* Presenter */ = {
@@ -1002,6 +1043,7 @@
 				52561BE6265BCA54002148E3 /* SummaryViewController.swift in Sources */,
 				52AC834726AD7A3B006D719D /* ConnectivityHelper.swift in Sources */,
 				52D5821926CE85E600047F0E /* DismissKeyboard.swift in Sources */,
+				5280E3CC26D4C5FD00C8BF8B /* Constant.swift in Sources */,
 				52FFDE72269AE7E1000A76C9 /* SearchPresenter.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
 				5202244526C6C10800F7E100 /* NotificationManager.swift in Sources */,
@@ -1014,6 +1056,7 @@
 				52EE72F6267271ED00B3E7EE /* FavouritePresenter.swift in Sources */,
 				52B626A726AC69240006B7D0 /* SearchFoodPresenter.swift in Sources */,
 				52FFDE6C269AE792000A76C9 /* SearchViewController.swift in Sources */,
+				5280E3D326D4C84600C8BF8B /* TabBarRouter.swift in Sources */,
 				52188B5D26A84CF6006278B2 /* PlanNavigationController.swift in Sources */,
 				52561BCE265BC228002148E3 /* DetailPresenter.swift in Sources */,
 				5205C36026C16DBD00BB712C /* WeeklyDetailViewController.swift in Sources */,
@@ -1030,6 +1073,7 @@
 				5200DE6B2658DDD500F8C830 /* Injection.swift in Sources */,
 				52561BC4265BBC61002148E3 /* ProfileNavigationViewController.swift in Sources */,
 				5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */,
+				5280E3D126D4C83300C8BF8B /* TabBarPresenter.swift in Sources */,
 				52EEA0EE266793E70062770C /* MenuDetailMapper.swift in Sources */,
 				5200DE672658D5DC00F8C830 /* RecipeInteractor.swift in Sources */,
 				52D051B426BA709E00B47045 /* WeeeklyPresenter.swift in Sources */,

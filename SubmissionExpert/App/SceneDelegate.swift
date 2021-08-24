@@ -85,8 +85,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
+        let preferences = UserDefaults.standard
+        let isNotFirstTime = preferences.bool(forKey: Constant.IS_FIRST_TIME_KEY)
+        
+        if (isNotFirstTime == true) {
+            window?.rootViewController = tabBarController
+            window?.makeKeyAndVisible()
+        } else {
+            window?.rootViewController = rootPageVC
+            window?.makeKeyAndVisible()
+        }
+        
+      
         
     }
     

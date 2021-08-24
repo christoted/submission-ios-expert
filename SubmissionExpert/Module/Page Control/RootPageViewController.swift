@@ -47,7 +47,7 @@ class RootPageViewController: UIViewController {
     private var currentIndex: Int = 0
     
     let preference = UserDefaults.standard
-    var isFirstTime: Bool = false
+    var isNotFirstTime: Bool = false
     let IS_FIRST_TIME_KEY = "IS_FIRST_TIME_KEY"
     
    
@@ -57,7 +57,7 @@ class RootPageViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = .gray
         
         setupPageControl()
     }
@@ -72,6 +72,9 @@ class RootPageViewController: UIViewController {
         self.pageController?.delegate = self
         self.pageController?.view.backgroundColor = .clear
         self.pageController?.view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height)
+       
+        
+        
         self.addChild(self.pageController!)
         self.view.addSubview(self.pageController!.view)
         
@@ -134,8 +137,12 @@ extension RootPageViewController: UIPageViewControllerDelegate, UIPageViewContro
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        
         return self.currentIndex
     }
+    
+    
+    
     
     
 }
@@ -143,5 +150,82 @@ extension RootPageViewController: UIPageViewControllerDelegate, UIPageViewContro
 extension RootPageViewController: MoveDelegate {
     func moveToVC() {
         performSegue(withIdentifier: "seguettotabbar", sender: self)
+        isNotFirstTime = true
+        preference.setValue(isNotFirstTime, forKey: Constant.IS_FIRST_TIME_KEY)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "seguettotabbar"  {
+            guard let dest = segue.destination as? TabBarViewController else {
+                return
+            }
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let homeNC = storyboard.instantiateViewController(identifier: "HomeNavigationController") as? HomeNavigationViewController else {
+                print("ViewController not found")
+                return
+            }
+            
+            guard let favouriteNC = storyboard.instantiateViewController(identifier: "FavouriteNavigationController") as? FavouriteNavigationController
+            else {
+                
+                return
+            }
+            
+            
+            guard let personalVC = storyboard.instantiateViewController(identifier: "ProfileViewController") as? ProfileViewController else {
+                print("ViewController not found")
+                return
+            }
+            
+            guard let personalNC =
+                    storyboard.instantiateViewController(identifier: "ProfileNavigationController") as? ProfileNavigationViewController else {
+                print("ViewController not found")
+                return
+            }
+            
+            
+            guard let searchNC = storyboard.instantiateViewController(identifier: "SearchNavigationController") as? SearchNavigationController else {
+                return
+            }
+            
+            guard let planNC = storyboard.instantiateViewController(identifier: "plannavigationcontroller") as? PlanNavigationController else {
+                return
+            }
+            
+            guard let planVC = storyboard.instantiateViewController(identifier: "planviewcontroller") as? PlanViewController else {
+                return
+            }
+            
+            
+            let tabBarController  = storyboard.instantiateViewController(withIdentifier: "tabbar") as! TabBarViewController
+            
+            //Plan
+            planNC.viewControllers = [planVC]
+            
+            
+            //Edit
+            let homeRouter = HomeRouter()
+            let homeVC2 = homeRouter.createHomeModule()
+            
+            let favRouter = FavoriteRouter()
+            let favVC2 = favRouter.createFavouriteModule()
+            
+            
+            //Search
+            let searchRouter = SearchRouter()
+            let searchVC = searchRouter.createSearchModule()
+            
+            favouriteNC.viewControllers = [favVC2]
+            homeNC.viewControllers = [homeVC2]
+            personalNC.viewControllers = [personalVC]
+            searchNC.viewControllers = [searchVC]
+            
+            dest.viewControllers = [homeNC,searchNC,planNC, favouriteNC , personalNC]
+            
+            
+        }
+    }
+    
+   
 }
