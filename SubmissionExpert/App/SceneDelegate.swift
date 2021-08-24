@@ -81,7 +81,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         tabBarController.viewControllers = [homeNC,searchNC,planNC, favouriteNC , personalNC]
         
-        window?.rootViewController = tabBarController
+        window?.rootViewController = OnBoardingViewController()
         window?.makeKeyAndVisible()
         
     }

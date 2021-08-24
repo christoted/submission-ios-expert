@@ -25,6 +25,10 @@
 		523546B526B83A99004F537E /* PlanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523546B426B83A99004F537E /* PlanEntity.swift */; };
 		523546B826B83BD3004F537E /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523546B726B83BD3004F537E /* PlanModel.swift */; };
 		523546BA26B83C2C004F537E /* PlanMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523546B926B83C2C004F537E /* PlanMapper.swift */; };
+		523C303426D3DF960082E842 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C303326D3DF960082E842 /* OnBoardingViewController.swift */; };
+		523C303726D3E0740082E842 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C303626D3E0740082E842 /* UIView+.swift */; };
+		523C303926D3E1120082E842 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C303826D3E1120082E842 /* UILabel+.swift */; };
+		523C303B26D3E1BB0082E842 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C303A26D3E1BB0082E842 /* UIScrollView+.swift */; };
 		523F00802660FBF300221A20 /* MenuDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F007F2660FBF300221A20 /* MenuDetailEntity.swift */; };
 		523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F008226610B2200221A20 /* MenuDetailModel.swift */; };
 		52561BA0265BAFF6002148E3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52561B9F265BAFF6002148E3 /* TabBarViewController.swift */; };
@@ -47,6 +51,7 @@
 		528019932656B89D0036BA40 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 528019922656B89D0036BA40 /* Alamofire */; };
 		528019972656BB290036BA40 /* CustomError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019962656BB290036BA40 /* CustomError+Ext.swift */; };
 		5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528019992656BD560036BA40 /* FoodieRepository.swift */; };
+		5280E39E26D4A07B00C8BF8B /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280E39D26D4A07B00C8BF8B /* UIButton+.swift */; };
 		5282A88726BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282A88626BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift */; };
 		5282BDF126B5832900D95ED8 /* AddRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */; };
 		528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528730DB26AED3E000B42A62 /* SearchResultViewController.swift */; };
@@ -116,6 +121,10 @@
 		523546B426B83A99004F537E /* PlanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEntity.swift; sourceTree = "<group>"; };
 		523546B726B83BD3004F537E /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
 		523546B926B83C2C004F537E /* PlanMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanMapper.swift; sourceTree = "<group>"; };
+		523C303326D3DF960082E842 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		523C303626D3E0740082E842 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		523C303826D3E1120082E842 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		523C303A26D3E1BB0082E842 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		523F007F2660FBF300221A20 /* MenuDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailEntity.swift; sourceTree = "<group>"; };
 		523F008226610B2200221A20 /* MenuDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailModel.swift; sourceTree = "<group>"; };
 		52561B9F265BAFF6002148E3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +143,7 @@
 		5280198E265687FB0036BA40 /* RandomMenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMenuResponse.swift; sourceTree = "<group>"; };
 		528019962656BB290036BA40 /* CustomError+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomError+Ext.swift"; sourceTree = "<group>"; };
 		528019992656BD560036BA40 /* FoodieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieRepository.swift; sourceTree = "<group>"; };
+		5280E39D26D4A07B00C8BF8B /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		5282A88626BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarPresenter.swift; sourceTree = "<group>"; };
 		5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeResponse.swift; sourceTree = "<group>"; };
 		528730DB26AED3E000B42A62 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +286,7 @@
 		52188B6626A86746006278B2 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				523C303526D3E0600082E842 /* View Pager */,
 				52188B6726A86753006278B2 /* CalenderHelper.swift */,
 				52AC834626AD7A3B006D719D /* ConnectivityHelper.swift */,
 			);
@@ -344,6 +355,7 @@
 		5218909F2653D88E00783413 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				523C303126D3DEDB0082E842 /* OnBoarding */,
 				52561BC6265BC1F6002148E3 /* Detail */,
 				52561B9D265B9F12002148E3 /* Tab Bar */,
 				526353D32655264900B615D1 /* Custom View */,
@@ -456,6 +468,33 @@
 				523546B726B83BD3004F537E /* PlanModel.swift */,
 			);
 			path = Plan;
+			sourceTree = "<group>";
+		};
+		523C303126D3DEDB0082E842 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				523C303226D3DF770082E842 /* View */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		523C303226D3DF770082E842 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				523C303326D3DF960082E842 /* OnBoardingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		523C303526D3E0600082E842 /* View Pager */ = {
+			isa = PBXGroup;
+			children = (
+				523C303626D3E0740082E842 /* UIView+.swift */,
+				523C303826D3E1120082E842 /* UILabel+.swift */,
+				523C303A26D3E1BB0082E842 /* UIScrollView+.swift */,
+				5280E39D26D4A07B00C8BF8B /* UIButton+.swift */,
+			);
+			path = "View Pager";
 			sourceTree = "<group>";
 		};
 		52561B9D265B9F12002148E3 /* Tab Bar */ = {
@@ -966,8 +1005,10 @@
 				52AC835026AD8A69006D719D /* SearchFoodNavigationController.swift in Sources */,
 				52B6269F26AC56FC0006B7D0 /* AddFoodViewController.swift in Sources */,
 				528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */,
+				523C303926D3E1120082E842 /* UILabel+.swift in Sources */,
 				52B626AE26AC6A8C0006B7D0 /* MonthlyCalendarRouter.swift in Sources */,
 				52A9C20E267B5CED003C6872 /* HomeRouter.swift in Sources */,
+				523C303426D3DF960082E842 /* OnBoardingViewController.swift in Sources */,
 				523546BA26B83C2C004F537E /* PlanMapper.swift in Sources */,
 				52B626A126AC570B0006B7D0 /* SearchFoodViewController.swift in Sources */,
 				52561BD1265BC734002148E3 /* HomeNavigationViewController.swift in Sources */,
@@ -979,6 +1020,7 @@
 				523F00802660FBF300221A20 /* MenuDetailEntity.swift in Sources */,
 				52B6269626AC411D0006B7D0 /* FoodPlannerTableViewCell.swift in Sources */,
 				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
+				5280E39E26D4A07B00C8BF8B /* UIButton+.swift in Sources */,
 				52188B6426A86619006278B2 /* CalenderCollectionViewCell.swift in Sources */,
 				5202244726C6C5A900F7E100 /* Task.swift in Sources */,
 				52AC834926AD832C006D719D /* AddFoodRouter.swift in Sources */,
@@ -1006,6 +1048,7 @@
 				52B626A926AC6A2D0006B7D0 /* SearchFoodRouter.swift in Sources */,
 				52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */,
 				52FFDE78269AF277000A76C9 /* SearchViewCell.swift in Sources */,
+				523C303726D3E0740082E842 /* UIView+.swift in Sources */,
 				52D051B226BA709400B47045 /* WeeklyRouter.swift in Sources */,
 				5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */,
 				5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */,
@@ -1015,6 +1058,7 @@
 				52561BC4265BBC61002148E3 /* ProfileNavigationViewController.swift in Sources */,
 				5280199A2656BD560036BA40 /* FoodieRepository.swift in Sources */,
 				52EEA0EE266793E70062770C /* MenuDetailMapper.swift in Sources */,
+				523C303B26D3E1BB0082E842 /* UIScrollView+.swift in Sources */,
 				5200DE672658D5DC00F8C830 /* RecipeInteractor.swift in Sources */,
 				52D051B426BA709E00B47045 /* WeeeklyPresenter.swift in Sources */,
 			);
