@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol CustomPageViewControllerDelegate {
+    func numberOfPage(numberOfPage: Int)
+    func pageChangedTo(index: Int)
+}
+
 enum Pages: CaseIterable {
     case pageZero
     case pageOne
@@ -43,37 +48,58 @@ enum Pages: CaseIterable {
 class RootPageViewController: UIViewController {
     
     private var pageController: UIPageViewController?
+    private var pageControlDot: UIPageControl?
     private var pages: [Pages] = Pages.allCases
     private var currentIndex: Int = 0
+    
+    var customDelegate: CustomPageViewControllerDelegate?
     
     let preference = UserDefaults.standard
     var isNotFirstTime: Bool = false
     let IS_FIRST_TIME_KEY = "IS_FIRST_TIME_KEY"
     
-   
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = .gray
+        self.view.backgroundColor = .white
         
-        setupPageControl()
+        setupPageViewControl()
+        setupDots()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
     }
     
-    private func setupPageControl() {
+    
+    
+    private func setupDots(){
+        pageControlDot = UIPageControl(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 30))
+        pageControlDot?.numberOfPages = pages.count
+        pageControlDot?.translatesAutoresizingMaskIntoConstraints = false
+        pageControlDot?.currentPageIndicatorTintColor = UIColor.orange
+        pageControlDot?.pageIndicatorTintColor = UIColor.lightGray.withAlphaComponent(0.8)
+        let leading = NSLayoutConstraint(item: pageControlDot, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
+        let trailing = NSLayoutConstraint(item: pageControlDot, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+        let bottom = NSLayoutConstraint(item: pageControlDot, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -50)
+   
+        
+        view.addSubview(pageControlDot!)
+        
+//        view.insertSubview(pageControlDot!, at: 0)
+//        view.bringSubviewToFront(pageControlDot!)
+        view.addConstraints([leading, trailing, bottom])
+    }
+    
+    private func setupPageViewControl() {
         self.pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         self.pageController?.dataSource = self
         self.pageController?.delegate = self
         self.pageController?.view.backgroundColor = .clear
         self.pageController?.view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height)
-       
-        
         
         self.addChild(self.pageController!)
         self.view.addSubview(self.pageController!.view)
@@ -86,7 +112,7 @@ class RootPageViewController: UIViewController {
         self.pageController?.didMove(toParent: self)
     }
     
-
+    
 }
 
 extension RootPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
@@ -96,16 +122,19 @@ extension RootPageViewController: UIPageViewControllerDelegate, UIPageViewContro
         }
         
         var index = currentVC.page.index
-        
-        print("Index \(index)")
+        print("INDEX BRO PREV \(index)")
+       
         
         if index == 0 {
             return nil
         }
-        
+       
         index -= 1
+        print("INDEX BRO PREV \(index)")
+       // self.pageControlDot?.currentPage = index
         
         let vc: PageVC = PageVC(with: pages[index])
+     
         vc.delegate = self
         
         return vc
@@ -125,22 +154,33 @@ extension RootPageViewController: UIPageViewControllerDelegate, UIPageViewContro
         }
         
         index += 1
+        print("INDEX BRO NEXT \(index)")
+      //  self.pageControlDot?.currentPage = index
         
         let vc: PageVC = PageVC(with: pages[index])
+       
         vc.delegate = self
         
         return vc
     }
     
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return self.pages.count
-    }
+//    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+//        return self.pages.count
+//    }
+//
+//    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+//
+//        return self.currentIndex
+//    }
     
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        
-        return self.currentIndex
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+         let currentPageViewController = pageViewController.viewControllers?.first as? PageVC
+
+        let index = currentPageViewController!.page.index
+        self.pageControlDot?.currentPage = index
+        print("INDEX BRO \(index)")
+
     }
-    
     
     
     
@@ -227,5 +267,5 @@ extension RootPageViewController: MoveDelegate {
         }
     }
     
-   
+    
 }
