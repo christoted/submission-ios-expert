@@ -15,6 +15,8 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tabBarController?.tabBar.barTintColor = UIColor.orange
+        tabBarController?.tabBar.selectedItem?.badgeColor = UIColor.white
       
     }
     

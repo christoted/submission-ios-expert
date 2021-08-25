@@ -38,6 +38,8 @@ class HomeViewController: UIViewController {
     
     var presenter: HomePresenter?
     
+    var textGreetings = "Hello, Good Morning"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -45,7 +47,11 @@ class HomeViewController: UIViewController {
         tvHome.dataSource = self
         tvHome.delegate = self
         
-        navigationItemHome.title = "Foodiecipe"
+        navigationItem.title = "\(textGreetings)"
+      
+//        navigationController?.isToolbarHidden = true
+//        navigationController?.isNavigationBarHidden = true
+  
         
         registerTableView()
         
