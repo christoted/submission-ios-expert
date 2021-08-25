@@ -59,32 +59,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nBv-Z7-Anw">
-                                <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                                <items>
-                                    <navigationItem title="Foodiecipe" id="eJM-x7-5LJ"/>
-                                </items>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wId-Rs-avy">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="673"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wId-Rs-avy">
+                                <rect key="frame" x="0.0" y="175" width="390" height="498"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="wId-Rs-avy" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NcF-T3-4ZL"/>
-                            <constraint firstItem="wId-Rs-avy" firstAttribute="top" secondItem="nBv-Z7-Anw" secondAttribute="bottom" id="QD3-EW-98c"/>
-                            <constraint firstItem="wId-Rs-avy" firstAttribute="leading" secondItem="nBv-Z7-Anw" secondAttribute="leading" id="R3g-DN-pQp"/>
-                            <constraint firstItem="wId-Rs-avy" firstAttribute="trailing" secondItem="nBv-Z7-Anw" secondAttribute="trailing" id="RUJ-BJ-6fg"/>
-                            <constraint firstItem="wId-Rs-avy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Vk2-UZ-STR"/>
-                            <constraint firstItem="wId-Rs-avy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XkI-G5-UyL"/>
-                            <constraint firstItem="wId-Rs-avy" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="vh5-Sr-T0O"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9X8-rB-QFj"/>
                     <connections>
-                        <outlet property="navigationItemHome" destination="eJM-x7-5LJ" id="opT-gt-gGE"/>
                         <outlet property="tvHome" destination="wId-Rs-avy" id="1sU-u8-yeO"/>
                         <segue destination="09U-bM-6fh" kind="show" identifier="toDetail" id="DEy-xg-f2b"/>
                     </connections>
