@@ -54,6 +54,8 @@
 		5280E3D326D4C84600C8BF8B /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280E3D226D4C84600C8BF8B /* TabBarRouter.swift */; };
 		5282A88726BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282A88626BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift */; };
 		5282BDF126B5832900D95ED8 /* AddRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */; };
+		528328D226D68253003D465B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528328D026D68253003D465B /* HomeCollectionViewCell.swift */; };
+		528328D326D68253003D465B /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528328D126D68253003D465B /* HomeCollectionViewCell.xib */; };
 		528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528730DB26AED3E000B42A62 /* SearchResultViewController.swift */; };
 		52931F3B26AB12AA007BD32B /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */; };
 		5293D5BC26CC0AD300B791C1 /* ButtonCheckmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293D5BB26CC0AD300B791C1 /* ButtonCheckmark.swift */; };
@@ -146,6 +148,8 @@
 		5280E3D226D4C84600C8BF8B /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
 		5282A88626BD85DE00ADCE92 /* MonthlyCalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarPresenter.swift; sourceTree = "<group>"; };
 		5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeResponse.swift; sourceTree = "<group>"; };
+		528328D026D68253003D465B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		528328D126D68253003D465B /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		528730DB26AED3E000B42A62 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		5293D5BB26CC0AD300B791C1 /* ButtonCheckmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCheckmark.swift; sourceTree = "<group>"; };
@@ -528,6 +532,7 @@
 		526353CA265525D300B615D1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				528328CF26D68221003D465B /* Custom View */,
 				5218908B2653D43B00783413 /* HomeViewController.swift */,
 				52561BD0265BC734002148E3 /* HomeNavigationViewController.swift */,
 			);
@@ -668,6 +673,15 @@
 				5282BDF026B5832900D95ED8 /* AddRecipeResponse.swift */,
 			);
 			path = "Add Recipe";
+			sourceTree = "<group>";
+		};
+		528328CF26D68221003D465B /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				528328D026D68253003D465B /* HomeCollectionViewCell.swift */,
+				528328D126D68253003D465B /* HomeCollectionViewCell.xib */,
+			);
+			path = "Custom View";
 			sourceTree = "<group>";
 		};
 		528730D926AED3C700B42A62 /* Result Search */ = {
@@ -988,6 +1002,7 @@
 				526353EC2655284C00B615D1 /* Assets.xcassets in Resources */,
 				52FFDE79269AF277000A76C9 /* SearchViewCell.xib in Resources */,
 				52FA7FB7265D0D0F007F8836 /* IngridientTableViewCell.xib in Resources */,
+				528328D326D68253003D465B /* HomeCollectionViewCell.xib in Resources */,
 				526353EA2655284900B615D1 /* LaunchScreen.storyboard in Resources */,
 				52561BE7265BCA54002148E3 /* SummaryViewController.xib in Resources */,
 				526353F726552A3600B615D1 /* HomeTableViewCell.xib in Resources */,
@@ -1005,6 +1020,7 @@
 				5280198F265687FB0036BA40 /* RandomMenuResponse.swift in Sources */,
 				528019862656869A0036BA40 /* RemoteDatasource.swift in Sources */,
 				5293D5BC26CC0AD300B791C1 /* ButtonCheckmark.swift in Sources */,
+				528328D226D68253003D465B /* HomeCollectionViewCell.swift in Sources */,
 				52FFDE6E269AE7AA000A76C9 /* SearchNavigationController.swift in Sources */,
 				5200DE642658BB2000F8C830 /* MenuMapper.swift in Sources */,
 				52A71AD72658201500C6E2B6 /* MenuEntity.swift in Sources */,

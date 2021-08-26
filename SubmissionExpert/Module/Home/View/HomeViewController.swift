@@ -32,6 +32,8 @@ class HomeViewController: UIViewController {
     
     private var randomMenuOffline: [MenuModel] = []
     
+    @IBOutlet weak var cvHome: UICollectionView!
+    
     private var errorMessage: String = ""
     private var loadingState: Bool = false
     private var cancellables: Set<AnyCancellable> = []
@@ -168,6 +170,41 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toDetail", sender: indexPath)
+    }
+    
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return section == 1 ? 1 : 5
+    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.homeindentifier, for: indexPath) as! HomeCollectionViewCell
+        
+        cell.backgroundColor = .red
+        cell.layer.cornerRadius = 8
+        
+        
+        return cell
+    }
+    
+    private func createCollectionViewLayout()->UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { (section, _) -> NSCollectionLayoutSection? in
+            
+            if section == 0 {
+                
+            } else if section == 1 {
+                
+            } else if section == 2 {
+                
+            }
+            
+            return nil
+        }
     }
     
 }
