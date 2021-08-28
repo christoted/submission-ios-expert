@@ -59,6 +59,11 @@
 		528730DC26AED3E000B42A62 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528730DB26AED3E000B42A62 /* SearchResultViewController.swift */; };
 		52931F3B26AB12AA007BD32B /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */; };
 		5293D5BC26CC0AD300B791C1 /* ButtonCheckmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293D5BB26CC0AD300B791C1 /* ButtonCheckmark.swift */; };
+		5299088026DA106600AB8ADA /* ChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299087F26DA106600AB8ADA /* ChipCollectionViewCell.swift */; };
+		5299088326DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299088126DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.swift */; };
+		5299088426DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5299088226DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.xib */; };
+		5299088826DA1D3C00AB8ADA /* HomeResuableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299088626DA1D3C00AB8ADA /* HomeResuableView.swift */; };
+		5299088926DA1D3C00AB8ADA /* HomeResuableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5299088726DA1D3C00AB8ADA /* HomeResuableView.xib */; };
 		52A71ACE26581CDF00C6E2B6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACD26581CDF00C6E2B6 /* Realm */; };
 		52A71AD026581CDF00C6E2B6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 52A71ACF26581CDF00C6E2B6 /* RealmSwift */; };
 		52A71AD426581FF700C6E2B6 /* LocaleDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */; };
@@ -153,6 +158,11 @@
 		528730DB26AED3E000B42A62 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		52931F3A26AB12AA007BD32B /* WeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		5293D5BB26CC0AD300B791C1 /* ButtonCheckmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCheckmark.swift; sourceTree = "<group>"; };
+		5299087F26DA106600AB8ADA /* ChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCollectionViewCell.swift; sourceTree = "<group>"; };
+		5299088126DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipWithXIBCollectionViewCell.swift; sourceTree = "<group>"; };
+		5299088226DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChipWithXIBCollectionViewCell.xib; sourceTree = "<group>"; };
+		5299088626DA1D3C00AB8ADA /* HomeResuableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResuableView.swift; sourceTree = "<group>"; };
+		5299088726DA1D3C00AB8ADA /* HomeResuableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeResuableView.xib; sourceTree = "<group>"; };
 		52A71AD326581FF700C6E2B6 /* LocaleDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDatasource.swift; sourceTree = "<group>"; };
 		52A71AD62658201500C6E2B6 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
 		52A71AD92658255D00C6E2B6 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
@@ -532,6 +542,7 @@
 		526353CA265525D300B615D1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5299088526DA1BED00AB8ADA /* Header */,
 				528328CF26D68221003D465B /* Custom View */,
 				5218908B2653D43B00783413 /* HomeViewController.swift */,
 				52561BD0265BC734002148E3 /* HomeNavigationViewController.swift */,
@@ -678,8 +689,8 @@
 		528328CF26D68221003D465B /* Custom View */ = {
 			isa = PBXGroup;
 			children = (
-				528328D026D68253003D465B /* HomeCollectionViewCell.swift */,
-				528328D126D68253003D465B /* HomeCollectionViewCell.xib */,
+				5299087D26DA0FDF00AB8ADA /* Top */,
+				5299087E26DA0FEC00AB8ADA /* Chip */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -718,6 +729,34 @@
 				52B626AA26AC6A6A0006B7D0 /* View */,
 			);
 			path = "Weekly Calendar";
+			sourceTree = "<group>";
+		};
+		5299087D26DA0FDF00AB8ADA /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				528328D026D68253003D465B /* HomeCollectionViewCell.swift */,
+				528328D126D68253003D465B /* HomeCollectionViewCell.xib */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		5299087E26DA0FEC00AB8ADA /* Chip */ = {
+			isa = PBXGroup;
+			children = (
+				5299087F26DA106600AB8ADA /* ChipCollectionViewCell.swift */,
+				5299088126DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.swift */,
+				5299088226DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.xib */,
+			);
+			path = Chip;
+			sourceTree = "<group>";
+		};
+		5299088526DA1BED00AB8ADA /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				5299088626DA1D3C00AB8ADA /* HomeResuableView.swift */,
+				5299088726DA1D3C00AB8ADA /* HomeResuableView.xib */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		52A71AD226581FE400C6E2B6 /* Entity */ = {
@@ -997,6 +1036,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5299088426DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.xib in Resources */,
 				52B6269726AC411D0006B7D0 /* FoodPlannerTableViewCell.xib in Resources */,
 				52B6269B26AC564E0006B7D0 /* ChooseFoodCollectionViewCell.xib in Resources */,
 				526353EC2655284C00B615D1 /* Assets.xcassets in Resources */,
@@ -1004,6 +1044,7 @@
 				52FA7FB7265D0D0F007F8836 /* IngridientTableViewCell.xib in Resources */,
 				528328D326D68253003D465B /* HomeCollectionViewCell.xib in Resources */,
 				526353EA2655284900B615D1 /* LaunchScreen.storyboard in Resources */,
+				5299088926DA1D3C00AB8ADA /* HomeResuableView.xib in Resources */,
 				52561BE7265BCA54002148E3 /* SummaryViewController.xib in Resources */,
 				526353F726552A3600B615D1 /* HomeTableViewCell.xib in Resources */,
 				526353E82655284500B615D1 /* Main.storyboard in Resources */,
@@ -1053,6 +1094,7 @@
 				52A71ADA2658255D00C6E2B6 /* MenuModel.swift in Sources */,
 				52188B6426A86619006278B2 /* CalenderCollectionViewCell.swift in Sources */,
 				5202244726C6C5A900F7E100 /* Task.swift in Sources */,
+				5299088026DA106600AB8ADA /* ChipCollectionViewCell.swift in Sources */,
 				52AC834926AD832C006D719D /* AddFoodRouter.swift in Sources */,
 				52EE72F926727E8800B3E7EE /* FavouriteNavigationController.swift in Sources */,
 				523F008326610B2200221A20 /* MenuDetailModel.swift in Sources */,
@@ -1062,6 +1104,7 @@
 				5280E3CC26D4C5FD00C8BF8B /* Constant.swift in Sources */,
 				52FFDE72269AE7E1000A76C9 /* SearchPresenter.swift in Sources */,
 				521890882653D43B00783413 /* AppDelegate.swift in Sources */,
+				5299088326DA188D00AB8ADA /* ChipWithXIBCollectionViewCell.swift in Sources */,
 				5202244526C6C10800F7E100 /* NotificationManager.swift in Sources */,
 				52AC834B26AD833A006D719D /* AddFoodPresenter.swift in Sources */,
 				52FA7FB6265D0D0F007F8836 /* IngridientTableViewCell.swift in Sources */,
@@ -1081,6 +1124,7 @@
 				52EEA0E926675E9A0062770C /* MenuDetailRes.swift in Sources */,
 				52FFDE78269AF277000A76C9 /* SearchViewCell.swift in Sources */,
 				52D051B226BA709400B47045 /* WeeklyRouter.swift in Sources */,
+				5299088826DA1D3C00AB8ADA /* HomeResuableView.swift in Sources */,
 				5280E3C926D4B87000C8BF8B /* PageVC.swift in Sources */,
 				5200DE6F2658E02C00F8C830 /* HomePresenter.swift in Sources */,
 				5218908A2653D43B00783413 /* SceneDelegate.swift in Sources */,
