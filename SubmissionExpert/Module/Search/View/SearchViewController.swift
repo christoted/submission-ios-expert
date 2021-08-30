@@ -8,12 +8,14 @@
 import UIKit
 import Alamofire
 import Combine
+import Lottie
 
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var cvSearch: UICollectionView!
     
     @IBOutlet weak var searhBar: UISearchBar!
+    @IBOutlet weak var emptyStateAnimationView: AnimationView!
     
     var presenter: SearchPresenter?
     
@@ -31,6 +33,26 @@ class SearchViewController: UIViewController {
         cvSearch.delegate = self
         cvSearch.dataSource = self
         
+        checkDataEmpty()
+    }
+    
+    private func initAnimationView(){
+    
+        emptyStateAnimationView.loopMode = .loop
+    
+        emptyStateAnimationView.animationSpeed = 0.5
+        
+        emptyStateAnimationView.play()
+    }
+    
+    private func checkDataEmpty(){
+        if resultSearch.isEmpty {
+            cvSearch.isHidden = true
+            initAnimationView()
+        } else {
+            cvSearch.isHidden = false
+            emptyStateAnimationView.isHidden = true
+        }
     }
     
     private func registerCollectionViewCell () {
@@ -49,7 +71,17 @@ class SearchViewController: UIViewController {
         } receiveValue: { (result) in
             self.resultSearch = result
             print(self.resultSearch)
-            self.cvSearch.reloadData()
+            
+            if !result.isEmpty {
+                self.cvSearch.reloadData()
+                self.cvSearch.isHidden = false
+                self.emptyStateAnimationView.isHidden = true
+            } else {
+                self.cvSearch.isHidden = true
+                self.initAnimationView()
+            }
+            
+           
         }.store(in: &cancellables)
     }
     
@@ -122,6 +154,10 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         let title = searchBar.text
         self.getSearchMenu(name: title ?? "" )
         
+        if title?.count == 0 {
+            cvSearch.isHidden = true
+            initAnimationView()
+        }
     }
     
 }

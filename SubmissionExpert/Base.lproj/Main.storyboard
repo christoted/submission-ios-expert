@@ -98,14 +98,14 @@
             <objects>
                 <viewController storyboardIdentifier="DetailRecipeViewController" id="09U-bM-6fh" customClass="DetailRecipeViewController" customModule="SubmissionExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JAX-Hs-Vtr">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5M-3s-wLz">
-                                <rect key="frame" x="0.0" y="58" width="390" height="640"/>
+                                <rect key="frame" x="0.0" y="146" width="390" height="552"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vPj-P9-Gm5">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="640"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="552"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="Khg-cD-gM9">
@@ -123,7 +123,7 @@
                                 </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g8O-6P-LV7">
-                                <rect key="frame" x="16" y="12" width="358" height="32"/>
+                                <rect key="frame" x="16" y="100" width="358" height="32"/>
                                 <segments>
                                     <segment title="Summary"/>
                                     <segment title="Ingridients"/>
@@ -412,13 +412,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VkW-NK-r5P">
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Your Food" translatesAutoresizingMaskIntoConstraints="NO" id="VkW-NK-r5P">
                                 <rect key="frame" x="0.0" y="88" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Dn-Un-MPt" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="81" y="309" width="240" height="159"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="emptybox"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4ms-zB-su3">
-                                <rect key="frame" x="16" y="132" width="358" height="629"/>
+                                <rect key="frame" x="17" y="135" width="358" height="629"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lx0-7K-i1B">
@@ -446,6 +454,7 @@
                     <navigationItem key="navigationItem" id="G8V-8C-d2t"/>
                     <connections>
                         <outlet property="cvSearch" destination="4ms-zB-su3" id="brk-y5-kml"/>
+                        <outlet property="emptyStateAnimationView" destination="3Dn-Un-MPt" id="rTc-Xh-VbO"/>
                         <outlet property="searhBar" destination="VkW-NK-r5P" id="BEM-we-zsQ"/>
                         <segue destination="09U-bM-6fh" kind="show" identifier="toDetailFromSearch" id="HlG-IG-zbM"/>
                     </connections>
@@ -548,6 +557,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="t3Z-mV-2Ci">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.92941176469999998" green="0.50980392159999999" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1009,7 +1019,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DEy-xg-f2b"/>
+        <segue reference="HlG-IG-zbM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.left.circle.fill" catalog="system" width="128" height="121"/>
