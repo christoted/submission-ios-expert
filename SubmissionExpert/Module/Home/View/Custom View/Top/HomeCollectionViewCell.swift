@@ -17,6 +17,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        containerView.backgroundColor = .white
     }
 
 }

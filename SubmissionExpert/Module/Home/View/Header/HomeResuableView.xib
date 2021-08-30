@@ -18,10 +18,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tQ-Hb-rGS">
-                            <rect key="frame" x="8" y="14.5" width="304" height="21"/>
+                            <rect key="frame" x="8" y="24" width="304" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="304" id="3FD-q5-w7K"/>
-                                <constraint firstAttribute="height" constant="21" id="EnF-Gh-qd2"/>
+                                <constraint firstAttribute="width" constant="304" id="9dG-Hk-YAM"/>
+                                <constraint firstAttribute="height" constant="21" id="UT0-jI-aGt"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -30,8 +30,9 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="4tQ-Hb-rGS" firstAttribute="centerY" secondItem="2BH-ec-4E7" secondAttribute="centerY" id="Lcg-C4-C9p"/>
-                        <constraint firstItem="4tQ-Hb-rGS" firstAttribute="centerX" secondItem="2BH-ec-4E7" secondAttribute="centerX" id="Qtl-Mc-fYj"/>
+                        <constraint firstItem="4tQ-Hb-rGS" firstAttribute="leading" secondItem="2BH-ec-4E7" secondAttribute="leading" constant="8" id="0Ib-1u-9la"/>
+                        <constraint firstAttribute="trailing" secondItem="4tQ-Hb-rGS" secondAttribute="trailing" constant="8" id="8A6-Q8-7Rj"/>
+                        <constraint firstAttribute="bottom" secondItem="4tQ-Hb-rGS" secondAttribute="bottom" constant="5" id="Gaw-Fu-CNW"/>
                     </constraints>
                 </view>
             </subviews>
@@ -43,6 +44,7 @@
                 <constraint firstItem="2BH-ec-4E7" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="xxm-aa-ixU"/>
             </constraints>
             <connections>
+                <outlet property="containerView" destination="2BH-ec-4E7" id="fqe-lg-ruj"/>
                 <outlet property="headerLabel" destination="4tQ-Hb-rGS" id="1YY-KE-Hk1"/>
             </connections>
             <point key="canvasLocation" x="47.826086956521742" y="83.705357142857139"/>

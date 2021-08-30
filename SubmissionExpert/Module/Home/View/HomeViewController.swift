@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var navigationItemHome: UINavigationItem!
     
     private var randomMenuOffline: [MenuModel] = []
+    private var resultMenuSearch: [MenuModel] = []
     
     @IBOutlet weak var cvHome: UICollectionView!
     
@@ -42,12 +43,10 @@ class HomeViewController: UIViewController {
     
     var textGreetings = "Hello, Good Morning"
     
+    var listOfCategory = ["Chicken","Beef","Pork", "Fish", "Bread", "Pizza", "Burger", "Salad", "Soup"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        //        tvHome.dataSource = self
-        //        tvHome.delegate = self
         
         navigationItem.title = "\(textGreetings)"
         
@@ -59,7 +58,8 @@ class HomeViewController: UIViewController {
         //        registerTableView()
         registerCollectionView()
         
-        //     getCategories()
+        getCategories()
+        getChipFoodByCategories(foodTitle: "Chicken")
         
     }
     
@@ -129,8 +129,26 @@ class HomeViewController: UIViewController {
             }
         } receiveValue: { (result) in
             self.randomMenuOffline = result
-            self.tvHome.reloadData()
+            //   self.tvHome.reloadData()
+            self.cvHome.reloadData()
         }.store(in: &cancellables)
+    }
+    
+    private func getChipFoodByCategories(foodTitle: String){
+        loadingState = true
+        presenter?.getSearchCategories(foodTitle: foodTitle).receive(on: RunLoop.main).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                self.loadingState = false
+            case .failure(_):
+                self.errorMessage = String(describing: completion)
+            }
+        }, receiveValue: { (result) in
+            self.resultMenuSearch = result
+            print("Result \(result)")
+            let indexSet = IndexSet(integer: 2)
+            self.cvHome.reloadSections(indexSet)
+        }).store(in: &cancellables)
     }
 }
 /*
@@ -198,13 +216,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case 0:
             guard let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeResuableView.identifier, for: indexPath) as? HomeResuableView else { fatalError() }
             
-            sectionHeaderView.title = "TEST"
+            sectionHeaderView.title = "Featured Food"
             
             return sectionHeaderView
         case 1:
             guard let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeResuableView.identifier, for: indexPath) as? HomeResuableView else { fatalError() }
             
-            sectionHeaderView.title = "TEST"
+            sectionHeaderView.title = "Category"
             
             return sectionHeaderView
         case 2:
@@ -223,8 +241,45 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetail", sender: indexPath)
+       // print("INDEX \(indexPath) \(indexPath.row) \(indexPath.section)")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if ( segue.identifier == "toDetail") {
+            let dest = segue.destination as! DetailRecipeViewController
+            let section = (sender as! NSIndexPath).section
+            
+            if section == 0 {
+                let row = (sender as! NSIndexPath).row
+                dest.recipeId = randomMenuOffline[row].id ?? 654812
+                dest.presenter?.router = presenter?.homeRouter
+                dest.presenter = presenter?.homeRouter?.navigateToDetailModule()
+            } else if section == 2 {
+                let row = (sender as! NSIndexPath).row
+                dest.recipeId = resultMenuSearch[row].id ?? 654812
+                dest.presenter?.router = presenter?.homeRouter
+                dest.presenter = presenter?.homeRouter?.navigateToDetailModule()
+            }
+               
+           
+            //  dest.recipeIdNew = randomMenuOffline[row].id ?? 654812
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return section == 1 ? 8 : 5
+        switch section {
+        case 0:
+            return randomMenuOffline.count
+        case 1:
+            return 9
+        case 2:
+            return resultMenuSearch.count
+        default:
+            return 0
+        }
+        
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
@@ -236,25 +291,68 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.homeindentifier, for: indexPath) as! HomeCollectionViewCell
-            cell.containerView.backgroundColor = .red
-            cell.ivFoodHome.image = UIImage(named: "teddy")
+            
+            let menu = randomMenuOffline[indexPath.row]
+            
+            
+            
+            DispatchQueue.global(qos: .userInteractive).async {
+                
+                let imageURL = URL(string: menu.image!)
+                
+                let imageData = try? Data(contentsOf: imageURL!)
+                
+                DispatchQueue.main.async {
+                    cell.ivFoodHome.image = UIImage(data: imageData!)
+                }
+            }
+            
+            
+            cell.containerView.backgroundColor = .white
+            //    cell.ivFoodHome.image = UIImage(named: "teddy")
+            cell.lblFoodHome.text = menu.title
             cell.layer.cornerRadius = 8
+            cell.layer.borderWidth = 0.5
+            cell.layer.borderColor = UIColor.black.withAlphaComponent(0.6).cgColor
+            
+            
             
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChipWithXIBCollectionViewCell.identifier, for: indexPath) as! ChipWithXIBCollectionViewCell
             
             
-            cell.viewChip.backgroundColor = .blue
-            cell.lblChipTitle.text = "Teddy"
+            cell.viewChip.backgroundColor = .white
+            cell.layer.borderWidth = 0.5
+            cell.layer.borderColor = UIColor.black.withAlphaComponent(0.6).cgColor
+            cell.lblChipTitle.text = listOfCategory[indexPath.row]
             cell.viewChip.layer.cornerRadius = 8
+            cell.layer.cornerRadius = 8
+            cell.delegate = self
             
             return cell
         case 2 :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.homeindentifier, for: indexPath) as! HomeCollectionViewCell
-            cell.containerView.backgroundColor = .red
-            cell.ivFoodHome.image = UIImage(named: "teddy")
+            
+            let menu = resultMenuSearch[indexPath.row]
+            
+            DispatchQueue.global(qos: .userInteractive).async {
+                
+                let imageURL = URL(string: menu.image!)
+                
+                let imageData = try? Data(contentsOf: imageURL!)
+                
+                DispatchQueue.main.async {
+                    cell.ivFoodHome.image = UIImage(data: imageData!)
+                }
+            }
+            
+            cell.containerView.backgroundColor = .white
+            cell.lblFoodHome.text = menu.title
             cell.layer.cornerRadius = 8
+            cell.layer.cornerRadius = 8
+            cell.layer.borderWidth = 0.5
+            cell.layer.borderColor = UIColor.black.withAlphaComponent(0.6).cgColor
             
             return cell
         default:
@@ -272,7 +370,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return UICollectionViewCompositionalLayout{ (section, _) -> NSCollectionLayoutSection? in
             if section == 0 {
                 //Item
-                let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(150), heightDimension: .absolute(150)))
+                let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(150), heightDimension: .absolute(175)))
                 
                 item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 2, bottom: 2, trailing: 2)
                 
@@ -322,7 +420,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
                 return section
             } else if section == 2 {
-                let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(150), heightDimension: .absolute(150)))
+                let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .absolute(150), heightDimension: .absolute(175)))
                 
                 item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 2, bottom: 5, trailing: 2)
                 
@@ -336,16 +434,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
                 section.orthogonalScrollingBehavior = .continuous
                 
-                //Section Header
-                let footerHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                              heightDimension: .absolute(50.0))
-                let header = NSCollectionLayoutBoundarySupplementaryItem(
-                    layoutSize: footerHeaderSize,
-                    elementKind: UICollectionView.elementKindSectionHeader,
-                    alignment: .top)
-                
-                section.boundarySupplementaryItems = [header]
-                
                 return section
             }
             
@@ -355,3 +443,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
 }
 
+extension HomeViewController : ChipProtocol {
+    func onChipPressed(title: String) {
+        print("\(title)")
+        getChipFoodByCategories(foodTitle: title)
+    }
+    
+    
+}

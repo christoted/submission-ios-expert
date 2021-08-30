@@ -17,27 +17,45 @@
                 <rect key="frame" x="0.0" y="0.0" width="193" height="183"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="idc-G7-kpX">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idc-G7-kpX">
                         <rect key="frame" x="0.0" y="0.0" width="193" height="183"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQp-rI-E8P">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQp-rI-E8P">
                                 <rect key="frame" x="8" y="134" width="177" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="177" id="A3q-QZ-pIl"/>
+                                    <constraint firstAttribute="height" constant="21" id="Cup-e4-sjv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UGd-cY-exI">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UGd-cY-exI">
                                 <rect key="frame" x="0.0" y="0.0" width="193" height="125"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="193" id="fmP-IQ-EHz"/>
+                                    <constraint firstAttribute="height" constant="125" id="tJG-ya-bfg"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UGd-cY-exI" firstAttribute="top" secondItem="idc-G7-kpX" secondAttribute="top" id="3K2-1d-oz6"/>
+                            <constraint firstAttribute="trailing" secondItem="fQp-rI-E8P" secondAttribute="trailing" constant="8" id="9zk-iw-ial"/>
+                            <constraint firstItem="fQp-rI-E8P" firstAttribute="top" secondItem="UGd-cY-exI" secondAttribute="bottom" constant="9" id="bkT-bB-rU6"/>
+                            <constraint firstItem="UGd-cY-exI" firstAttribute="leading" secondItem="idc-G7-kpX" secondAttribute="leading" id="dML-VQ-ci8"/>
+                            <constraint firstItem="fQp-rI-E8P" firstAttribute="leading" secondItem="idc-G7-kpX" secondAttribute="leading" constant="8" id="dVh-nG-c78"/>
+                            <constraint firstAttribute="trailing" secondItem="UGd-cY-exI" secondAttribute="trailing" id="gCX-NW-vno"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="idc-G7-kpX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="J1r-RT-vyc"/>
+                <constraint firstItem="idc-G7-kpX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="k7R-ys-aRU"/>
+                <constraint firstAttribute="bottom" secondItem="idc-G7-kpX" secondAttribute="bottom" id="kVb-u2-Kqv"/>
+            </constraints>
             <size key="customSize" width="193" height="183"/>
             <connections>
                 <outlet property="containerView" destination="idc-G7-kpX" id="Jgs-Ia-oge"/>

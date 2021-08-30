@@ -9,6 +9,7 @@ import UIKit
 
 class HomeResuableView: UICollectionReusableView {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var headerLabel: UILabel!
     
     static let identifier = "headerlabel"
