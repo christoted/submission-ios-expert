@@ -34,6 +34,9 @@ class SearchViewController: UIViewController {
         cvSearch.dataSource = self
         
         checkDataEmpty()
+        
+        cvSearch.showsHorizontalScrollIndicator = false
+        cvSearch.showsVerticalScrollIndicator = false
     }
     
     private func initAnimationView(){
@@ -45,6 +48,10 @@ class SearchViewController: UIViewController {
         emptyStateAnimationView.play()
     }
     
+    private func stopAnimationView(){
+        emptyStateAnimationView.stop()
+    }
+    
     private func checkDataEmpty(){
         if resultSearch.isEmpty {
             cvSearch.isHidden = true
@@ -52,6 +59,7 @@ class SearchViewController: UIViewController {
         } else {
             cvSearch.isHidden = false
             emptyStateAnimationView.isHidden = true
+            stopAnimationView()
         }
     }
     
@@ -156,6 +164,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         
         if title?.count == 0 {
             cvSearch.isHidden = true
+            self.emptyStateAnimationView.isHidden = false
+            self.emptyStateAnimationView.play()
             initAnimationView()
         }
     }
