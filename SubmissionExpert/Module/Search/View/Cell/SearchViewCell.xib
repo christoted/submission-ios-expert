@@ -11,18 +11,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SearchViewCell" customModule="SubmissionExpert" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="344" height="115"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="115"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="344" height="115"/>
+                <rect key="frame" x="0.0" y="0.0" width="390" height="115"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="caE-QS-jsD">
-                        <rect key="frame" x="-15" y="-7" width="393" height="128"/>
+                        <rect key="frame" x="-15" y="-7" width="405" height="128"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjz-zK-aOP">
-                                <rect key="frame" x="15" y="41" width="346" height="84"/>
+                                <rect key="frame" x="15" y="41" width="390" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pasta With Tuna" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGp-26-xUW">
@@ -59,7 +59,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="344" height="115"/>
+            <size key="customSize" width="386" height="115"/>
             <connections>
                 <outlet property="baseContainerView" destination="caE-QS-jsD" id="4TF-Fe-6jj"/>
                 <outlet property="imageContainerView" destination="vex-dj-8fN" id="wjn-5Q-QuN"/>
@@ -68,7 +68,7 @@
                 <outlet property="lblTitle" destination="ZGp-26-xUW" id="sBS-cU-VUX"/>
                 <outlet property="orangeView" destination="xjz-zK-aOP" id="g0N-OX-wUs"/>
             </connections>
-            <point key="canvasLocation" x="321.73913043478262" y="121.54017857142857"/>
+            <point key="canvasLocation" x="352.17391304347831" y="121.54017857142857"/>
         </collectionViewCell>
     </objects>
     <resources>

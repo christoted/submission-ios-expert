@@ -37,6 +37,8 @@ class SearchViewController: UIViewController {
         
         cvSearch.showsHorizontalScrollIndicator = false
         cvSearch.showsVerticalScrollIndicator = false
+        
+        navigationItem.title = "Let's Explore Some Food"
     }
     
     private func initAnimationView(){
@@ -52,9 +54,14 @@ class SearchViewController: UIViewController {
         emptyStateAnimationView.stop()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        checkDataEmpty()
+    }
+    
     private func checkDataEmpty(){
         if resultSearch.isEmpty {
             cvSearch.isHidden = true
+            emptyStateAnimationView.isHidden = false
             initAnimationView()
         } else {
             cvSearch.isHidden = false

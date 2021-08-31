@@ -17,28 +17,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TB9-zb-Auh">
-                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TB9-zb-Auh">
+                                <rect key="frame" x="16" y="133" width="358" height="628"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WAh-Pb-Wxb">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WAh-Pb-Wxb">
                                 <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qOK-Ow-8xU"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Foodiecipe" id="h9K-Vf-Q4p"/>
                                 </items>
                             </navigationBar>
+                            <searchBar contentMode="redraw" placeholder="Search Your Favorite Food" translatesAutoresizingMaskIntoConstraints="NO" id="swC-09-khi">
+                                <rect key="frame" x="0.0" y="89" width="390" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CsK-hu-fvh"/>
+                                    <constraint firstAttribute="width" constant="390" id="ysS-oT-h6T"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WLj-tq-dar"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TB9-zb-Auh" firstAttribute="trailing" secondItem="WAh-Pb-Wxb" secondAttribute="trailing" id="4HA-3R-Vl1"/>
-                            <constraint firstItem="WLj-tq-dar" firstAttribute="trailing" secondItem="TB9-zb-Auh" secondAttribute="trailing" id="BKj-hH-Ncp"/>
-                            <constraint firstItem="TB9-zb-Auh" firstAttribute="top" secondItem="WAh-Pb-Wxb" secondAttribute="bottom" id="CS3-3V-zVz"/>
-                            <constraint firstItem="TB9-zb-Auh" firstAttribute="leading" secondItem="WAh-Pb-Wxb" secondAttribute="leading" id="Q1f-Bm-3Gr"/>
-                            <constraint firstItem="TB9-zb-Auh" firstAttribute="leading" secondItem="WLj-tq-dar" secondAttribute="leading" id="azj-mJ-2o2"/>
-                            <constraint firstItem="TB9-zb-Auh" firstAttribute="top" secondItem="WLj-tq-dar" secondAttribute="top" id="cX2-ng-7JI"/>
-                            <constraint firstItem="TB9-zb-Auh" firstAttribute="trailing" secondItem="WLj-tq-dar" secondAttribute="trailing" id="eNW-hw-HPq"/>
-                            <constraint firstItem="TB9-zb-Auh" firstAttribute="bottom" secondItem="WLj-tq-dar" secondAttribute="bottom" id="zkr-mb-Pks"/>
+                            <constraint firstItem="WAh-Pb-Wxb" firstAttribute="leading" secondItem="TB9-zb-Auh" secondAttribute="leading" constant="-16" id="48D-Id-xfd"/>
+                            <constraint firstItem="swC-09-khi" firstAttribute="top" secondItem="WAh-Pb-Wxb" secondAttribute="bottom" constant="1" id="4OU-7D-9uz"/>
+                            <constraint firstItem="TB9-zb-Auh" firstAttribute="top" secondItem="swC-09-khi" secondAttribute="bottom" id="DH2-eg-QgN"/>
+                            <constraint firstItem="TB9-zb-Auh" firstAttribute="trailing" secondItem="WLj-tq-dar" secondAttribute="trailing" constant="-16" id="HZh-3z-lwM"/>
+                            <constraint firstItem="TB9-zb-Auh" firstAttribute="leading" secondItem="WLj-tq-dar" secondAttribute="leading" constant="16" id="ReA-o9-l6K"/>
+                            <constraint firstItem="WAh-Pb-Wxb" firstAttribute="top" secondItem="QAU-sh-aKk" secondAttribute="topMargin" constant="-44" id="Zet-pR-BMk"/>
+                            <constraint firstItem="swC-09-khi" firstAttribute="trailing" secondItem="WLj-tq-dar" secondAttribute="trailing" id="fZN-4g-jYB"/>
+                            <constraint firstItem="swC-09-khi" firstAttribute="leading" secondItem="WLj-tq-dar" secondAttribute="leading" id="k68-lb-hdH"/>
+                            <constraint firstItem="TB9-zb-Auh" firstAttribute="bottom" secondItem="WLj-tq-dar" secondAttribute="bottom" id="rwl-hJ-T2R"/>
+                            <constraint firstItem="WAh-Pb-Wxb" firstAttribute="leading" secondItem="swC-09-khi" secondAttribute="leading" id="sFY-5E-hAR"/>
+                            <constraint firstItem="WAh-Pb-Wxb" firstAttribute="trailing" secondItem="swC-09-khi" secondAttribute="trailing" id="xgO-6X-rF8"/>
+                            <constraint firstItem="WAh-Pb-Wxb" firstAttribute="trailing" secondItem="TB9-zb-Auh" secondAttribute="trailing" constant="16" id="y63-Lr-v4y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="49e-01-8Vc"/>
@@ -49,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1t5-VY-05W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4025" y="-767"/>
+            <point key="canvasLocation" x="4024.6153846153843" y="-767.06161137440756"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -413,9 +428,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search Your Food" translatesAutoresizingMaskIntoConstraints="NO" id="VkW-NK-r5P">
-                                <rect key="frame" x="0.0" y="88" width="390" height="44"/>
+                                <rect key="frame" x="0.0" y="89" width="390" height="51"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="X8r-sG-c0d"/>
+                                    <constraint firstAttribute="width" constant="390" id="4HH-XT-5su"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -428,26 +443,27 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4ms-zB-su3">
-                                <rect key="frame" x="15" y="140" width="360" height="629"/>
+                                <rect key="frame" x="0.0" y="140" width="390" height="621"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="629" id="bnm-VT-lIr"/>
+                                    <constraint firstAttribute="width" constant="390" id="0AW-G9-WQr"/>
+                                    <constraint firstAttribute="height" constant="621" id="dZJ-TZ-uVK"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lx0-7K-i1B">
-                                    <size key="itemSize" width="358" height="113"/>
+                                    <size key="itemSize" width="360" height="113"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellsearch" id="Fdc-Lx-L0d" customClass="SearchViewCell" customModule="SubmissionExpert" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="0.0" width="330" height="113"/>
+                                        <rect key="frame" x="15" y="0.0" width="360" height="113"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0k7-rM-9pe">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="113"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="113"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="330" height="113"/>
+                                        <size key="customSize" width="360" height="113"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -455,12 +471,13 @@
                         <viewLayoutGuide key="safeArea" id="S21-wn-aTM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="4ms-zB-su3" firstAttribute="leading" secondItem="S21-wn-aTM" secondAttribute="leading" constant="15" id="DsZ-9h-3r6"/>
-                            <constraint firstItem="4ms-zB-su3" firstAttribute="top" secondItem="VkW-NK-r5P" secondAttribute="bottom" constant="8" id="JK1-ja-zKU"/>
-                            <constraint firstItem="S21-wn-aTM" firstAttribute="trailing" secondItem="4ms-zB-su3" secondAttribute="trailing" constant="15" id="PSJ-6y-G03"/>
-                            <constraint firstItem="VkW-NK-r5P" firstAttribute="leading" secondItem="S21-wn-aTM" secondAttribute="leading" id="TaI-h7-U0C"/>
-                            <constraint firstItem="VkW-NK-r5P" firstAttribute="centerX" secondItem="4ms-zB-su3" secondAttribute="centerX" id="mNS-HA-RDA"/>
-                            <constraint firstItem="VkW-NK-r5P" firstAttribute="top" secondItem="S21-wn-aTM" secondAttribute="top" id="uzJ-YV-atV"/>
+                            <constraint firstItem="4ms-zB-su3" firstAttribute="top" secondItem="VkW-NK-r5P" secondAttribute="bottom" id="IP8-Ll-GRC"/>
+                            <constraint firstItem="4ms-zB-su3" firstAttribute="trailing" secondItem="S21-wn-aTM" secondAttribute="trailing" id="JEm-pJ-00M"/>
+                            <constraint firstItem="VkW-NK-r5P" firstAttribute="top" secondItem="S21-wn-aTM" secondAttribute="top" constant="1" id="LoS-9p-1di"/>
+                            <constraint firstItem="VkW-NK-r5P" firstAttribute="leading" secondItem="S21-wn-aTM" secondAttribute="leading" id="iW2-vg-j5n"/>
+                            <constraint firstItem="4ms-zB-su3" firstAttribute="bottom" secondItem="S21-wn-aTM" secondAttribute="bottom" id="qv9-VF-Wim"/>
+                            <constraint firstItem="VkW-NK-r5P" firstAttribute="trailing" secondItem="S21-wn-aTM" secondAttribute="trailing" id="sB3-ta-fvP"/>
+                            <constraint firstItem="4ms-zB-su3" firstAttribute="leading" secondItem="S21-wn-aTM" secondAttribute="leading" id="tLa-HM-niD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="G8V-8C-d2t"/>
@@ -550,6 +567,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AEP-FL-ZeQ">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.92941176469999998" green="0.50980392159999999" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -570,6 +591,9 @@
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.92941176469999998" green="0.50980392159999999" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1031,7 +1055,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HlG-IG-zbM"/>
+        <segue reference="Ee3-eG-EmH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.left.circle.fill" catalog="system" width="128" height="121"/>

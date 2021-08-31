@@ -29,6 +29,8 @@ class FavouriteViewController: UIViewController {
         
         
         getFavouriteMenu()
+        
+        navigationItem.title = "Here are Your Favorite Foods"
     }
     
     
